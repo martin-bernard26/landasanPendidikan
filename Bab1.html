@@ -1,0 +1,946 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>BAB I · Orientasi Program Perkuliahan · Landasan Pendidikan</title>
+<link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=Jost:wght@300;400;500;600;700&family=Cinzel:wght@400;600&display=swap" rel="stylesheet">
+<style>
+:root {
+  --parchment:  #f6f1e9;
+  --parchment2: #ede7d9;
+  --parchment3: #e3dace;
+  --cream:      #faf7f2;
+  --ink:        #1a160f;
+  --ink2:       #3d3626;
+  --ink3:       #6b6050;
+  --ink4:       #9a8f7e;
+  --forest:     #1b4332;
+  --forest2:    #2d6a4f;
+  --forest3:    #40916c;
+  --forest-p:   #d8f3dc;
+  --gold:       #9a6c00;
+  --gold2:      #c49a3c;
+  --gold-p:     #fdf3cc;
+  --crimson:    #7a1f2e;
+  --crimson2:   #a63245;
+  --crimson-p:  #fdeef1;
+  --slate:      #1e3a5f;
+  --slate2:     #2d5a8e;
+  --slate-p:    #dbeafe;
+  --rule:       rgba(26,22,15,.12);
+  --shadow-sm:  0 2px 8px rgba(26,22,15,.08);
+  --shadow-md:  0 6px 24px rgba(26,22,15,.12);
+  --r: 8px;
+}
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+html { scroll-behavior: smooth; }
+body {
+  background: var(--parchment);
+  color: var(--ink);
+  font-family: 'Jost', sans-serif;
+  line-height: 1.75;
+  overflow-x: hidden;
+}
+::selection { background: var(--gold-p); color: var(--gold); }
+::-webkit-scrollbar { width: 4px; }
+::-webkit-scrollbar-track { background: var(--parchment2); }
+::-webkit-scrollbar-thumb { background: var(--forest2); border-radius: 2px; }
+
+body::before {
+  content: '';
+  position: fixed; inset: 0; z-index: 0; pointer-events: none;
+  background-image: repeating-linear-gradient(180deg, transparent 0px, transparent 27px, rgba(26,22,15,.04) 27px, rgba(26,22,15,.04) 28px);
+}
+
+/* SIDEBAR */
+.sidebar {
+  position: fixed; left: 0; top: 0; bottom: 0; width: 256px;
+  background: var(--forest);
+  display: flex; flex-direction: column;
+  overflow-y: auto; z-index: 300;
+  transition: transform .3s cubic-bezier(.4,0,.2,1);
+  border-right: 3px solid var(--forest3);
+}
+.sb-head {
+  padding: 28px 22px 20px;
+  border-bottom: 1px solid rgba(255,255,255,.08);
+  background: linear-gradient(180deg, rgba(0,0,0,.2), transparent);
+}
+.sb-tag { font-family: 'Cinzel', serif; font-size: 8px; letter-spacing: 3px; color: var(--gold2); text-transform: uppercase; margin-bottom: 10px; display: block; }
+.sb-mk { font-size: 11px; color: rgba(255,255,255,.4); margin-bottom: 8px; line-height: 1.5; }
+.sb-title { font-family: 'DM Serif Display', serif; font-size: 14px; color: #e8f5e9; line-height: 1.45; }
+.sb-nav { flex: 1; padding: 10px 0 16px; }
+.sb-section-lbl { font-family: 'Cinzel', serif; font-size: 7px; letter-spacing: 3px; color: var(--gold2); text-transform: uppercase; padding: 12px 22px 4px; display: block; opacity: .8; }
+.sb-link { display: flex; align-items: flex-start; gap: 9px; padding: 8px 22px 8px 26px; font-size: 12px; color: rgba(255,255,255,.45); border-left: 3px solid transparent; text-decoration: none; transition: all .2s; line-height: 1.35; cursor: pointer; }
+.sb-link .ic { font-size: 13px; flex-shrink: 0; width: 16px; text-align: center; margin-top: 1px; }
+.sb-link:hover { color: #e8f5e9; background: rgba(255,255,255,.06); border-left-color: rgba(196,154,60,.4); }
+.sb-link.active { color: #e8f5e9; background: rgba(196,154,60,.15); border-left-color: var(--gold2); }
+.sb-foot { padding: 16px 22px; border-top: 1px solid rgba(255,255,255,.07); font-size: 11px; color: rgba(255,255,255,.3); line-height: 1.7; }
+.sb-foot strong { color: rgba(255,255,255,.55); }
+
+.hamburger { display: none; position: fixed; top: 14px; left: 14px; z-index: 400; background: var(--forest); color: #e8f5e9; border: 2px solid var(--forest3); border-radius: 6px; width: 40px; height: 40px; font-size: 18px; cursor: pointer; align-items: center; justify-content: center; box-shadow: var(--shadow-md); }
+
+/* MAIN */
+.main { margin-left: 256px; position: relative; z-index: 1; }
+
+/* HERO */
+.hero { min-height: 92vh; display: grid; grid-template-columns: 1fr 1fr; position: relative; overflow: hidden; }
+.hero-left { background: var(--forest); padding: 72px 52px 56px; display: flex; flex-direction: column; justify-content: flex-end; position: relative; overflow: hidden; }
+.hero-left::before { content: ''; position: absolute; inset: 0; background: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='%23ffffff' fill-opacity='0.03'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/svg%3E"); }
+.hero-left::after { content: ''; position: absolute; top: -100px; right: -100px; width: 400px; height: 400px; border-radius: 50%; background: radial-gradient(circle, rgba(64,145,108,.25), transparent 65%); }
+.hero-left-in { position: relative; z-index: 2; animation: fadeUp .9s ease both; }
+@keyframes fadeUp { from{opacity:0;transform:translateY(24px)} to{opacity:1;transform:translateY(0)} }
+.hero-chip { display: inline-flex; align-items: center; gap: 8px; border: 1px solid rgba(196,154,60,.4); background: rgba(196,154,60,.1); font-family: 'Cinzel', serif; font-size: 8px; letter-spacing: 3.5px; color: var(--gold2); text-transform: uppercase; padding: 6px 14px; border-radius: 2px; margin-bottom: 28px; }
+.hero-bab { font-family: 'Cinzel', serif; font-size: 11px; letter-spacing: 4px; color: rgba(255,255,255,.4); text-transform: uppercase; margin-bottom: 12px; }
+.hero-h1 { font-family: 'DM Serif Display', serif; font-size: clamp(30px, 4vw, 50px); color: #e8f5e9; line-height: 1.1; }
+.hero-h1 em { display: block; font-style: italic; color: var(--gold2); font-size: .72em; margin-top: 8px; line-height: 1.3; }
+.hero-rule { width: 56px; height: 3px; margin: 28px 0; background: linear-gradient(90deg, var(--gold2), transparent); }
+.hero-meta { display: flex; flex-direction: column; gap: 8px; }
+.hm-row { display: flex; align-items: center; gap: 10px; font-size: 12px; color: rgba(255,255,255,.45); }
+.hm-dot { width: 5px; height: 5px; border-radius: 50%; background: var(--gold2); flex-shrink: 0; }
+.hm-row strong { color: rgba(255,255,255,.7); }
+
+.hero-right { background: var(--cream); padding: 72px 52px 56px; display: flex; flex-direction: column; justify-content: center; border-left: 1px solid var(--rule); position: relative; }
+.hr-label { font-family: 'Cinzel', serif; font-size: 9px; letter-spacing: 3px; color: var(--forest2); text-transform: uppercase; margin-bottom: 20px; animation: fadeUp .9s ease .1s both; }
+.hr-quote { font-family: 'DM Serif Display', serif; font-style: italic; font-size: clamp(17px, 2.2vw, 22px); color: var(--ink2); line-height: 1.55; margin-bottom: 20px; padding-left: 22px; border-left: 3px solid var(--gold2); animation: fadeUp .9s ease .2s both; }
+.hr-cite { font-size: 12px; color: var(--ink4); margin-bottom: 40px; padding-left: 22px; animation: fadeUp .9s ease .3s both; }
+.progress-section { margin-top: auto; animation: fadeUp .9s ease .4s both; }
+.prog-label { display: flex; justify-content: space-between; font-size: 11px; color: var(--ink4); margin-bottom: 6px; font-family: 'Cinzel', serif; letter-spacing: 1px; }
+.prog-track { height: 3px; background: var(--parchment3); border-radius: 2px; overflow: hidden; }
+.prog-fill { height: 100%; width: 0%; border-radius: 2px; background: linear-gradient(90deg, var(--forest2), var(--forest3)); transition: width .4s; }
+
+/* CAPAIAN BAR */
+.capaian-bar { background: var(--forest); padding: 32px 56px; border-bottom: 3px solid var(--forest3); }
+.cap-inner { max-width: 900px; margin: 0 auto; }
+.cap-head { display: flex; align-items: center; gap: 12px; margin-bottom: 18px; }
+.cap-head .ico { font-size: 22px; }
+.cap-head span { font-family: 'Cinzel', serif; font-size: 10px; letter-spacing: 3px; color: var(--gold2); text-transform: uppercase; }
+.cap-list { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; }
+.cap-item { display: flex; align-items: flex-start; gap: 10px; font-size: 13.5px; color: rgba(255,255,255,.7); line-height: 1.6; }
+.cap-item::before { content: '›'; color: var(--gold2); font-size: 18px; font-weight: 700; flex-shrink: 0; margin-top: -2px; }
+
+/* CONTENT */
+.content { padding: 0 56px 100px; max-width: 1060px; margin: 0 auto; }
+
+/* SECTION */
+.section { padding: 58px 0 24px; border-bottom: 1px solid var(--rule); opacity: 0; transform: translateY(22px); transition: opacity .55s ease, transform .55s ease; }
+.section.visible { opacity: 1; transform: translateY(0); }
+.section:last-child { border-bottom: none; }
+
+.sec-header { display: flex; align-items: flex-start; gap: 20px; margin-bottom: 28px; padding-bottom: 22px; border-bottom: 1px solid var(--rule); position: relative; }
+.sec-header::after { content: ''; position: absolute; bottom: -1px; left: 0; width: 80px; height: 2px; background: var(--forest2); }
+.sec-letter { font-family: 'DM Serif Display', serif; font-style: italic; font-size: 56px; line-height: 1; color: var(--parchment3); display: block; margin-bottom: -8px; }
+.sec-label { font-family: 'Cinzel', serif; font-size: 8px; letter-spacing: 3px; color: var(--forest2); text-transform: uppercase; }
+.sec-eye { font-family: 'Cinzel', serif; font-size: 9px; letter-spacing: 3px; color: var(--gold); text-transform: uppercase; margin-bottom: 8px; }
+.sec-title { font-family: 'DM Serif Display', serif; font-size: clamp(20px, 3vw, 28px); color: var(--ink); line-height: 1.25; }
+.section h3 { font-family: 'DM Serif Display', serif; font-size: 18px; color: var(--forest); margin: 28px 0 10px; }
+.section p { font-size: 15px; color: var(--ink2); margin-bottom: 14px; line-height: 1.82; }
+.section p strong { color: var(--ink); }
+
+/* PULLQUOTE */
+.pullquote { margin: 28px 0; padding: 22px 28px; background: var(--parchment2); border-left: 4px solid var(--gold2); border-radius: 0 var(--r) var(--r) 0; font-family: 'DM Serif Display', serif; font-style: italic; font-size: 16px; color: var(--ink2); line-height: 1.7; }
+.pullquote cite { display: block; margin-top: 10px; font-style: normal; font-size: 12px; color: var(--gold); font-family: 'Jost', sans-serif; font-weight: 600; }
+
+/* INFOBOX */
+.infobox { display: flex; gap: 14px; align-items: flex-start; padding: 18px 22px; border-radius: var(--r); margin: 18px 0; border: 1px solid; }
+.infobox .ib-ico { font-size: 22px; flex-shrink: 0; padding-top: 1px; }
+.ib-title { font-weight: 700; font-size: 14px; margin-bottom: 5px; }
+.ib-text { font-size: 14px; color: var(--ink2); line-height: 1.7; }
+.infobox.forest { background: var(--forest-p); border-color: rgba(27,67,50,.2); } .infobox.forest .ib-title { color: var(--forest); }
+.infobox.gold { background: var(--gold-p); border-color: rgba(154,108,0,.2); } .infobox.gold .ib-title { color: var(--gold); }
+.infobox.crimson { background: var(--crimson-p); border-color: rgba(122,31,46,.2); } .infobox.crimson .ib-title { color: var(--crimson); }
+.infobox.slate { background: var(--slate-p); border-color: rgba(30,58,95,.2); } .infobox.slate .ib-title { color: var(--slate); }
+
+/* DEFBOX */
+.defbox { background: #fff; border: 1px solid var(--parchment3); border-left: 4px solid var(--forest2); border-radius: 0 var(--r) var(--r) 0; padding: 18px 22px; margin: 20px 0; box-shadow: var(--shadow-sm); }
+.def-term { font-family: 'DM Serif Display', serif; font-size: 15px; color: var(--forest); margin-bottom: 6px; }
+.def-body { font-size: 14px; color: var(--ink2); line-height: 1.75; }
+.def-source { font-size: 12px; color: var(--ink4); margin-top: 7px; font-style: italic; }
+
+/* CARDS */
+.card-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(200px, 1fr)); gap: 14px; margin: 22px 0; }
+.mcard { background: #fff; border: 1px solid var(--parchment3); border-radius: var(--r); padding: 22px 18px; box-shadow: var(--shadow-sm); transition: transform .2s, box-shadow .2s, border-color .2s; cursor: default; }
+.mcard:hover { transform: translateY(-4px); box-shadow: var(--shadow-md); border-color: var(--forest3); }
+.mc-ico { font-size: 32px; margin-bottom: 12px; }
+.mc-title { font-family: 'DM Serif Display', serif; font-size: 14px; color: var(--ink); margin-bottom: 6px; line-height: 1.4; }
+.mc-body { font-size: 12.5px; color: var(--ink3); line-height: 1.65; }
+
+/* TABLE */
+.table-wrap { overflow-x: auto; margin: 20px 0; border-radius: var(--r); box-shadow: var(--shadow-sm); }
+table { width: 100%; border-collapse: collapse; font-size: 14px; background: #fff; }
+thead tr { background: var(--forest); color: #e8f5e9; }
+th { padding: 13px 16px; text-align: left; font-weight: 600; font-size: 13px; white-space: nowrap; }
+td { padding: 11px 16px; border-bottom: 1px solid var(--parchment3); color: var(--ink2); vertical-align: top; }
+tbody tr:last-child td { border-bottom: none; }
+tbody tr:nth-child(even) td { background: var(--cream); }
+tbody tr:hover td { background: var(--forest-p); }
+
+/* ACCORDION */
+.accordion { margin: 20px 0; display: flex; flex-direction: column; gap: 8px; }
+.acc-item { background: #fff; border: 1px solid var(--parchment3); border-radius: var(--r); overflow: hidden; box-shadow: var(--shadow-sm); }
+.acc-trigger { width: 100%; display: flex; align-items: center; justify-content: space-between; padding: 15px 20px; background: none; border: none; cursor: pointer; font-size: 14px; font-weight: 700; color: var(--ink); text-align: left; font-family: 'Jost', sans-serif; gap: 12px; transition: background .2s; user-select: none; }
+.acc-trigger:hover { background: var(--forest-p); }
+.acc-trigger.open { background: var(--forest); color: #e8f5e9; }
+.acc-trigger .arr { font-size: 11px; flex-shrink: 0; transition: transform .28s; }
+.acc-trigger.open .arr { transform: rotate(180deg); }
+.acc-body { max-height: 0; overflow: hidden; transition: max-height .38s ease, padding .3s; font-size: 14px; color: var(--ink2); line-height: 1.75; padding: 0 20px; }
+.acc-body.open { max-height: 900px; padding: 16px 20px 20px; }
+.acc-body ul { padding-left: 20px; display: flex; flex-direction: column; gap: 6px; margin-top: 8px; }
+.acc-body li { line-height: 1.65; }
+
+/* TABS */
+.tabs-wrap { margin: 22px 0; }
+.tab-nav { display: flex; gap: 2px; flex-wrap: wrap; border-bottom: 2px solid var(--parchment3); }
+.tab-btn { padding: 9px 18px; background: none; border: none; font-size: 13px; font-weight: 600; color: var(--ink3); cursor: pointer; font-family: 'Jost', sans-serif; border-bottom: 2px solid transparent; margin-bottom: -2px; transition: all .2s; border-radius: 6px 6px 0 0; }
+.tab-btn:hover { color: var(--forest2); background: var(--forest-p); }
+.tab-btn.active { color: var(--forest); border-bottom-color: var(--forest2); }
+.tab-pane { display: none; padding: 24px 0; animation: fadeUp .3s ease; }
+.tab-pane.active { display: block; }
+
+/* STEPS */
+.steps { display: flex; flex-direction: column; gap: 14px; margin: 18px 0; }
+.step-item { display: flex; gap: 16px; align-items: flex-start; }
+.step-num { width: 34px; height: 34px; border-radius: 50%; flex-shrink: 0; margin-top: 2px; background: var(--forest); color: #e8f5e9; font-family: 'Cinzel', serif; font-size: 13px; display: flex; align-items: center; justify-content: center; }
+.step-title { font-weight: 700; font-size: 14px; color: var(--ink); margin-bottom: 4px; }
+.step-desc { font-size: 13.5px; color: var(--ink2); line-height: 1.65; }
+
+/* VMT GRID */
+.vmt-grid { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 1px; margin: 24px 0; background: var(--parchment3); border-radius: var(--r); overflow: hidden; box-shadow: var(--shadow-sm); }
+.vmt-col { background: #fff; padding: 28px 24px; }
+.vmt-col:first-child { background: var(--forest); }
+.vmt-header { display: flex; align-items: center; gap: 10px; margin-bottom: 16px; }
+.vmt-header .ic { font-size: 26px; }
+.vmt-lbl { font-family: 'Cinzel', serif; font-size: 10px; letter-spacing: 2.5px; text-transform: uppercase; font-weight: 600; }
+.vmt-col:first-child .vmt-lbl { color: var(--gold2); }
+.vmt-col:nth-child(2) .vmt-lbl { color: var(--forest2); }
+.vmt-col:nth-child(3) .vmt-lbl { color: var(--slate); }
+.vmt-text { font-size: 13.5px; line-height: 1.75; }
+.vmt-col:first-child .vmt-text { color: rgba(255,255,255,.75); }
+.vmt-col:not(:first-child) .vmt-text { color: var(--ink2); }
+.vmt-text ul { padding-left: 16px; display: flex; flex-direction: column; gap: 7px; }
+
+/* BEBAN STATS */
+.beban-stats { display: grid; grid-template-columns: repeat(4, 1fr); gap: 14px; margin: 22px 0; }
+.bstat { background: #fff; border: 1px solid var(--parchment3); border-radius: var(--r); padding: 24px 16px; text-align: center; box-shadow: var(--shadow-sm); transition: transform .2s, box-shadow .2s; }
+.bstat:hover { transform: translateY(-3px); box-shadow: var(--shadow-md); }
+.bstat-num { font-family: 'DM Serif Display', serif; font-size: 42px; color: var(--forest2); line-height: 1; }
+.bstat-unit { font-family: 'Cinzel', serif; font-size: 9px; letter-spacing: 2px; color: var(--ink4); margin-top: 4px; text-transform: uppercase; }
+.bstat-label { font-size: 12px; color: var(--ink2); margin-top: 10px; line-height: 1.45; }
+
+/* SESSION BLOCKS */
+.sks-row { display: flex; gap: 1px; margin: 20px 0; border-radius: var(--r); overflow: hidden; box-shadow: var(--shadow-sm); }
+.sks-block { flex: 1; padding: 18px 16px; text-align: center; color: #fff; }
+.sks-block:nth-child(1) { background: var(--forest); }
+.sks-block:nth-child(2) { background: var(--forest2); }
+.sks-block:nth-child(3) { background: var(--forest3); }
+.sks-block:nth-child(4) { background: var(--gold); color: var(--ink); }
+.sks-block-num { font-family: 'DM Serif Display', serif; font-size: 28px; display: block; margin-bottom: 4px; }
+.sks-block-label { font-size: 11px; opacity: .9; line-height: 1.4; }
+
+/* EVAL */
+.eval-layout { display: flex; gap: 40px; align-items: flex-start; margin: 24px 0; flex-wrap: wrap; }
+.donut-container { position: relative; width: 220px; height: 220px; flex-shrink: 0; }
+.donut-svg { width: 220px; height: 220px; }
+.donut-center { position: absolute; top: 50%; left: 50%; transform: translate(-50%,-50%); text-align: center; pointer-events: none; }
+.d-pct { font-family: 'DM Serif Display', serif; font-size: 28px; color: var(--ink); display: block; transition: all .3s; }
+.d-label { font-size: 10px; color: var(--ink4); font-family: 'Cinzel', serif; letter-spacing: 1px; text-transform: uppercase; display: block; transition: all .3s; }
+.eval-legend { flex: 1; display: flex; flex-direction: column; gap: 10px; min-width: 240px; }
+.eval-row { display: flex; align-items: center; gap: 14px; background: #fff; border: 1px solid var(--parchment3); border-radius: var(--r); padding: 14px 18px; cursor: pointer; transition: all .2s; box-shadow: var(--shadow-sm); }
+.eval-row:hover, .eval-row.hi { border-color: var(--forest3); box-shadow: var(--shadow-md); transform: translateX(5px); }
+.eval-color { width: 14px; height: 14px; border-radius: 3px; flex-shrink: 0; }
+.eval-info { flex: 1; }
+.eval-name { font-weight: 700; font-size: 14px; color: var(--ink); margin-bottom: 2px; }
+.eval-desc { font-size: 12px; color: var(--ink3); line-height: 1.45; }
+.eval-pct { font-family: 'DM Serif Display', serif; font-size: 24px; flex-shrink: 0; }
+
+/* GRADES */
+.grade-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 10px; margin: 20px 0; }
+.grade-cell { background: #fff; border: 1px solid var(--parchment3); border-radius: var(--r); padding: 14px 12px; text-align: center; transition: transform .2s; }
+.grade-cell:hover { transform: translateY(-2px); }
+.grade-cell.pass { border-top: 3px solid var(--forest2); }
+.grade-cell.fail { border-top: 3px solid var(--crimson2); }
+.gc-letter { font-family: 'DM Serif Display', serif; font-size: 28px; color: var(--ink); line-height: 1; }
+.gc-range { font-size: 12px; color: var(--ink3); margin-top: 4px; }
+.gc-bobot { font-family: 'Cinzel', serif; font-size: 11px; color: var(--forest2); margin-top: 6px; font-weight: 600; }
+.grade-cell.fail .gc-bobot { color: var(--crimson2); }
+
+/* SUMBER */
+.sumber-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(250px, 1fr)); gap: 14px; margin: 22px 0; }
+.sumber-card { background: #fff; border: 1px solid var(--parchment3); border-radius: var(--r); padding: 20px; display: flex; gap: 14px; align-items: flex-start; box-shadow: var(--shadow-sm); transition: transform .2s, border-color .2s, box-shadow .2s; }
+.sumber-card:hover { transform: translateY(-3px); border-color: var(--forest3); box-shadow: var(--shadow-md); }
+.sumber-ico { font-size: 28px; flex-shrink: 0; }
+.sumber-cat { font-family: 'Cinzel', serif; font-size: 8px; letter-spacing: 2px; color: var(--gold); text-transform: uppercase; margin-bottom: 5px; }
+.sumber-t { font-weight: 700; font-size: 13.5px; color: var(--ink); margin-bottom: 5px; line-height: 1.35; }
+.sumber-x { font-size: 12.5px; color: var(--ink3); line-height: 1.6; }
+
+/* REF LIST */
+.ref-list { list-style: none; display: flex; flex-direction: column; margin: 16px 0; }
+.ref-item { display: flex; gap: 14px; font-size: 13.5px; color: var(--ink2); line-height: 1.65; padding: 13px 0; border-bottom: 1px solid var(--rule); }
+.ref-item:last-child { border-bottom: none; }
+.ref-n { font-family: 'Cinzel', serif; font-size: 9px; letter-spacing: 1px; color: var(--forest2); flex-shrink: 0; min-width: 28px; margin-top: 3px; }
+
+/* KONTRAK */
+.kontrak-card { background: var(--forest); border-radius: 12px; padding: 36px 40px; margin: 24px 0; position: relative; overflow: hidden; }
+.kontrak-card::before { content: ''; position: absolute; top: -60px; right: -60px; width: 220px; height: 220px; border-radius: 50%; background: radial-gradient(circle, rgba(196,154,60,.15), transparent 65%); }
+.kontrak-card h3 { font-family: 'DM Serif Display', serif; font-size: 20px; color: var(--gold2); margin-bottom: 22px; position: relative; z-index: 1; }
+.kontrak-two { display: grid; grid-template-columns: 1fr 1fr; gap: 24px; position: relative; z-index: 1; }
+.kontrak-col h4 { font-family: 'Cinzel', serif; font-size: 10px; letter-spacing: 2px; color: var(--gold2); text-transform: uppercase; margin-bottom: 12px; }
+.kontrak-col ul { list-style: none; display: flex; flex-direction: column; gap: 8px; }
+.kontrak-col li { display: flex; align-items: flex-start; gap: 9px; font-size: 13px; color: rgba(255,255,255,.7); line-height: 1.6; }
+.kontrak-col li::before { content: '◆'; color: var(--gold2); font-size: 7px; flex-shrink: 0; margin-top: 6px; }
+
+/* SIGN OFF */
+.sign-off { text-align: center; padding: 52px 24px; margin-top: 40px; border-top: 1px solid var(--rule); }
+.so-ornament { font-size: 40px; margin-bottom: 16px; display: block; }
+.so-title { font-family: 'DM Serif Display', serif; font-style: italic; font-size: 22px; color: var(--ink); margin-bottom: 6px; }
+.so-author { font-family: 'Cinzel', serif; font-size: 11px; letter-spacing: 2px; color: var(--forest2); margin-bottom: 4px; }
+.so-sub { font-size: 13px; color: var(--ink4); }
+
+/* BACK TO TOP */
+.btt { position: fixed; bottom: 28px; right: 28px; background: var(--forest); color: #e8f5e9; width: 44px; height: 44px; border-radius: 50%; border: none; cursor: pointer; display: flex; align-items: center; justify-content: center; font-size: 18px; opacity: 0; transform: translateY(12px); transition: all .3s; z-index: 400; box-shadow: 0 4px 18px rgba(27,67,50,.4); }
+.btt.show { opacity: 1; transform: translateY(0); }
+.btt:hover { background: var(--forest2); }
+
+/* RESPONSIVE */
+@media(max-width: 960px) {
+  .sidebar { transform: translateX(-256px); }
+  .sidebar.open { transform: translateX(0); }
+  .main { margin-left: 0; }
+  .hamburger { display: flex; }
+  .hero { grid-template-columns: 1fr; }
+  .hero-left { padding: 80px 32px 44px; min-height: 55vh; }
+  .hero-right { padding: 36px 32px; }
+  .content { padding: 0 28px 80px; }
+  .capaian-bar { padding: 28px 28px; }
+  .cap-list { grid-template-columns: 1fr; }
+  .vmt-grid { grid-template-columns: 1fr; }
+  .beban-stats { grid-template-columns: 1fr 1fr; }
+  .eval-layout { flex-direction: column; align-items: center; }
+  .kontrak-two { grid-template-columns: 1fr; }
+  .grade-grid { grid-template-columns: repeat(4,1fr); }
+}
+@media(max-width: 540px) {
+  .sks-row { flex-direction: column; }
+  .grade-grid { grid-template-columns: 1fr 1fr; }
+  .beban-stats { grid-template-columns: 1fr 1fr; }
+  .content { padding: 0 18px 80px; }
+  .capaian-bar { padding: 24px 18px; }
+}
+</style>
+</head>
+<body>
+
+<button class="hamburger" id="hbgBtn" onclick="toggleSb()">☰</button>
+
+<!-- SIDEBAR -->
+<nav class="sidebar" id="sidebar">
+  <div class="sb-head">
+    <span class="sb-tag">Landasan Pendidikan</span>
+    <div class="sb-mk">Mata Kuliah Wajib · Program Studi Pendidikan</div>
+    <div class="sb-title">BAB I — Orientasi Program Perkuliahan</div>
+  </div>
+  <div class="sb-nav">
+    <span class="sb-section-lbl">Pembuka</span>
+    <a class="sb-link active" href="#hero" onclick="closeSb()"><span class="ic">🏠</span>Beranda Bab</a>
+    <a class="sb-link" href="#capaian" onclick="closeSb()"><span class="ic">🎯</span>Capaian Pembelajaran</a>
+    <span class="sb-section-lbl">Penyajian</span>
+    <a class="sb-link" href="#sec-a" onclick="closeSb()"><span class="ic">🌟</span>A · Deskripsi, Visi, Misi & Tujuan</a>
+    <a class="sb-link" href="#sec-b" onclick="closeSb()"><span class="ic">🎓</span>B · Metode Perkuliahan</a>
+    <a class="sb-link" href="#sec-c" onclick="closeSb()"><span class="ic">⚖️</span>C · Beban Belajar</a>
+    <a class="sb-link" href="#sec-d" onclick="closeSb()"><span class="ic">📊</span>D · Komponen Evaluasi</a>
+    <a class="sb-link" href="#sec-e" onclick="closeSb()"><span class="ic">📚</span>E · Sumber Belajar</a>
+    <span class="sb-section-lbl">Penutup</span>
+    <a class="sb-link" href="#kontrak" onclick="closeSb()"><span class="ic">📝</span>Kontrak Perkuliahan</a>
+  </div>
+  <div class="sb-foot">Disusun oleh<br><strong>Martin Bernard, M.Pd</strong></div>
+</nav>
+
+<main class="main">
+
+<!-- HERO -->
+<div class="hero" id="hero">
+  <div class="hero-left">
+    <div class="hero-left-in">
+      <div class="hero-chip">📖 Pertemuan Pertama</div>
+      <div class="hero-bab">Bab I · Landasan Pendidikan</div>
+      <h1 class="hero-h1">Orientasi<em>Program Perkuliahan<br>Landasan Pendidikan</em></h1>
+      <div class="hero-rule"></div>
+      <div class="hero-meta">
+        <div class="hm-row"><span class="hm-dot"></span><span>Mata Kuliah: <strong>Landasan Pendidikan</strong></span></div>
+        <div class="hm-row"><span class="hm-dot"></span><span>Penyusun: <strong>Martin Bernard, M.Pd</strong></span></div>
+        <div class="hm-row"><span class="hm-dot"></span><span>Pertemuan: <strong>1 dari 16</strong></span></div>
+      </div>
+    </div>
+  </div>
+  <div class="hero-right">
+    <div class="hr-label">Kutipan Pembuka</div>
+    <div class="hr-quote">"Mendidik bukan sekadar mengisi pikiran dengan pengetahuan, melainkan menyalakan api dalam jiwa yang akan terus membakar semangat belajar sepanjang hayat."</div>
+    <div class="hr-cite">— Aristoteles, diadaptasi</div>
+    <div class="progress-section">
+      <div class="prog-label"><span>Progress Membaca</span><span id="prog-pct">0%</span></div>
+      <div class="prog-track"><div class="prog-fill" id="prog-fill"></div></div>
+    </div>
+  </div>
+</div>
+
+<!-- CAPAIAN BAR -->
+<div class="capaian-bar" id="capaian">
+  <div class="cap-inner">
+    <div class="cap-head"><span class="ico">🎯</span><span>Capaian Pembelajaran · BAB I</span></div>
+    <div class="cap-list">
+      <div class="cap-item">Mahasiswa memahami deskripsi, visi, misi, dan tujuan mata kuliah Landasan Pendidikan</div>
+      <div class="cap-item">Mahasiswa mengetahui metode perkuliahan yang digunakan selama satu semester</div>
+      <div class="cap-item">Mahasiswa memahami beban belajar dan alokasi waktu perkuliahan</div>
+      <div class="cap-item">Mahasiswa mengetahui sistem evaluasi dan komponen penilaian mata kuliah</div>
+      <div class="cap-item">Mahasiswa mengetahui sumber belajar utama dan pendukung perkuliahan</div>
+    </div>
+  </div>
+</div>
+
+<div class="content">
+
+<!-- ═══ A ═══ -->
+<div class="section" id="sec-a">
+  <div class="sec-header">
+    <div><span class="sec-letter">A</span><span class="sec-label">Bagian A</span></div>
+    <div><div class="sec-eye">Penyajian · Pertama</div><div class="sec-title">Deskripsi Pentingnya Mata Kuliah,<br>Visi, Misi, dan Tujuan</div></div>
+  </div>
+
+  <h3>Mengapa Landasan Pendidikan Penting?</h3>
+  <p>Mata kuliah <strong>Landasan Pendidikan</strong> merupakan fondasi intelektual yang wajib dimiliki oleh setiap calon pendidik dan pengelola pendidikan. Sebagaimana sebuah bangunan memerlukan pondasi yang kuat agar dapat berdiri kokoh, demikian pula seorang pendidik memerlukan landasan keilmuan yang teguh untuk menjalankan tugasnya secara bermakna dan profesional.</p>
+  <p>Tanpa memahami landasan pendidikan, seorang guru hanya akan menjadi pelaksana rutinitas tanpa pemahaman mendalam tentang mengapa dan untuk apa pendidikan itu dilaksanakan. Mata kuliah ini mengajak mahasiswa untuk bertanya, berefleksi, dan membangun kerangka berpikir kritis tentang hakikat, tujuan, dan pengelolaan pendidikan di Indonesia.</p>
+
+  <div class="pullquote">
+    "Pendidikan adalah senjata paling ampuh yang dapat Anda gunakan untuk mengubah dunia. Namun senjata itu hanya bermakna jika penggunanya memahami fondasi dan tujuan di baliknya."
+    <cite>— Nelson Mandela, diadaptasi</cite>
+  </div>
+
+  <div class="defbox">
+    <div class="def-term">Landasan Pendidikan</div>
+    <div class="def-body">Seperangkat asumsi dasar, nilai, prinsip, dan teori yang menjadi titik tolak dalam merumuskan kebijakan, merancang program, dan melaksanakan praktik pendidikan yang bermakna, bertanggung jawab, dan relevan dengan perkembangan masyarakat serta kebutuhan peserta didik.</div>
+    <div class="def-source">— Mudyahardjo, R. (2010). Filsafat Ilmu Pendidikan. PT Remaja Rosdakarya, Bandung.</div>
+  </div>
+
+  <h3>Visi, Misi, dan Tujuan Mata Kuliah</h3>
+  <div class="vmt-grid">
+    <div class="vmt-col">
+      <div class="vmt-header"><span class="ic">🔭</span><span class="vmt-lbl">Visi</span></div>
+      <div class="vmt-text">Menjadi mata kuliah unggulan yang membekali mahasiswa dengan fondasi keilmuan pendidikan yang kuat, holistik, dan relevan — membentuk pendidik dan pengelola pendidikan yang profesional, berkarakter, dan adaptif terhadap perubahan zaman.</div>
+    </div>
+    <div class="vmt-col">
+      <div class="vmt-header"><span class="ic">🚀</span><span class="vmt-lbl">Misi</span></div>
+      <div class="vmt-text">
+        <ul>
+          <li>Mengembangkan pemahaman filosofis dan teoritis tentang hakikat pendidikan</li>
+          <li>Membangun kemampuan analitis terhadap sistem dan pengelolaan pendidikan</li>
+          <li>Menumbuhkan komitmen pada nilai-nilai pendidikan berkarakter</li>
+          <li>Membekali keterampilan manajerial dalam pengelolaan pendidikan modern</li>
+        </ul>
+      </div>
+    </div>
+    <div class="vmt-col">
+      <div class="vmt-header"><span class="ic">🎯</span><span class="vmt-lbl">Tujuan</span></div>
+      <div class="vmt-text">
+        <ul>
+          <li>Memahami landasan filosofis, sosiologis, dan historis pendidikan</li>
+          <li>Menganalisis komponen dan sistem pengelolaan pendidikan nasional</li>
+          <li>Menerapkan prinsip kepemimpinan dan supervisi dalam konteks nyata</li>
+          <li>Memanfaatkan teknologi informasi dalam pengelolaan pendidikan</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+
+  <h3>Relevansi Strategis Mata Kuliah</h3>
+  <div class="card-grid">
+    <div class="mcard"><div class="mc-ico">🧭</div><div class="mc-title">Fondasi Berpikir Kritis</div><div class="mc-body">Memberikan kerangka konseptual untuk memahami dan menganalisis berbagai permasalahan serta fenomena pendidikan kontemporer.</div></div>
+    <div class="mcard"><div class="mc-ico">🏗️</div><div class="mc-title">Landasan Praktik Profesional</div><div class="mc-body">Menghubungkan teori dengan praktik nyata pengelolaan dan pelaksanaan pendidikan di satuan pendidikan secara langsung.</div></div>
+    <div class="mcard"><div class="mc-ico">🌐</div><div class="mc-title">Konteks Abad ke-21</div><div class="mc-body">Mempersiapkan pendidik menghadapi era digital, Society 5.0, dan perubahan paradigma pendidikan global yang cepat.</div></div>
+    <div class="mcard"><div class="mc-ico">⚖️</div><div class="mc-title">Etika & Integritas</div><div class="mc-body">Membangun sikap profesional, integritas akademik, dan tanggung jawab moral sebagai pendidik yang amanah.</div></div>
+  </div>
+
+  <div class="infobox slate">
+    <span class="ib-ico">🔗</span>
+    <div>
+      <div class="ib-title">Hubungan dengan Mata Kuliah Lain</div>
+      <div class="ib-text">Landasan Pendidikan adalah prasyarat konseptual bagi: <strong>Pengembangan Kurikulum, Manajemen Pendidikan, Psikologi Pendidikan, Evaluasi Pembelajaran,</strong> dan <strong>Metodologi Penelitian Pendidikan</strong>. Pemahaman kuat di sini akan sangat membantu mahasiswa dalam perkuliahan lanjutan tersebut.</div>
+    </div>
+  </div>
+</div>
+
+<!-- ═══ B ═══ -->
+<div class="section" id="sec-b">
+  <div class="sec-header">
+    <div><span class="sec-letter">B</span><span class="sec-label">Bagian B</span></div>
+    <div><div class="sec-eye">Penyajian · Kedua</div><div class="sec-title">Metode Perkuliahan</div></div>
+  </div>
+
+  <p>Mata kuliah ini menggunakan pendekatan pembelajaran yang <strong>bervariasi dan berpusat pada mahasiswa</strong> (<em>student-centered learning</em>), berorientasi pada pengembangan kemampuan berpikir tingkat tinggi (HOTS). Setiap metode dipilih secara strategis sesuai karakteristik topik dan tujuan pembelajaran yang ingin dicapai.</p>
+
+  <div class="tabs-wrap">
+    <div class="tab-nav">
+      <button class="tab-btn active" onclick="switchTab(this,'tb-m1')">🎤 Ceramah & Diskusi</button>
+      <button class="tab-btn" onclick="switchTab(this,'tb-m2')">🔬 Inkuiri & PBL</button>
+      <button class="tab-btn" onclick="switchTab(this,'tb-m3')">👥 Kooperatif</button>
+      <button class="tab-btn" onclick="switchTab(this,'tb-m4')">💻 Blended & Digital</button>
+      <button class="tab-btn" onclick="switchTab(this,'tb-m5')">🏫 Observasi</button>
+    </div>
+
+    <div class="tab-pane active" id="tb-m1">
+      <h3>Ceramah Interaktif & Diskusi Kelas</h3>
+      <p>Dosen menyampaikan konsep inti secara sistematis, dilanjutkan tanya-jawab dan diskusi kelas yang aktif. Bukan monolog satu arah, melainkan dialog akademik yang memancing mahasiswa berpikir kritis dan menyampaikan pendapat dengan percaya diri.</p>
+      <div class="infobox forest">
+        <span class="ib-ico">📌</span>
+        <div>
+          <div class="ib-title">Tips Memaksimalkan Sesi Diskusi</div>
+          <div class="ib-text">Baca materi sebelum kuliah, siapkan minimal 2 pertanyaan, catat poin kunci, dan beranikan diri untuk aktif merespons. Mahasiswa yang aktif berdiskusi mendapatkan nilai partisipasi yang signifikan dalam penilaian akhir.</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="tab-pane" id="tb-m2">
+      <h3>Pembelajaran Berbasis Inkuiri & Problem Based Learning</h3>
+      <p>Mahasiswa didorong menemukan pengetahuan secara mandiri melalui pertanyaan pemantik dan studi kasus nyata dari dunia pendidikan Indonesia. Metode ini melatih kemampuan analisis dan pemecahan masalah secara sistematis.</p>
+      <div class="steps">
+        <div class="step-item"><div class="step-num">1</div><div><div class="step-title">Orientasi Masalah</div><div class="step-desc">Dosen menyajikan kasus pendidikan aktual yang relevan sebagai titik masuk diskusi dan penyelidikan.</div></div></div>
+        <div class="step-item"><div class="step-num">2</div><div><div class="step-title">Eksplorasi & Investigasi</div><div class="step-desc">Mahasiswa menggali informasi dari berbagai sumber untuk memahami akar masalah dan konteksnya.</div></div></div>
+        <div class="step-item"><div class="step-num">3</div><div><div class="step-title">Pengembangan Solusi</div><div class="step-desc">Merumuskan alternatif solusi berdasarkan teori landasan pendidikan yang dipelajari, dianalisis kritis.</div></div></div>
+        <div class="step-item"><div class="step-num">4</div><div><div class="step-title">Presentasi & Refleksi</div><div class="step-desc">Memaparkan temuan, menerima umpan balik konstruktif, dan merefleksikan pembelajaran yang diperoleh.</div></div></div>
+      </div>
+    </div>
+
+    <div class="tab-pane" id="tb-m3">
+      <h3>Pembelajaran Kooperatif & Kolaboratif</h3>
+      <p>Mahasiswa bekerja dalam kelompok kecil (3–5 orang) untuk menyelesaikan tugas yang memerlukan kolaborasi, berbagi peran, dan tanggung jawab bersama.</p>
+      <div class="table-wrap">
+        <table>
+          <thead><tr><th>Teknik</th><th>Cara Kerja</th><th>Konteks Penggunaan</th></tr></thead>
+          <tbody>
+            <tr><td><strong>Think-Pair-Share</strong></td><td>Berpikir mandiri → berpasangan → berbagi ke kelas</td><td>Pengenalan konsep baru</td></tr>
+            <tr><td><strong>Jigsaw</strong></td><td>Setiap anggota menjadi "ahli" satu sub-topik lalu mengajarkan ke kelompok asalnya</td><td>Topik kompleks multi-dimensi</td></tr>
+            <tr><td><strong>Gallery Walk</strong></td><td>Kelompok membuat poster/mind map, kelompok lain bergiliran merespons</td><td>Rangkuman dan sintesis materi</td></tr>
+            <tr><td><strong>Seminar Kelas</strong></td><td>Presentasi terstruktur + diskusi terfasilitasi</td><td>Kajian mendalam per topik</td></tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+
+    <div class="tab-pane" id="tb-m4">
+      <h3>Blended Learning & Pemanfaatan Digital</h3>
+      <p>Perkuliahan menggabungkan tatap muka dan pembelajaran online secara terintegrasi untuk memperkaya pengalaman belajar dan membangun kebiasaan belajar mandiri.</p>
+      <div class="card-grid">
+        <div class="mcard"><div class="mc-ico">🖥️</div><div class="mc-title">LMS (Google Classroom/Moodle)</div><div class="mc-body">Platform distribusi materi, tugas, diskusi, dan pengumuman resmi. Wajib diakses setiap minggu.</div></div>
+        <div class="mcard"><div class="mc-ico">🎬</div><div class="mc-title">Video Lecture Singkat</div><div class="mc-body">Video pengantar 10–15 menit per topik yang ditonton sebelum pertemuan (flipped classroom).</div></div>
+        <div class="mcard"><div class="mc-ico">📰</div><div class="mc-title">Artikel & Podcast</div><div class="mc-body">Artikel jurnal terpilih dan podcast pendidikan sebagai bahan studi mandiri untuk memperluas wawasan.</div></div>
+        <div class="mcard"><div class="mc-ico">🤖</div><div class="mc-title">AI Tools (Terbimbing)</div><div class="mc-body">Pemanfaatan AI secara etis dan kritis untuk eksplorasi konsep, brainstorming, dan penulisan draft awal.</div></div>
+      </div>
+      <div class="infobox gold">
+        <span class="ib-ico">⚠️</span>
+        <div>
+          <div class="ib-title">Integritas Akademik dalam Era Digital</div>
+          <div class="ib-text">Penggunaan AI harus disertai proses berpikir kritis, verifikasi fakta, dan sitasi yang jujur. Karya tulis yang menggunakan AI tanpa deklarasi dan tanpa olah pikir sendiri dianggap pelanggaran integritas akademik sesuai peraturan institusi.</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="tab-pane" id="tb-m5">
+      <h3>Observasi & Studi Lapangan</h3>
+      <p>Mahasiswa melakukan kunjungan langsung ke satuan pendidikan untuk mengamati implementasi nyata konsep-konsep yang dipelajari dalam perkuliahan. Ini adalah jembatan antara teori dan praktik yang sebenarnya.</p>
+      <div class="accordion">
+        <div class="acc-item">
+          <button class="acc-trigger" onclick="toggleAcc(this)">📋 Prosedur Observasi Lapangan <span class="arr">▼</span></button>
+          <div class="acc-body">
+            <ul>
+              <li>Membentuk kelompok kecil (3–4 orang) dan memilih satuan pendidikan yang akan dikunjungi</li>
+              <li>Mengajukan surat izin observasi resmi yang dikeluarkan oleh program studi</li>
+              <li>Menyusun instrumen observasi berdasarkan topik yang ditentukan dosen</li>
+              <li>Melakukan observasi minimal setengah hari penuh di satuan pendidikan yang dipilih</li>
+              <li>Menulis laporan observasi reflektif dan mempresentasikannya di kelas</li>
+            </ul>
+          </div>
+        </div>
+        <div class="acc-item">
+          <button class="acc-trigger" onclick="toggleAcc(this)">📝 Komponen Laporan Observasi <span class="arr">▼</span></button>
+          <div class="acc-body">Laporan observasi terdiri dari: (1) Latar belakang dan tujuan observasi; (2) Profil singkat satuan pendidikan; (3) Deskripsi temuan berdasarkan aspek yang diamati; (4) Analisis menggunakan teori dari perkuliahan; (5) Refleksi kritis dan saran konstruktif; (6) Lampiran: foto, dokumen pendukung, dan instrumen observasi yang digunakan.</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <h3>Struktur Setiap Sesi Perkuliahan (100 menit)</h3>
+  <div class="sks-row">
+    <div class="sks-block"><span class="sks-block-num">10'</span><span class="sks-block-label">Pembukaan & Review Materi Sebelumnya</span></div>
+    <div class="sks-block"><span class="sks-block-num">60'</span><span class="sks-block-label">Materi Inti & Diskusi Aktif</span></div>
+    <div class="sks-block"><span class="sks-block-num">20'</span><span class="sks-block-label">Kerja Kelompok / Studi Kasus</span></div>
+    <div class="sks-block"><span class="sks-block-num">10'</span><span class="sks-block-label">Refleksi, Simpulan & Preview Berikutnya</span></div>
+  </div>
+</div>
+
+<!-- ═══ C ═══ -->
+<div class="section" id="sec-c">
+  <div class="sec-header">
+    <div><span class="sec-letter">C</span><span class="sec-label">Bagian C</span></div>
+    <div><div class="sec-eye">Penyajian · Ketiga</div><div class="sec-title">Beban Belajar</div></div>
+  </div>
+
+  <p>Mata kuliah Landasan Pendidikan memiliki beban belajar sebesar <strong>3 SKS (Satuan Kredit Semester)</strong>. Sesuai Permendikbud No. 3 Tahun 2020, setiap 1 SKS setara dengan kegiatan belajar 170 menit per minggu yang terdiri dari tatap muka, tugas terstruktur, dan belajar mandiri.</p>
+
+  <div class="beban-stats">
+    <div class="bstat"><div class="bstat-num">3</div><div class="bstat-unit">SKS</div><div class="bstat-label">Total beban satuan kredit semester mata kuliah ini</div></div>
+    <div class="bstat"><div class="bstat-num">16</div><div class="bstat-unit">Pertemuan</div><div class="bstat-label">Total pertemuan satu semester termasuk UTS & UAS</div></div>
+    <div class="bstat"><div class="bstat-num">100</div><div class="bstat-unit">Menit/Sesi</div><div class="bstat-label">Durasi setiap pertemuan tatap muka atau daring</div></div>
+    <div class="bstat"><div class="bstat-num">75%</div><div class="bstat-unit">Kehadiran</div><div class="bstat-label">Minimal kehadiran wajib untuk bisa mengikuti UAS</div></div>
+  </div>
+
+  <h3>Rincian Kegiatan Belajar per SKS per Minggu</h3>
+  <div class="table-wrap">
+    <table>
+      <thead><tr><th>Kegiatan Belajar</th><th>Kode</th><th>Alokasi/Minggu</th><th>Total 1 Semester</th><th>Bentuk Kegiatan</th></tr></thead>
+      <tbody>
+        <tr><td><strong>Tatap Muka</strong></td><td>TM</td><td>1 × 50 menit</td><td>800 menit (≈ 13 jam)</td><td>Kuliah, diskusi, presentasi, praktikum</td></tr>
+        <tr><td><strong>Tugas Terstruktur</strong></td><td>TT</td><td>1 × 60 menit</td><td>960 menit (≈ 16 jam)</td><td>Makalah, resume, analisis kasus, laporan</td></tr>
+        <tr><td><strong>Belajar Mandiri</strong></td><td>BM</td><td>1 × 60 menit</td><td>960 menit (≈ 16 jam)</td><td>Membaca buku, jurnal, eksplorasi digital</td></tr>
+        <tr><td colspan="2"><strong>Total per SKS</strong></td><td><strong>170 menit</strong></td><td><strong>2.720 menit</strong></td><td>—</td></tr>
+        <tr style="background:var(--forest-p)"><td colspan="2"><strong>Total 3 SKS / minggu</strong></td><td><strong>510 menit (~8,5 jam)</strong></td><td><strong>8.160 menit (~136 jam)</strong></td><td>—</td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <h3>Peta Pertemuan Semester</h3>
+  <div class="table-wrap">
+    <table>
+      <thead><tr><th>Blok</th><th>Pertemuan</th><th>Topik</th><th>Keterangan</th></tr></thead>
+      <tbody>
+        <tr><td>Blok I</td><td>1</td><td>Orientasi Program Perkuliahan</td><td>BAB I (saat ini)</td></tr>
+        <tr><td>Blok I</td><td>2</td><td>Pengertian dan Ruang Lingkup Pendidikan</td><td>BAB II</td></tr>
+        <tr><td>Blok I</td><td>3</td><td>Landasan Filosofis Pendidikan</td><td>BAB III</td></tr>
+        <tr><td>Blok I</td><td>4</td><td>Unsur-Unsur Pendidikan</td><td>BAB IV</td></tr>
+        <tr><td>Blok I</td><td>5</td><td>Pendidikan Karakter</td><td>BAB V</td></tr>
+        <tr><td>Blok I</td><td>6</td><td>Kepemimpinan Pendidikan</td><td>BAB VI</td></tr>
+        <tr><td>Blok I</td><td>7</td><td>Supervisi Pendidikan</td><td>BAB VII</td></tr>
+        <tr style="background:var(--crimson-p)"><td>Ujian I</td><td><strong>8</strong></td><td><strong>UTS — Ujian Tengah Semester</strong></td><td>Materi BAB I–VII</td></tr>
+        <tr><td>Blok II</td><td>9</td><td>Sistem Informasi Pendidikan</td><td>BAB VIII</td></tr>
+        <tr><td>Blok II</td><td>10</td><td>Landasan dan Pengelolaan Kurikulum</td><td>BAB IX</td></tr>
+        <tr><td>Blok II</td><td>11</td><td>Landasan dan Pengelolaan Peserta Didik</td><td>BAB X</td></tr>
+        <tr><td>Blok II</td><td>12</td><td>Landasan dan Pengelolaan Tenaga Pendidik</td><td>BAB XI</td></tr>
+        <tr><td>Blok II</td><td>13</td><td>Landasan dan Strategi Pengelolaan</td><td>BAB XII</td></tr>
+        <tr><td>Blok II</td><td>14</td><td>Landasan Pengelolaan Fasilitas</td><td>BAB XIII</td></tr>
+        <tr><td>Blok II</td><td>15</td><td>Landasan Pengelolaan Humas Sekolah</td><td>BAB XIV</td></tr>
+        <tr style="background:var(--crimson-p)"><td>Ujian II</td><td><strong>16</strong></td><td><strong>UAS — Ujian Akhir Semester</strong></td><td>Materi BAB VIII–XIV</td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <div class="infobox crimson">
+    <span class="ib-ico">⚠️</span>
+    <div>
+      <div class="ib-title">Peraturan Kehadiran — Wajib Dipahami</div>
+      <div class="ib-text">Mahasiswa wajib menghadiri <strong>minimal 75% pertemuan (12 dari 16 pertemuan)</strong> untuk dapat mengikuti Ujian Akhir Semester. Ketidakhadiran lebih dari 4 pertemuan tanpa alasan sah yang dibuktikan dengan surat resmi akan mengakibatkan mahasiswa tidak diizinkan mengikuti UAS.</div>
+    </div>
+  </div>
+</div>
+
+<!-- ═══ D ═══ -->
+<div class="section" id="sec-d">
+  <div class="sec-header">
+    <div><span class="sec-letter">D</span><span class="sec-label">Bagian D</span></div>
+    <div><div class="sec-eye">Penyajian · Keempat</div><div class="sec-title">Komponen-Komponen Evaluasi</div></div>
+  </div>
+
+  <p>Sistem penilaian dirancang untuk mengukur kompetensi mahasiswa secara <strong>komprehensif dan autentik</strong> — mencakup aspek kognitif (pengetahuan), afektif (sikap), dan psikomotor (keterampilan analisis, presentasi, dan penulisan ilmiah).</p>
+
+  <div class="eval-layout">
+    <div class="donut-container">
+      <svg class="donut-svg" viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg">
+        <circle cx="100" cy="100" r="72" fill="none" stroke="#e3dace" stroke-width="30"/>
+        <!-- UTS 25% = 452.39*.25=113.1 -->
+        <circle cx="100" cy="100" r="72" fill="none" stroke="#4a1e6a" stroke-width="30"
+          stroke-dasharray="113.1 339.29" stroke-dashoffset="0"
+          transform="rotate(-90 100 100)" class="dseg" data-i="0"/>
+        <!-- UAS 30% = 135.72 offset=-113.1 -->
+        <circle cx="100" cy="100" r="72" fill="none" stroke="#1b4332" stroke-width="30"
+          stroke-dasharray="135.72 316.67" stroke-dashoffset="-113.1"
+          transform="rotate(-90 100 100)" class="dseg" data-i="1"/>
+        <!-- Tugas 25% offset=-248.82 -->
+        <circle cx="100" cy="100" r="72" fill="none" stroke="#9a6c00" stroke-width="30"
+          stroke-dasharray="113.1 339.29" stroke-dashoffset="-248.82"
+          transform="rotate(-90 100 100)" class="dseg" data-i="2"/>
+        <!-- Partisipasi 10% = 45.24 offset=-361.92 -->
+        <circle cx="100" cy="100" r="72" fill="none" stroke="#1e3a5f" stroke-width="30"
+          stroke-dasharray="45.24 407.15" stroke-dashoffset="-361.92"
+          transform="rotate(-90 100 100)" class="dseg" data-i="3"/>
+        <!-- Observasi 10% offset=-407.16 -->
+        <circle cx="100" cy="100" r="72" fill="none" stroke="#7a1f2e" stroke-width="30"
+          stroke-dasharray="45.24 407.15" stroke-dashoffset="-407.16"
+          transform="rotate(-90 100 100)" class="dseg" data-i="4"/>
+      </svg>
+      <div class="donut-center">
+        <span class="d-pct" id="d-pct">100%</span>
+        <span class="d-label" id="d-label">Total Nilai</span>
+      </div>
+    </div>
+
+    <div class="eval-legend">
+      <div class="eval-row" onmouseenter="hlEval(0)" onmouseleave="resetEval()">
+        <div class="eval-color" style="background:#4a1e6a"></div>
+        <div class="eval-info">
+          <div class="eval-name">Ujian Tengah Semester (UTS)</div>
+          <div class="eval-desc">Tes tertulis: esai analitik + pilihan berganda, pertemuan ke-8, materi BAB I–VII</div>
+        </div>
+        <div class="eval-pct" style="color:#4a1e6a">25%</div>
+      </div>
+      <div class="eval-row" onmouseenter="hlEval(1)" onmouseleave="resetEval()">
+        <div class="eval-color" style="background:#1b4332"></div>
+        <div class="eval-info">
+          <div class="eval-name">Ujian Akhir Semester (UAS)</div>
+          <div class="eval-desc">Tes komprehensif + analisis kasus pendidikan, pertemuan ke-16, materi BAB VIII–XIV</div>
+        </div>
+        <div class="eval-pct" style="color:#1b4332">30%</div>
+      </div>
+      <div class="eval-row" onmouseenter="hlEval(2)" onmouseleave="resetEval()">
+        <div class="eval-color" style="background:#9a6c00"></div>
+        <div class="eval-info">
+          <div class="eval-name">Tugas & Makalah</div>
+          <div class="eval-desc">Tugas individu dan kelompok: resume, analisis jurnal, makalah tematis, presentasi</div>
+        </div>
+        <div class="eval-pct" style="color:#9a6c00">25%</div>
+      </div>
+      <div class="eval-row" onmouseenter="hlEval(3)" onmouseleave="resetEval()">
+        <div class="eval-color" style="background:#1e3a5f"></div>
+        <div class="eval-info">
+          <div class="eval-name">Partisipasi & Kehadiran</div>
+          <div class="eval-desc">Keaktifan bertanya dan berdiskusi, kualitas kontribusi, dan persentase kehadiran</div>
+        </div>
+        <div class="eval-pct" style="color:#1e3a5f">10%</div>
+      </div>
+      <div class="eval-row" onmouseenter="hlEval(4)" onmouseleave="resetEval()">
+        <div class="eval-color" style="background:#7a1f2e"></div>
+        <div class="eval-info">
+          <div class="eval-name">Laporan Observasi Lapangan</div>
+          <div class="eval-desc">Laporan hasil kunjungan ke satuan pendidikan beserta analisis reflektif dan rekomendasi</div>
+        </div>
+        <div class="eval-pct" style="color:#7a1f2e">10%</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="infobox forest">
+    <span class="ib-ico">📐</span>
+    <div>
+      <div class="ib-title">Formula Nilai Akhir</div>
+      <div class="ib-text"><strong>NA = (UTS × 25%) + (UAS × 30%) + (Tugas × 25%) + (Partisipasi × 10%) + (Observasi × 10%)</strong><br><br>Nilai minimal lulus adalah <strong>C (rentang 55–59)</strong>. Mahasiswa dengan nilai di bawah C wajib mengulang pada semester berikutnya.</div>
+    </div>
+  </div>
+
+  <h3>Konversi Nilai Akhir</h3>
+  <div class="grade-grid">
+    <div class="grade-cell pass"><div class="gc-letter">A</div><div class="gc-range">85 – 100</div><div class="gc-bobot">GPA 4.00</div></div>
+    <div class="grade-cell pass"><div class="gc-letter">A–</div><div class="gc-range">80 – 84</div><div class="gc-bobot">GPA 3.75</div></div>
+    <div class="grade-cell pass"><div class="gc-letter">B+</div><div class="gc-range">75 – 79</div><div class="gc-bobot">GPA 3.50</div></div>
+    <div class="grade-cell pass"><div class="gc-letter">B</div><div class="gc-range">70 – 74</div><div class="gc-bobot">GPA 3.00</div></div>
+    <div class="grade-cell pass"><div class="gc-letter">B–</div><div class="gc-range">65 – 69</div><div class="gc-bobot">GPA 2.75</div></div>
+    <div class="grade-cell pass"><div class="gc-letter">C+</div><div class="gc-range">60 – 64</div><div class="gc-bobot">GPA 2.50</div></div>
+    <div class="grade-cell pass"><div class="gc-letter">C</div><div class="gc-range">55 – 59</div><div class="gc-bobot">GPA 2.00</div></div>
+    <div class="grade-cell fail"><div class="gc-letter">D/E</div><div class="gc-range">&lt; 55</div><div class="gc-bobot">Tidak Lulus</div></div>
+  </div>
+</div>
+
+<!-- ═══ E ═══ -->
+<div class="section" id="sec-e">
+  <div class="sec-header">
+    <div><span class="sec-letter">E</span><span class="sec-label">Bagian E</span></div>
+    <div><div class="sec-eye">Penyajian · Kelima</div><div class="sec-title">Sumber Belajar</div></div>
+  </div>
+
+  <p>Sumber belajar terdiri dari beragam jenis dan format media — buku teks utama, jurnal ilmiah nasional dan internasional, platform digital, serta regulasi pendidikan resmi. Keragaman ini dirancang untuk memperkaya perspektif dan mempertajam kemampuan analisis kritis mahasiswa.</p>
+
+  <div class="tabs-wrap">
+    <div class="tab-nav">
+      <button class="tab-btn active" onclick="switchTab(this,'tb-s1')">📗 Buku Utama</button>
+      <button class="tab-btn" onclick="switchTab(this,'tb-s2')">🔬 Jurnal Ilmiah</button>
+      <button class="tab-btn" onclick="switchTab(this,'tb-s3')">💻 Platform Digital</button>
+      <button class="tab-btn" onclick="switchTab(this,'tb-s4')">📜 Regulasi & Kebijakan</button>
+    </div>
+
+    <div class="tab-pane active" id="tb-s1">
+      <h3>Buku Teks Utama & Pendukung</h3>
+      <ul class="ref-list">
+        <li class="ref-item"><span class="ref-n">[1]</span><span>Mudyahardjo, R. (2010). <em>Filsafat Ilmu Pendidikan: Suatu Pengantar</em>. PT Remaja Rosdakarya, Bandung. <strong>— Rujukan utama landasan filosofis</strong></span></li>
+        <li class="ref-item"><span class="ref-n">[2]</span><span>Tirtarahardja, U., & La Sulo, S. L. (2012). <em>Pengantar Pendidikan</em> (Edisi Revisi). Rineka Cipta, Jakarta.</span></li>
+        <li class="ref-item"><span class="ref-n">[3]</span><span>Engkoswara & Komariah, A. (2015). <em>Administrasi Pendidikan</em>. Alfabeta, Bandung.</span></li>
+        <li class="ref-item"><span class="ref-n">[4]</span><span>Mulyasa, E. (2013). <em>Pengembangan dan Implementasi Kurikulum 2013</em>. PT Remaja Rosdakarya, Bandung.</span></li>
+        <li class="ref-item"><span class="ref-n">[5]</span><span>Bush, T., & Middlewood, D. (2013). <em>Leading and Managing People in Education</em> (3rd ed.). SAGE Publications, London.</span></li>
+        <li class="ref-item"><span class="ref-n">[6]</span><span>Sagala, S. (2013). <em>Manajemen Strategik dalam Peningkatan Mutu Pendidikan</em>. Alfabeta, Bandung.</span></li>
+        <li class="ref-item"><span class="ref-n">[7]</span><span>Wuryandari, G., dkk. (2014). <em>Pendidikan Karakter di Sekolah Dasar</em>. LIPI Press, Jakarta.</span></li>
+      </ul>
+    </div>
+
+    <div class="tab-pane" id="tb-s2">
+      <h3>Jurnal Ilmiah Terpilih</h3>
+      <div class="sumber-grid">
+        <div class="sumber-card"><span class="sumber-ico">🔬</span><div><div class="sumber-cat">Jurnal Nasional Terakreditasi</div><div class="sumber-t">Jurnal Ilmu Pendidikan (JIP)</div><div class="sumber-x">Jurnal resmi LPTK nasional — artikel riset pendidikan terkini dan terpercaya. Akses via SINTA.</div></div></div>
+        <div class="sumber-card"><span class="sumber-ico">📄</span><div><div class="sumber-cat">Jurnal Nasional Sinta 2</div><div class="sumber-t">Jurnal Pendidikan dan Kebudayaan</div><div class="sumber-x">Jurnal resmi Kemdikbudristek — kebijakan dan praktik pendidikan Indonesia terkini.</div></div></div>
+        <div class="sumber-card"><span class="sumber-ico">🌐</span><div><div class="sumber-cat">Jurnal Internasional Scopus</div><div class="sumber-t">Journal of Educational Administration</div><div class="sumber-x">Jurnal bereputasi internasional bidang manajemen dan administrasi pendidikan global.</div></div></div>
+        <div class="sumber-card"><span class="sumber-ico">🔍</span><div><div class="sumber-cat">Database Jurnal Terbuka</div><div class="sumber-t">Google Scholar & ERIC</div><div class="sumber-x">Database jurnal terbuka untuk artikel-artikel pendidikan dari seluruh penjuru dunia.</div></div></div>
+      </div>
+    </div>
+
+    <div class="tab-pane" id="tb-s3">
+      <h3>Platform & Sumber Digital</h3>
+      <div class="sumber-grid">
+        <div class="sumber-card"><span class="sumber-ico">🎓</span><div><div class="sumber-cat">LMS Perkuliahan</div><div class="sumber-t">Google Classroom / Moodle</div><div class="sumber-x">Platform utama perkuliahan — materi, tugas, pengumuman, diskusi kelas. Wajib diakses setiap minggu.</div></div></div>
+        <div class="sumber-card"><span class="sumber-ico">📹</span><div><div class="sumber-cat">Video Pembelajaran</div><div class="sumber-t">YouTube Kemdikbud & TED-Ed</div><div class="sumber-x">Ceramah video dan animasi edukatif yang mengulas topik-topik landasan pendidikan secara visual.</div></div></div>
+        <div class="sumber-card"><span class="sumber-ico">📖</span><div><div class="sumber-cat">E-Book Gratis</div><div class="sumber-t">iPusnas (Perpusnas RI)</div><div class="sumber-x">Akses buku digital gratis dari koleksi Perpustakaan Nasional RI melalui aplikasi iPusnas.</div></div></div>
+        <div class="sumber-card"><span class="sumber-ico">🗂️</span><div><div class="sumber-cat">Portal Resmi Pemerintah</div><div class="sumber-t">PMM & Kemdikbudristek</div><div class="sumber-x">Kebijakan kurikulum, data pendidikan nasional, dan materi pengembangan diri pendidik.</div></div></div>
+      </div>
+      <div class="infobox forest">
+        <span class="ib-ico">💡</span>
+        <div>
+          <div class="ib-title">Manfaatkan Akses Perpustakaan Kampus</div>
+          <div class="ib-text">Perpustakaan kampus memiliki akses ke database jurnal premium (EBSCO, Scopus, ProQuest). Gunakan akun mahasiswa Anda untuk mengakses artikel jurnal bereputasi secara <strong>gratis</strong>. Hubungi pustakawan kampus untuk panduan akses.</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="tab-pane" id="tb-s4">
+      <h3>Regulasi & Dokumen Kebijakan Resmi</h3>
+      <ul class="ref-list">
+        <li class="ref-item"><span class="ref-n">UU</span><span><strong>Undang-Undang No. 20 Tahun 2003 tentang Sistem Pendidikan Nasional</strong> — regulasi induk yang mengatur seluruh aspek pendidikan di Indonesia.</span></li>
+        <li class="ref-item"><span class="ref-n">PP</span><span><strong>PP No. 57 Tahun 2021 tentang Standar Nasional Pendidikan</strong> — 8 standar acuan mutu pengelolaan dan penyelenggaraan pendidikan.</span></li>
+        <li class="ref-item"><span class="ref-n">Permen</span><span><strong>Permendikbudristek No. 16 Tahun 2022 tentang Standar Proses</strong> — pedoman teknis pelaksanaan pembelajaran yang efektif dan bermutu.</span></li>
+        <li class="ref-item"><span class="ref-n">Dok</span><span><strong>Kurikulum Merdeka (2022–sekarang)</strong> — kerangka kurikulum, Profil Pelajar Pancasila, KOSP, dan panduan implementasi terkini.</span></li>
+        <li class="ref-item"><span class="ref-n">Dok</span><span><strong>Roadmap Pendidikan Indonesia 2020–2035</strong> — visi strategis jangka panjang pengembangan SDM Indonesia yang unggul dan berdaya saing.</span></li>
+      </ul>
+    </div>
+  </div>
+</div>
+
+<!-- ═══ KONTRAK ═══ -->
+<div class="section" id="kontrak">
+  <div class="sec-header">
+    <div><span class="sec-letter" style="color:var(--parchment3)">K</span><span class="sec-label">Penutup</span></div>
+    <div><div class="sec-eye">Kesepakatan Bersama</div><div class="sec-title">Kontrak Perkuliahan</div></div>
+  </div>
+
+  <p>Kontrak perkuliahan adalah kesepakatan antara dosen dan mahasiswa yang menjadi pedoman pelaksanaan perkuliahan selama satu semester. Mahasiswa diwajibkan membaca, memahami, dan menyepakati seluruh butir kontrak ini sejak pertemuan pertama.</p>
+
+  <div class="kontrak-card">
+    <h3>📋 Kontrak Perkuliahan — Landasan Pendidikan</h3>
+    <div class="kontrak-two">
+      <div class="kontrak-col">
+        <h4>Komitmen Dosen</h4>
+        <ul>
+          <li>Hadir tepat waktu dan memberitahu jika ada perubahan jadwal</li>
+          <li>Menyampaikan materi sesuai silabus yang telah disepakati</li>
+          <li>Memberikan umpan balik atas tugas dalam waktu maksimal 2 minggu</li>
+          <li>Bersikap adil, transparan, dan objektif dalam setiap penilaian</li>
+          <li>Membuka layanan konsultasi di luar jam perkuliahan</li>
+          <li>Menciptakan suasana belajar yang aman, inklusif, dan kondusif</li>
+        </ul>
+      </div>
+      <div class="kontrak-col">
+        <h4>Komitmen Mahasiswa</h4>
+        <ul>
+          <li>Hadir minimal 75% dari total 16 pertemuan yang dijadwalkan</li>
+          <li>Mengerjakan dan mengumpulkan tugas tepat waktu sesuai deadline</li>
+          <li>Aktif berpartisipasi dalam setiap sesi diskusi dan tanya jawab</li>
+          <li>Menjunjung tinggi integritas akademik dan kejujuran ilmiah</li>
+          <li>Membaca materi yang ditugaskan sebelum perkuliahan berlangsung</li>
+          <li>Menghormati dosen, sesama mahasiswa, dan fasilitas perkuliahan</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+
+  <div class="infobox gold">
+    <span class="ib-ico">✨</span>
+    <div>
+      <div class="ib-title">Pesan Pembuka dari Dosen</div>
+      <div class="ib-text">"Selamat datang di Landasan Pendidikan. Saya berharap perkuliahan ini menjadi ruang kita bersama untuk bertanya besar, berefleksi jujur, dan tumbuh bersama sebagai pendidik yang berpikiran terbuka. Bukan hanya tentang teori — tetapi tentang siapa kita sebagai pendidik, dan pendidikan seperti apa yang ingin kita wujudkan untuk Indonesia yang lebih baik."<br><br><strong>— Martin Bernard, M.Pd</strong></div>
+    </div>
+  </div>
+
+  <div class="sign-off">
+    <span class="so-ornament">📚</span>
+    <div class="so-title">BAB I · Selesai</div>
+    <div class="so-author">Martin Bernard, M.Pd</div>
+    <div class="so-sub">Landasan Pendidikan · Pertemuan 1 dari 16</div>
+  </div>
+</div>
+
+</div><!-- /content -->
+</main>
+
+<button class="btt" id="btt" onclick="window.scrollTo({top:0,behavior:'smooth'})">↑</button>
+
+<script>
+/* SIDEBAR */
+function toggleSb(){ document.getElementById('sidebar').classList.toggle('open'); }
+function closeSb(){ if(window.innerWidth<=960) document.getElementById('sidebar').classList.remove('open'); }
+document.addEventListener('click',function(e){
+  const sb=document.getElementById('sidebar');
+  if(window.innerWidth<=960 && sb.classList.contains('open') && !sb.contains(e.target) && !e.target.closest('#hbgBtn'))
+    sb.classList.remove('open');
+});
+
+/* SCROLL */
+window.addEventListener('scroll',function(){
+  const max=document.body.scrollHeight-window.innerHeight;
+  const p=Math.min(100,Math.round(window.scrollY/max*100));
+  document.getElementById('prog-fill').style.width=p+'%';
+  document.getElementById('prog-pct').textContent=p+'%';
+  document.getElementById('btt').classList.toggle('show',window.scrollY>500);
+  let cur='';
+  document.querySelectorAll('[id]').forEach(el=>{
+    if(window.scrollY>=el.offsetTop-140) cur=el.id;
+  });
+  document.querySelectorAll('.sb-link').forEach(l=>{
+    l.classList.toggle('active',l.getAttribute('href')==='#'+cur);
+  });
+});
+
+/* SCROLL REVEAL */
+const obs=new IntersectionObserver(es=>es.forEach(e=>{
+  if(e.isIntersecting){e.target.classList.add('visible');obs.unobserve(e.target);}
+}),{threshold:0.07});
+document.querySelectorAll('.section').forEach(s=>obs.observe(s));
+
+/* ACCORDION */
+function toggleAcc(btn){
+  const body=btn.nextElementSibling;
+  const isOpen=body.classList.contains('open');
+  btn.closest('.accordion').querySelectorAll('.acc-body.open').forEach(b=>{
+    b.classList.remove('open'); b.previousElementSibling.classList.remove('open');
+  });
+  if(!isOpen){body.classList.add('open');btn.classList.add('open');}
+}
+
+/* TABS */
+function switchTab(btn,id){
+  const wrap=btn.closest('.tabs-wrap');
+  wrap.querySelectorAll('.tab-btn').forEach(b=>b.classList.remove('active'));
+  wrap.querySelectorAll('.tab-pane').forEach(p=>p.classList.remove('active'));
+  btn.classList.add('active');
+  document.getElementById(id).classList.add('active');
+}
+
+/* DONUT HIGHLIGHT */
+const segs=document.querySelectorAll('.dseg');
+const pcts=['25%','30%','25%','10%','10%'];
+const lbls=['UTS','UAS','Tugas','Partisipasi','Observasi'];
+function hlEval(i){
+  segs.forEach((s,j)=>{s.style.opacity=j===i?'1':'0.2';s.style.transition='opacity .25s';});
+  document.getElementById('d-pct').textContent=pcts[i];
+  document.getElementById('d-label').textContent=lbls[i];
+  document.querySelectorAll('.eval-row').forEach((r,j)=>r.classList.toggle('hi',j===i));
+}
+function resetEval(){
+  segs.forEach(s=>{s.style.opacity='1';});
+  document.getElementById('d-pct').textContent='100%';
+  document.getElementById('d-label').textContent='Total Nilai';
+  document.querySelectorAll('.eval-row').forEach(r=>r.classList.remove('hi'));
+}
+</script>
+</body>
+</html>
