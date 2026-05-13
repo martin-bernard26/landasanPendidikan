@@ -1,0 +1,1425 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>BAB VI – Aliran & Gerakan Pendidikan | Landasan Pendidikan BK</title>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,600;0,700;1,400;1,600&family=Outfit:wght@300;400;500;600&family=JetBrains+Mono:wght@400;600&display=swap" rel="stylesheet">
+<style>
+:root {
+  --navy:    #0b1f3a;
+  --navy2:   #102a50;
+  --blue:    #1a4b8c;
+  --blue2:   #2563b8;
+  --sky:     #4a9fd4;
+  --sky-pale:#d8eef8;
+  --amber:   #d97706;
+  --amber-lt:#fef3c7;
+  --rose:    #b91c1c;
+  --rose-lt: #fee2e2;
+  --sage:    #166534;
+  --sage-lt: #dcfce7;
+  --lilac:   #6d28d9;
+  --lilac-lt:#ede9fe;
+  --paper:   #f8f6f0;
+  --paper2:  #efecea;
+  --ink:     #1a1614;
+  --muted:   #5a5550;
+  --border:  rgba(11,31,58,0.1);
+}
+
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+html { scroll-behavior: smooth; }
+
+body {
+  font-family: 'Outfit', sans-serif;
+  background: var(--paper);
+  color: var(--ink);
+  min-height: 100vh;
+  overflow-x: hidden;
+}
+
+/* ═══ STICKY NAV ═══ */
+.sidenav {
+  position: fixed;
+  left: 0; top: 50%;
+  transform: translateY(-50%);
+  z-index: 200;
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  padding: 14px 0 14px 14px;
+}
+.sidenav-dot {
+  width: 10px; height: 10px;
+  border-radius: 50%;
+  background: rgba(11,31,58,0.2);
+  cursor: pointer;
+  transition: all 0.3s;
+  position: relative;
+}
+.sidenav-dot:hover, .sidenav-dot.active {
+  background: var(--blue2);
+  transform: scale(1.4);
+}
+.sidenav-dot::after {
+  content: attr(data-label);
+  position: absolute;
+  left: 18px; top: 50%;
+  transform: translateY(-50%);
+  background: var(--navy);
+  color: white;
+  font-size: 11px;
+  padding: 3px 8px;
+  border-radius: 3px;
+  white-space: nowrap;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.2s;
+}
+.sidenav-dot:hover::after { opacity: 1; }
+
+/* ═══ HERO ═══ */
+.hero {
+  background: var(--navy);
+  position: relative;
+  overflow: hidden;
+  padding: 0;
+  min-height: 420px;
+  display: flex;
+  flex-direction: column;
+}
+.hero-stripe {
+  position: absolute;
+  right: -60px; top: -40px;
+  width: 420px; height: 520px;
+  background: linear-gradient(135deg, var(--blue) 0%, var(--navy2) 100%);
+  transform: rotate(-8deg);
+  border-radius: 24px;
+  opacity: 0.6;
+}
+.hero-stripe2 {
+  position: absolute;
+  right: 100px; bottom: -80px;
+  width: 260px; height: 360px;
+  background: var(--sky);
+  transform: rotate(-8deg);
+  border-radius: 24px;
+  opacity: 0.12;
+}
+.hero-dots-bg {
+  position: absolute; inset: 0;
+  background-image: radial-gradient(circle, rgba(255,255,255,0.06) 1px, transparent 1px);
+  background-size: 28px 28px;
+}
+
+.hero-top {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 28px 48px 0;
+  position: relative; z-index: 2;
+}
+.hero-badge-group { display: flex; gap: 8px; align-items: center; }
+.hero-badge {
+  font-size: 10px;
+  letter-spacing: 2.5px;
+  text-transform: uppercase;
+  color: var(--sky);
+  background: rgba(74,159,212,0.12);
+  border: 1px solid rgba(74,159,212,0.3);
+  padding: 5px 12px;
+  border-radius: 2px;
+  font-family: 'JetBrains Mono', monospace;
+}
+.hero-badge.bk { color: #fbbf24; background: rgba(251,191,36,0.1); border-color: rgba(251,191,36,0.3); }
+.hero-num {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 10px;
+  color: rgba(255,255,255,0.25);
+}
+
+.hero-body {
+  padding: 40px 48px 56px;
+  position: relative; z-index: 2;
+  flex: 1; display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+}
+.hero-label {
+  font-family: 'Outfit', sans-serif;
+  font-size: 12px;
+  letter-spacing: 4px;
+  text-transform: uppercase;
+  color: var(--sky);
+  margin-bottom: 12px;
+}
+.hero-title {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: clamp(36px, 6vw, 64px);
+  color: white;
+  line-height: 1.05;
+  font-weight: 700;
+  margin-bottom: 6px;
+}
+.hero-title em {
+  font-style: italic;
+  color: #fbbf24;
+}
+.hero-subtitle {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: clamp(20px, 3vw, 28px);
+  color: rgba(255,255,255,0.55);
+  font-style: italic;
+  margin-bottom: 28px;
+}
+.hero-meta {
+  display: flex; gap: 20px; align-items: center;
+  flex-wrap: wrap;
+}
+.hero-meta-item {
+  font-size: 12px;
+  color: rgba(255,255,255,0.4);
+  display: flex; align-items: center; gap: 6px;
+}
+.hero-meta-item::before { content: '—'; color: var(--sky); }
+
+.hero-progress {
+  position: absolute;
+  bottom: 0; left: 0; right: 0;
+  height: 4px;
+  background: rgba(255,255,255,0.08);
+}
+.hero-progress-fill {
+  height: 100%;
+  background: linear-gradient(90deg, var(--sky), #fbbf24);
+  width: 0%;
+  transition: width 0.8s ease;
+}
+
+/* ═══ TABS ═══ */
+.tabs-wrap {
+  background: var(--navy2);
+  position: sticky; top: 0; z-index: 100;
+  border-bottom: 2px solid rgba(74,159,212,0.2);
+}
+.tabs {
+  display: flex;
+  max-width: 900px;
+  margin: 0 auto;
+  overflow-x: auto;
+  scrollbar-width: none;
+}
+.tabs::-webkit-scrollbar { display: none; }
+.tab-btn {
+  flex-shrink: 0;
+  padding: 14px 22px;
+  font-family: 'Outfit', sans-serif;
+  font-size: 12.5px;
+  font-weight: 500;
+  color: rgba(255,255,255,0.45);
+  background: none; border: none;
+  cursor: pointer;
+  position: relative;
+  letter-spacing: 0.3px;
+  transition: color 0.25s;
+  white-space: nowrap;
+}
+.tab-btn::after {
+  content: '';
+  position: absolute;
+  bottom: -2px; left: 0; right: 0;
+  height: 2px;
+  background: var(--sky);
+  transform: scaleX(0);
+  transition: transform 0.3s;
+}
+.tab-btn.active { color: white; }
+.tab-btn.active::after { transform: scaleX(1); }
+.tab-btn:hover { color: rgba(255,255,255,0.75); }
+
+/* ═══ MAIN ═══ */
+.main {
+  max-width: 900px;
+  margin: 0 auto;
+  padding: 48px 24px 100px;
+}
+
+.tab-panel { display: none; animation: slideUp 0.4s ease; }
+.tab-panel.active { display: block; }
+@keyframes slideUp {
+  from { opacity: 0; transform: translateY(16px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+/* ═══ SECTION LABEL ═══ */
+.section-lbl {
+  display: inline-flex;
+  align-items: center; gap: 10px;
+  margin-bottom: 32px;
+}
+.section-lbl-code {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 11px;
+  background: var(--navy);
+  color: var(--sky);
+  padding: 4px 10px;
+  border-radius: 3px;
+  letter-spacing: 1px;
+}
+.section-lbl-title {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 28px;
+  font-weight: 700;
+  color: var(--navy);
+  line-height: 1.1;
+}
+
+/* ═══ CARDS ═══ */
+.card {
+  background: white;
+  border-radius: 6px;
+  border: 1px solid var(--border);
+  box-shadow: 0 1px 8px rgba(11,31,58,0.06);
+  margin-bottom: 20px;
+  overflow: hidden;
+}
+.card-header {
+  display: flex; align-items: center; gap: 14px;
+  padding: 18px 22px;
+  cursor: pointer;
+  user-select: none;
+  transition: background 0.2s;
+}
+.card-header:hover { background: var(--sky-pale); }
+.card-icon {
+  width: 38px; height: 38px;
+  border-radius: 8px;
+  display: flex; align-items: center; justify-content: center;
+  font-size: 16px;
+  flex-shrink: 0;
+}
+.card-head-text { flex: 1; }
+.card-head-text h3 {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 18px;
+  font-weight: 600;
+  color: var(--navy);
+  line-height: 1.25;
+}
+.card-head-text p {
+  font-size: 12px;
+  color: var(--muted);
+  margin-top: 2px;
+}
+.card-toggle {
+  width: 28px; height: 28px;
+  border-radius: 50%;
+  display: flex; align-items: center; justify-content: center;
+  background: var(--sky-pale);
+  color: var(--blue);
+  font-size: 13px;
+  transition: transform 0.3s, background 0.3s;
+  flex-shrink: 0;
+}
+.card.open .card-toggle { transform: rotate(180deg); background: var(--blue2); color: white; }
+
+.card-body { max-height: 0; overflow: hidden; transition: max-height 0.5s cubic-bezier(0.4,0,0.2,1); }
+.card.open .card-body { max-height: 3600px; }
+.card-inner { padding: 8px 22px 28px; border-top: 1px solid var(--border); }
+
+/* ═══ PROSE ═══ */
+.prose {
+  font-size: 14.5px;
+  line-height: 1.85;
+  color: #2a2520;
+}
+.prose p { margin-bottom: 14px; }
+.prose p:last-child { margin-bottom: 0; }
+.prose strong { color: var(--navy); }
+.prose em { color: var(--blue2); font-style: italic; }
+
+/* ═══ HIGHLIGHT ═══ */
+.hl {
+  border-radius: 4px;
+  padding: 14px 18px;
+  margin: 16px 0;
+  font-size: 14px;
+  line-height: 1.75;
+  border-left: 4px solid;
+}
+.hl-blue  { background: var(--sky-pale);  border-color: var(--blue2); color: #0f2a50; }
+.hl-amber { background: var(--amber-lt);  border-color: var(--amber); color: #6b3600; }
+.hl-rose  { background: var(--rose-lt);   border-color: var(--rose);  color: #5a0e0e; }
+.hl-sage  { background: var(--sage-lt);   border-color: var(--sage);  color: #0d3b1e; }
+.hl-lilac { background: var(--lilac-lt);  border-color: var(--lilac); color: #360e7a; }
+.hl-title {
+  font-family: 'Outfit', sans-serif;
+  font-size: 11px;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 1.5px;
+  margin-bottom: 6px;
+  display: flex; align-items: center; gap: 6px;
+}
+
+/* ═══ ALIRAN GRID ═══ */
+.aliran-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(230px, 1fr));
+  gap: 14px;
+  margin: 16px 0;
+}
+.aliran-box {
+  border-radius: 6px;
+  padding: 18px;
+  border: 1px solid;
+  position: relative;
+  overflow: hidden;
+}
+.aliran-box::before {
+  content: '';
+  position: absolute;
+  top: -20px; right: -20px;
+  width: 70px; height: 70px;
+  border-radius: 50%;
+  opacity: 0.12;
+}
+.ab-navy  { background: #eef3fb; border-color: rgba(26,75,140,0.2); color: var(--navy); }
+.ab-navy .aliran-box::before { background: var(--blue); }
+.ab-amber { background: var(--amber-lt); border-color: rgba(217,119,6,0.25); color: #6b3600; }
+.ab-rose  { background: var(--rose-lt);  border-color: rgba(185,28,28,0.25); color: #5a0e0e; }
+.ab-sage  { background: var(--sage-lt);  border-color: rgba(22,101,52,0.25); color: #0d3b1e; }
+.ab-lilac { background: var(--lilac-lt); border-color: rgba(109,40,217,0.25); color: #360e7a; }
+.ab-sky   { background: var(--sky-pale); border-color: rgba(74,159,212,0.25); color: #0a3050; }
+
+.aliran-box-title {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 16px;
+  font-weight: 700;
+  margin-bottom: 8px;
+  display: flex; align-items: center; gap: 8px;
+}
+.aliran-box-body { font-size: 13px; line-height: 1.7; }
+
+/* ═══ TOKOH LIST ═══ */
+.tokoh-list { display: flex; flex-direction: column; gap: 10px; margin: 12px 0; }
+.tokoh-item {
+  display: flex; align-items: flex-start; gap: 14px;
+  background: #f8f6f0;
+  border-radius: 5px;
+  padding: 12px 14px;
+  border: 1px solid var(--border);
+  transition: border-color 0.2s, box-shadow 0.2s;
+}
+.tokoh-item:hover { border-color: var(--blue2); box-shadow: 0 2px 12px rgba(37,99,184,0.1); }
+.tokoh-avatar {
+  width: 38px; height: 38px;
+  border-radius: 50%;
+  display: flex; align-items: center; justify-content: center;
+  font-size: 14px;
+  font-family: 'Cormorant Garamond', serif;
+  font-weight: 700;
+  flex-shrink: 0;
+}
+.tokoh-info h4 {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 16px;
+  font-weight: 700;
+  color: var(--navy);
+}
+.tokoh-info .tokoh-tahun {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 11px;
+  color: var(--sky);
+  margin: 2px 0 4px;
+}
+.tokoh-info p { font-size: 13px; line-height: 1.6; color: var(--muted); }
+
+/* ═══ TIMELINE ═══ */
+.timeline { margin: 16px 0; position: relative; }
+.timeline::before {
+  content: '';
+  position: absolute;
+  left: 18px; top: 6px; bottom: 6px;
+  width: 2px;
+  background: linear-gradient(to bottom, var(--blue2), var(--sky));
+}
+.tl-item {
+  display: flex; gap: 16px;
+  padding: 0 0 20px 0;
+  position: relative;
+}
+.tl-item:last-child { padding-bottom: 0; }
+.tl-dot {
+  width: 38px; height: 38px;
+  border-radius: 50%;
+  background: white;
+  border: 2px solid var(--blue2);
+  display: flex; align-items: center; justify-content: center;
+  font-size: 12px;
+  font-family: 'JetBrains Mono', monospace;
+  color: var(--blue2);
+  font-weight: 600;
+  flex-shrink: 0;
+  position: relative; z-index: 1;
+  box-shadow: 0 0 0 4px var(--paper);
+}
+.tl-content {
+  background: white;
+  border: 1px solid var(--border);
+  border-radius: 5px;
+  padding: 12px 16px;
+  flex: 1;
+  box-shadow: 0 1px 6px rgba(11,31,58,0.05);
+}
+.tl-content h4 {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 16px;
+  font-weight: 700;
+  color: var(--navy);
+  margin-bottom: 4px;
+}
+.tl-content p { font-size: 13px; color: var(--muted); line-height: 1.65; }
+.tl-tag {
+  display: inline-block;
+  font-size: 10px;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+  padding: 2px 8px;
+  border-radius: 2px;
+  margin-bottom: 6px;
+  font-family: 'JetBrains Mono', monospace;
+}
+
+/* ═══ PENGARUH CARD ═══ */
+.pengaruh-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 14px;
+  margin: 16px 0;
+}
+@media (max-width: 560px) { .pengaruh-grid { grid-template-columns: 1fr; } }
+.pg-card {
+  border-radius: 6px;
+  padding: 16px;
+  border: 1px solid var(--border);
+  background: white;
+}
+.pg-card-head {
+  display: flex; align-items: center; gap: 10px;
+  margin-bottom: 10px;
+  padding-bottom: 10px;
+  border-bottom: 1px dashed var(--border);
+}
+.pg-icon {
+  width: 34px; height: 34px;
+  border-radius: 6px;
+  display: flex; align-items: center; justify-content: center;
+  font-size: 15px;
+}
+.pg-card-head h4 {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 15px;
+  font-weight: 700;
+  color: var(--navy);
+  line-height: 1.2;
+}
+.pg-list { list-style: none; }
+.pg-list li {
+  font-size: 13px;
+  color: var(--muted);
+  padding: 5px 0;
+  border-bottom: 1px dashed rgba(11,31,58,0.06);
+  display: flex; gap: 8px; align-items: flex-start;
+  line-height: 1.55;
+}
+.pg-list li:last-child { border-bottom: none; }
+.pg-list li::before { content: '›'; color: var(--blue2); font-size: 14px; flex-shrink: 0; margin-top: 1px; }
+
+/* ═══ PERBANDINGAN TABLE ═══ */
+.table-wrap { overflow-x: auto; margin: 16px 0; border-radius: 6px; border: 1px solid var(--border); }
+table { width: 100%; border-collapse: collapse; font-size: 13.5px; }
+thead tr { background: var(--navy); }
+thead th {
+  padding: 12px 14px;
+  color: white;
+  font-family: 'Outfit', sans-serif;
+  font-weight: 500;
+  font-size: 12px;
+  letter-spacing: 0.5px;
+  text-align: left;
+}
+tbody tr { border-bottom: 1px solid var(--border); transition: background 0.15s; }
+tbody tr:last-child { border-bottom: none; }
+tbody tr:hover { background: var(--sky-pale); }
+tbody td { padding: 11px 14px; color: var(--muted); line-height: 1.6; }
+tbody td:first-child { color: var(--navy); font-weight: 500; }
+.badge-sm {
+  display: inline-block;
+  font-size: 10px;
+  padding: 2px 7px;
+  border-radius: 10px;
+  font-weight: 600;
+  letter-spacing: 0.5px;
+}
+
+/* ═══ QUIZ ═══ */
+.quiz-wrap {
+  background: var(--navy);
+  border-radius: 8px;
+  padding: 28px;
+  margin-top: 32px;
+}
+.quiz-head {
+  display: flex; align-items: flex-start; justify-content: space-between;
+  margin-bottom: 24px;
+  gap: 16px;
+}
+.quiz-head-left h3 {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 22px;
+  color: white;
+  font-weight: 700;
+  margin-bottom: 4px;
+}
+.quiz-head-left p { font-size: 12px; color: rgba(255,255,255,0.4); }
+.quiz-pct {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 38px;
+  color: #fbbf24;
+  font-weight: 700;
+  line-height: 1;
+  white-space: nowrap;
+}
+
+.qz-card { display: none; animation: fadeQ 0.35s ease; }
+.qz-card.active { display: block; }
+@keyframes fadeQ { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: translateY(0); } }
+
+.qz-num {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 10px;
+  color: rgba(255,255,255,0.35);
+  letter-spacing: 2px;
+  margin-bottom: 10px;
+}
+.qz-text {
+  font-size: 15px;
+  color: white;
+  line-height: 1.65;
+  margin-bottom: 18px;
+  font-family: 'Outfit', sans-serif;
+}
+.qz-opts { display: flex; flex-direction: column; gap: 8px; }
+.qz-opt {
+  background: rgba(255,255,255,0.05);
+  border: 1px solid rgba(255,255,255,0.12);
+  border-radius: 5px;
+  padding: 11px 16px;
+  font-size: 13.5px;
+  color: rgba(255,255,255,0.8);
+  cursor: pointer;
+  transition: all 0.2s;
+  text-align: left;
+  font-family: 'Outfit', sans-serif;
+}
+.qz-opt:hover:not(:disabled) {
+  background: rgba(74,159,212,0.15);
+  border-color: var(--sky);
+  color: white;
+}
+.qz-opt.correct { background: rgba(22,101,52,0.3); border-color: #4ade80; color: #bbf7d0; }
+.qz-opt.wrong   { background: rgba(185,28,28,0.3); border-color: #f87171; color: #fecaca; }
+
+.qz-fb {
+  border-radius: 4px;
+  padding: 10px 14px;
+  margin-top: 12px;
+  font-size: 13px;
+  line-height: 1.6;
+  display: none;
+}
+.qz-fb.ok  { display: block; background: rgba(22,101,52,0.2); color: #86efac; border: 1px solid rgba(74,222,128,0.3); }
+.qz-fb.no  { display: block; background: rgba(185,28,28,0.2); color: #fca5a5; border: 1px solid rgba(248,113,113,0.3); }
+
+.qz-foot {
+  display: flex; align-items: center; justify-content: space-between;
+  margin-top: 20px; gap: 12px;
+}
+.qz-step { font-size: 12px; color: rgba(255,255,255,0.35); font-family: 'JetBrains Mono', monospace; }
+.qz-btn {
+  background: var(--sky);
+  color: white;
+  border: none;
+  padding: 9px 22px;
+  border-radius: 4px;
+  font-size: 13px;
+  font-weight: 600;
+  cursor: pointer;
+  font-family: 'Outfit', sans-serif;
+  transition: background 0.2s;
+}
+.qz-btn:hover { background: var(--blue2); }
+.qz-btn:disabled { opacity: 0.35; cursor: not-allowed; }
+.qz-btn.prev { background: rgba(255,255,255,0.08); }
+.qz-btn.prev:hover { background: rgba(255,255,255,0.14); }
+
+.qz-result { display: none; text-align: center; padding: 10px 0 4px; }
+.qz-result.show { display: block; }
+.qz-result-score {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 64px;
+  color: #fbbf24;
+  font-weight: 700;
+  line-height: 1;
+}
+.qz-result-label { font-size: 13px; color: rgba(255,255,255,0.4); margin: 6px 0; }
+.qz-result-msg { font-size: 14px; color: rgba(255,255,255,0.75); line-height: 1.7; margin-top: 14px; max-width: 400px; margin-left: auto; margin-right: auto; }
+.qz-retry {
+  display: inline-block;
+  margin-top: 18px;
+  background: rgba(255,255,255,0.08);
+  border: 1px solid rgba(255,255,255,0.15);
+  color: white;
+  padding: 8px 20px;
+  border-radius: 4px;
+  font-size: 13px;
+  cursor: pointer;
+  font-family: 'Outfit', sans-serif;
+  transition: background 0.2s;
+}
+.qz-retry:hover { background: rgba(255,255,255,0.14); }
+
+/* ═══ RINGKASAN ═══ */
+.ringkasan-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 12px;
+  margin: 16px 0;
+}
+.rk-box {
+  background: white;
+  border: 1px solid var(--border);
+  border-radius: 6px;
+  padding: 16px;
+  text-align: center;
+  transition: border-color 0.2s, box-shadow 0.2s;
+}
+.rk-box:hover { border-color: var(--blue2); box-shadow: 0 2px 16px rgba(37,99,184,0.1); }
+.rk-icon { font-size: 28px; margin-bottom: 10px; }
+.rk-box h4 {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 16px;
+  font-weight: 700;
+  color: var(--navy);
+  margin-bottom: 6px;
+}
+.rk-box p { font-size: 12.5px; color: var(--muted); line-height: 1.6; }
+
+/* ═══ DIVIDER ═══ */
+.div-line {
+  display: flex; align-items: center; gap: 14px;
+  margin: 26px 0;
+  color: var(--sky);
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 10px;
+  letter-spacing: 2px;
+}
+.div-line::before, .div-line::after {
+  content: '';
+  flex: 1; height: 1px;
+  background: linear-gradient(90deg, transparent, rgba(74,159,212,0.3), transparent);
+}
+
+/* ═══ SUB-HEADING ═══ */
+h4.sh {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 18px;
+  font-weight: 700;
+  color: var(--navy);
+  margin: 22px 0 12px;
+  padding-left: 12px;
+  border-left: 3px solid var(--blue2);
+}
+
+/* ═══ FOOTER ═══ */
+.footer {
+  background: var(--navy);
+  padding: 32px 24px;
+  text-align: center;
+  font-size: 12px;
+  color: rgba(255,255,255,0.35);
+  line-height: 1.9;
+  border-top: 3px solid var(--blue2);
+}
+.footer strong { color: var(--sky); }
+
+/* ═══ RESPONSIVE ═══ */
+@media (max-width: 640px) {
+  .hero-top, .hero-body { padding-left: 20px; padding-right: 20px; }
+  .hero-stripe { display: none; }
+  .sidenav { display: none; }
+  .aliran-grid { grid-template-columns: 1fr; }
+  .pengaruh-grid { grid-template-columns: 1fr; }
+  .main { padding: 28px 14px 80px; }
+}
+</style>
+</head>
+<body>
+
+<!-- SIDE NAV DOTS -->
+<div class="sidenav" id="sidenav"></div>
+
+<!-- HERO -->
+<div class="hero" id="top">
+  <div class="hero-dots-bg"></div>
+  <div class="hero-stripe"></div>
+  <div class="hero-stripe2"></div>
+  <div class="hero-top">
+    <div class="hero-badge-group">
+      <span class="hero-badge">Landasan Pendidikan</span>
+      <span class="hero-badge bk">BK · IKIP Siliwangi</span>
+    </div>
+    <span class="hero-num">06 / 12</span>
+  </div>
+  <div class="hero-body">
+    <div class="hero-label">Bab VI</div>
+    <h1 class="hero-title">Aliran &amp; <em>Gerakan</em><br>Pendidikan</h1>
+    <p class="hero-subtitle">Arus pemikiran yang membentuk wajah pendidikan modern</p>
+    <div class="hero-meta">
+      <span class="hero-meta-item">Martin Bernard, M.Pd.</span>
+      <span class="hero-meta-item">4 Topik Utama</span>
+      <span class="hero-meta-item">Interaktif</span>
+    </div>
+  </div>
+  <div class="hero-progress"><div class="hero-progress-fill" id="heroFill"></div></div>
+</div>
+
+<!-- TABS -->
+<div class="tabs-wrap">
+  <div class="tabs" id="tabs">
+    <button class="tab-btn active" onclick="switchTab(0)">A · Aliran Klasik & Gerakan Baru</button>
+    <button class="tab-btn" onclick="switchTab(1)">B · Aliran-Aliran Baru</button>
+    <button class="tab-btn" onclick="switchTab(2)">C · Gerakan Baru dalam Pendidikan</button>
+    <button class="tab-btn" onclick="switchTab(3)">D · Pengaruh di Indonesia</button>
+  </div>
+</div>
+
+<!-- MAIN -->
+<div class="main">
+
+  <!-- ════ TAB A ════ -->
+  <div class="tab-panel active" id="panel-0">
+    <div class="section-lbl">
+      <span class="section-lbl-code">A</span>
+      <span class="section-lbl-title">Aliran Klasik &amp; Gerakan Baru dalam Pendidikan</span>
+    </div>
+
+    <div class="prose">
+      <p>Pendidikan tidak berkembang dalam ruang hampa. Sepanjang sejarah, berbagai <strong>aliran pemikiran</strong> telah bermunculan sebagai respons terhadap kondisi sosial, politik, dan filosofis zaman masing-masing. Memahami aliran-aliran ini adalah fondasi bagi setiap pendidik—termasuk konselor—untuk membangun perspektif kritis tentang untuk apa dan bagaimana pendidikan harus diselenggarakan.</p>
+    </div>
+
+    <div class="hl hl-blue">
+      <div class="hl-title">📖 Definisi Kunci</div>
+      <strong>Aliran pendidikan</strong> adalah sekumpulan gagasan, nilai, dan prinsip yang secara sistematis menjelaskan hakikat, tujuan, dan metode pendidikan berdasarkan pandangan filsafat atau teori tertentu tentang manusia dan masyarakat.
+    </div>
+
+    <h4 class="sh">Tiga Aliran Klasik Utama</h4>
+    <div class="aliran-grid">
+      <div class="aliran-box ab-navy">
+        <div class="aliran-box-title">📜 Nativisme</div>
+        <div class="aliran-box-body">Perkembangan manusia ditentukan sepenuhnya oleh <strong>faktor bawaan (nature)</strong>. Pendidikan dinilai tidak banyak berpengaruh jika potensi bawaan tidak mendukung. Tokoh utama: <em>Arthur Schopenhauer</em>.</div>
+      </div>
+      <div class="aliran-box ab-amber">
+        <div class="aliran-box-title">🌱 Empirisme</div>
+        <div class="aliran-box-body">Manusia lahir seperti <em>tabula rasa</em> (kertas kosong). Lingkungan dan pengalaman adalah penentu utama perkembangan. Pendidikan memiliki peran sangat besar. Tokoh utama: <em>John Locke</em>.</div>
+      </div>
+      <div class="aliran-box ab-sage">
+        <div class="aliran-box-title">⚖️ Konvergensi</div>
+        <div class="aliran-box-body">Perkembangan manusia merupakan hasil <strong>interaksi antara bawaan dan lingkungan</strong>. Pandangan ini paling banyak diterima dalam pendidikan modern. Tokoh utama: <em>William Stern</em>.</div>
+      </div>
+    </div>
+
+    <div class="div-line">PERBANDINGAN</div>
+
+    <div class="table-wrap">
+      <table>
+        <thead>
+          <tr>
+            <th>Aliran</th>
+            <th>Pandangan tentang Manusia</th>
+            <th>Peran Pendidikan</th>
+            <th>Implikasi BK</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>Nativisme</td>
+            <td>Ditentukan faktor genetis</td>
+            <td>Terbatas / pasif</td>
+            <td>BK harus menerima "batas" peserta didik</td>
+          </tr>
+          <tr>
+            <td>Empirisme</td>
+            <td>Dibentuk pengalaman & lingkungan</td>
+            <td>Sangat besar / aktif</td>
+            <td>BK dapat mengubah perilaku melalui lingkungan</td>
+          </tr>
+          <tr>
+            <td>Konvergensi</td>
+            <td>Interaksi nature & nurture</td>
+            <td>Bermakna & kolaboratif</td>
+            <td>BK memaksimalkan potensi dengan memahami konteks</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+    <div class="hl hl-amber">
+      <div class="hl-title">💡 Relevansi untuk Konselor BK</div>
+      Sebagai konselor, pemahaman terhadap aliran klasik membantu Anda merumuskan keyakinan dasar tentang <strong>apakah perilaku peserta didik dapat diubah</strong> melalui intervensi. Pendekatan kognitif-behavioral dalam BK, misalnya, berangkat dari pandangan empiris dan konvergensi.
+    </div>
+  </div>
+
+  <!-- ════ TAB B ════ -->
+  <div class="tab-panel" id="panel-1">
+    <div class="section-lbl">
+      <span class="section-lbl-code">B</span>
+      <span class="section-lbl-title">Aliran-Aliran Baru dalam Pendidikan</span>
+    </div>
+
+    <div class="prose">
+      <p>Abad ke-20 melahirkan berbagai <strong>aliran baru</strong> yang menantang paradigma pendidikan tradisional. Masing-masing membawa perspektif segar tentang bagaimana manusia belajar dan bagaimana sekolah seharusnya berfungsi dalam masyarakat.</p>
+    </div>
+
+    <!-- Progresivisme -->
+    <div class="card" id="c-prog">
+      <div class="card-header" onclick="toggleCard('c-prog')">
+        <div class="card-icon" style="background:#fef3c7; font-size:18px">🌿</div>
+        <div class="card-head-text">
+          <h3>Progresivisme</h3>
+          <p>Belajar dari pengalaman nyata — John Dewey</p>
+        </div>
+        <div class="card-toggle">▾</div>
+      </div>
+      <div class="card-body">
+        <div class="card-inner">
+          <div class="hl hl-amber">
+            <div class="hl-title">✦ Gagasan Inti</div>
+            Pendidikan harus berpusat pada <strong>anak dan pengalaman nyata</strong>. Belajar terjadi melalui aktivitas, bukan menghafal. Sekolah adalah miniatur masyarakat demokratis.
+          </div>
+          <div class="prose">
+            <p><strong>John Dewey</strong> (1859–1952) adalah tokoh utama progresivisme. Ia menyatakan bahwa <em>"Education is not preparation for life; education is life itself."</em> Pendidikan bukan persiapan untuk hidup, melainkan kehidupan itu sendiri.</p>
+            <p>Implikasi bagi BK: konselor tidak cukup hanya memberikan informasi, tetapi harus membantu siswa <strong>belajar dari pengalaman</strong>—termasuk pengalaman kegagalan dan konflik—sebagai bahan refleksi dan pertumbuhan.</p>
+          </div>
+          <div class="tokoh-list">
+            <div class="tokoh-item">
+              <div class="tokoh-avatar" style="background:#fef3c7; color:#92400e">JD</div>
+              <div class="tokoh-info">
+                <h4>John Dewey</h4>
+                <div class="tokoh-tahun">1859 – 1952</div>
+                <p>Filsuf dan pendidik Amerika. Pencetus Learning by Doing. Menulis <em>Democracy and Education</em> (1916).</p>
+              </div>
+            </div>
+            <div class="tokoh-item">
+              <div class="tokoh-avatar" style="background:#dbeafe; color:#1e40af">WK</div>
+              <div class="tokoh-info">
+                <h4>William Heard Kilpatrick</h4>
+                <div class="tokoh-tahun">1871 – 1965</div>
+                <p>Murid Dewey. Mengembangkan <em>Project Method</em>—pembelajaran berbasis proyek yang bermakna bagi siswa.</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Esensialisme -->
+    <div class="card" id="c-essen">
+      <div class="card-header" onclick="toggleCard('c-essen')">
+        <div class="card-icon" style="background:#ede9fe; font-size:18px">📚</div>
+        <div class="card-head-text">
+          <h3>Esensialisme</h3>
+          <p>Kembali ke hal-hal yang esensial — William Bagley</p>
+        </div>
+        <div class="card-toggle">▾</div>
+      </div>
+      <div class="card-body">
+        <div class="card-inner">
+          <div class="hl hl-lilac">
+            <div class="hl-title">✦ Gagasan Inti</div>
+            Pendidikan harus mewariskan <strong>pengetahuan dan nilai inti</strong> peradaban yang telah terbukti. Kurikulum berpusat pada ilmu pengetahuan, sejarah, dan seni yang fundamental.
+          </div>
+          <div class="prose">
+            <p>Esensialisme muncul sebagai reaksi terhadap progresivisme yang dianggap terlalu longgar. <strong>William Bagley</strong> berpendapat bahwa ada isi pendidikan yang mutlak harus diajarkan kepada setiap generasi demi kelangsungan budaya.</p>
+            <p>Dalam perspektif BK: aliran ini menekankan pentingnya <strong>nilai-nilai moral dan karakter</strong> yang harus ditanamkan kepada peserta didik. Program BK berbasis karakter banyak berakar pada pemikiran essensialis.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Perenialisme -->
+    <div class="card" id="c-peren">
+      <div class="card-header" onclick="toggleCard('c-peren')">
+        <div class="card-icon" style="background:#fee2e2; font-size:18px">🏛️</div>
+        <div class="card-head-text">
+          <h3>Perenialisme</h3>
+          <p>Kebenaran abadi sebagai landasan — Robert Hutchins</p>
+        </div>
+        <div class="card-toggle">▾</div>
+      </div>
+      <div class="card-body">
+        <div class="card-inner">
+          <div class="hl hl-rose">
+            <div class="hl-title">✦ Gagasan Inti</div>
+            Terdapat <strong>kebenaran universal dan abadi</strong> yang harus menjadi inti pendidikan. Karya-karya besar peradaban (Great Books) adalah kurikulum terbaik.
+          </div>
+          <div class="prose">
+            <p>Perenialisme memandang bahwa kebenaran tidak berubah sepanjang zaman. Pendidikan yang baik adalah pendidikan yang menghubungkan generasi sekarang dengan kebijaksanaan abadi peradaban manusia.</p>
+            <p>Implikasi BK: konselor yang berpandangan perenialis akan menekankan <strong>nilai-nilai universal</strong> seperti kejujuran, keadilan, dan tanggung jawab sebagai fondasi konseling karakter.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Rekonstruksionisme -->
+    <div class="card" id="c-rekon">
+      <div class="card-header" onclick="toggleCard('c-rekon')">
+        <div class="card-icon" style="background:#dcfce7; font-size:18px">🔧</div>
+        <div class="card-head-text">
+          <h3>Rekonstruksionisme</h3>
+          <p>Pendidikan sebagai agen perubahan sosial — George Counts</p>
+        </div>
+        <div class="card-toggle">▾</div>
+      </div>
+      <div class="card-body">
+        <div class="card-inner">
+          <div class="hl hl-sage">
+            <div class="hl-title">✦ Gagasan Inti</div>
+            Pendidikan harus menjadi <strong>kekuatan aktif untuk merombak masyarakat</strong> yang timpang menjadi lebih adil dan demokratis. Sekolah adalah agen perubahan sosial.
+          </div>
+          <div class="prose">
+            <p><strong>George Counts</strong> dalam tulisannya <em>Dare the School Build a New Social Order?</em> (1932) menantang sekolah untuk tidak hanya merefleksikan masyarakat, tetapi aktif <strong>mengubahnya</strong>.</p>
+            <p>Dalam konteks BK modern: rekonstruksionisme menginspirasi <em>school counseling for social justice</em>—di mana konselor berperan sebagai advokat bagi peserta didik yang terpinggirkan oleh sistem.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ════ TAB C ════ -->
+  <div class="tab-panel" id="panel-2">
+    <div class="section-lbl">
+      <span class="section-lbl-code">C</span>
+      <span class="section-lbl-title">Gerakan Baru dalam Pendidikan</span>
+    </div>
+
+    <div class="prose">
+      <p>Gerakan baru dalam pendidikan lahir dari keprihatinan nyata terhadap praktik pendidikan yang ada. Berbeda dari aliran filosofis, gerakan ini lebih bersifat <strong>praktis dan reformatif</strong>—menuntut perubahan konkret dalam sistem dan metode pendidikan.</p>
+    </div>
+
+    <div class="timeline">
+      <div class="tl-item">
+        <div class="tl-dot">19c</div>
+        <div class="tl-content">
+          <span class="tl-tag" style="background:#dbeafe; color:#1e40af">Pendidikan Alam Sekitar</span>
+          <h4>Heimatkunde / Pendidikan Lingkungan Hidup</h4>
+          <p>Gerakan yang menekankan belajar dari lingkungan sekitar anak. Alam dan komunitas lokal dijadikan laboratorium utama pembelajaran. Pelopor: <strong>J.H. Pestalozzi</strong> dan <strong>Friedrich Froebel</strong>.</p>
+        </div>
+      </div>
+      <div class="tl-item">
+        <div class="tl-dot">1907</div>
+        <div class="tl-content">
+          <span class="tl-tag" style="background:#fce7f3; color:#9d174d">Pendidikan Montessori</span>
+          <h4>Metode Montessori</h4>
+          <p><strong>Maria Montessori</strong> mengembangkan metode belajar berbasis kebebasan terstruktur. Anak belajar secara mandiri dengan material yang dirancang khusus. Sangat relevan untuk pendidikan anak usia dini dan BK perkembangan.</p>
+        </div>
+      </div>
+      <div class="tl-item">
+        <div class="tl-dot">1921</div>
+        <div class="tl-content">
+          <span class="tl-tag" style="background:#d1fae5; color:#065f46">Dalton Plan</span>
+          <h4>Rencana Dalton (Helen Parkhurst)</h4>
+          <p>Pembelajaran individual tanpa kelas tetap. Siswa membuat kontrak belajar sendiri dan bekerja sesuai kemampuan dan minatnya. Prinsip ini sangat relevan dengan konsep <strong>diferensiasi pembelajaran</strong> dalam BK akademik.</p>
+        </div>
+      </div>
+      <div class="tl-item">
+        <div class="tl-dot">1920</div>
+        <div class="tl-content">
+          <span class="tl-tag" style="background:#fef3c7; color:#92400e">Pendidikan Kerja</span>
+          <h4>Arbeitsschule / Sekolah Kerja</h4>
+          <p><strong>Georg Kerschensteiner</strong> menekankan bahwa pendidikan harus menyiapkan warga negara yang produktif melalui kerja nyata. Pengaruhnya terlihat pada pendidikan vokasional dan BK karier.</p>
+        </div>
+      </div>
+      <div class="tl-item">
+        <div class="tl-dot">1960</div>
+        <div class="tl-content">
+          <span class="tl-tag" style="background:#ede9fe; color:#5b21b6">Pendidikan Kritis</span>
+          <h4>Pedagogi Kritis — Paulo Freire</h4>
+          <p><strong>Paulo Freire</strong> (<em>Pedagogy of the Oppressed</em>, 1968) menolak <em>banking education</em> (siswa sebagai celengan pasif). Ia menekankan <em>conscientization</em>—kesadaran kritis peserta didik terhadap realitas sosialnya. Fondasi penting BK berbasis keadilan sosial.</p>
+        </div>
+      </div>
+      <div class="tl-item">
+        <div class="tl-dot">1970</div>
+        <div class="tl-content">
+          <span class="tl-tag" style="background:#fee2e2; color:#991b1b">Deschooling</span>
+          <h4>Desekolahkan Masyarakat — Ivan Illich</h4>
+          <p><strong>Ivan Illich</strong> (<em>Deschooling Society</em>, 1971) berargumen bahwa sekolah formal justru menghambat belajar sejati. Ia mengusulkan <em>learning webs</em>—jaringan belajar informal berbasis komunitas. Mendorong refleksi kritis tentang peran sekolah.</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="div-line">RINGKASAN GERAKAN</div>
+
+    <div class="ringkasan-grid">
+      <div class="rk-box">
+        <div class="rk-icon">🌿</div>
+        <h4>Alam Sebagai Guru</h4>
+        <p>Lingkungan nyata sebagai laboratorium belajar terbaik bagi anak</p>
+      </div>
+      <div class="rk-box">
+        <div class="rk-icon">🔑</div>
+        <h4>Belajar Mandiri</h4>
+        <p>Siswa sebagai subjek aktif yang mengatur proses belajarnya sendiri</p>
+      </div>
+      <div class="rk-box">
+        <div class="rk-icon">⚖️</div>
+        <h4>Keadilan Sosial</h4>
+        <p>Pendidikan sebagai alat pembebasan dari penindasan dan ketimpangan</p>
+      </div>
+      <div class="rk-box">
+        <div class="rk-icon">🤝</div>
+        <h4>Kerja Nyata</h4>
+        <p>Keterampilan produktif sebagai inti tujuan pendidikan warga negara</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- ════ TAB D ════ -->
+  <div class="tab-panel" id="panel-3">
+    <div class="section-lbl">
+      <span class="section-lbl-code">D</span>
+      <span class="section-lbl-title">Pengaruh Aliran &amp; Gerakan terhadap Pendidikan di Indonesia</span>
+    </div>
+
+    <div class="prose">
+      <p>Sistem pendidikan Indonesia tidak lahir dalam isolasi. Sejak era kolonial hingga reformasi, berbagai aliran dan gerakan pendidikan dunia telah meninggalkan jejak nyata dalam <strong>kurikulum, kebijakan, dan praktik pendidikan nasional</strong>.</p>
+    </div>
+
+    <div class="hl hl-blue">
+      <div class="hl-title">🇮🇩 Konteks Historis</div>
+      Pengaruh aliran pendidikan di Indonesia dapat ditelusuri melalui tiga periode: <strong>(1) Masa Kolonial</strong> (dominasi empirisme Belanda), <strong>(2) Masa Kemerdekaan</strong> (sintesis nasional oleh Ki Hajar Dewantara), dan <strong>(3) Era Reformasi</strong> (adopsi progresivisme dan rekonstruksionisme melalui Kurikulum Merdeka).
+    </div>
+
+    <h4 class="sh">Pengaruh per Aspek Pendidikan</h4>
+    <div class="pengaruh-grid">
+      <div class="pg-card">
+        <div class="pg-card-head">
+          <div class="pg-icon" style="background:#dbeafe">📋</div>
+          <h4>Kurikulum Nasional</h4>
+        </div>
+        <ul class="pg-list">
+          <li>Kurikulum Merdeka (2022) berakar dari progresivisme Dewey: berpusat pada murid, berbasis proyek</li>
+          <li>Profil Pelajar Pancasila mencerminkan esensi esensialisme nilai-nilai luhur bangsa</li>
+          <li>Pembelajaran diferensiasi terinspirasi Dalton Plan dan Montessori</li>
+        </ul>
+      </div>
+      <div class="pg-card">
+        <div class="pg-card-head">
+          <div class="pg-icon" style="background:#dcfce7">🏫</div>
+          <h4>Sistem Persekolahan</h4>
+        </div>
+        <ul class="pg-list">
+          <li>Taman Siswa (Ki Hajar Dewantara) memadukan konvergensi, progresivisme, dan nilai lokal</li>
+          <li>Sekolah vokasi/SMK terinspirasi gerakan pendidikan kerja (Arbeitsschule)</li>
+          <li>Sekolah Alam Indonesia mengadopsi heimatkunde (belajar dari lingkungan)</li>
+        </ul>
+      </div>
+      <div class="pg-card">
+        <div class="pg-card-head">
+          <div class="pg-icon" style="background:#fef3c7">🎯</div>
+          <h4>Bimbingan & Konseling</h4>
+        </div>
+        <ul class="pg-list">
+          <li>BK komprehensif di Indonesia mengadopsi prinsip progresivisme: layanan sesuai kebutuhan nyata siswa</li>
+          <li>BK perkembangan terinspirasi Montessori: menghormati tahap perkembangan unik individu</li>
+          <li>Advokasi konselor berakar dari pedagogi kritis Freire dan rekonstruksionisme</li>
+        </ul>
+      </div>
+      <div class="pg-card">
+        <div class="pg-card-head">
+          <div class="pg-icon" style="background:#ede9fe">⚡</div>
+          <h4>Kebijakan Pendidikan</h4>
+        </div>
+        <ul class="pg-list">
+          <li>UU Sisdiknas 2003: tujuan pendidikan mencerminkan sintesis esensialisme dan rekonstruksionisme</li>
+          <li>Sekolah Penggerak mengadopsi prinsip progresivisme dan gerakan komunitas belajar</li>
+          <li>Pendidikan inklusif dipengaruhi aliran humanis dan pemikiran Montessori</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="div-line">KI HAJAR DEWANTARA</div>
+
+    <div class="card" id="c-khd">
+      <div class="card-header" onclick="toggleCard('c-khd')">
+        <div class="card-icon" style="background:#fef3c7; font-size:18px">⭐</div>
+        <div class="card-head-text">
+          <h3>Ki Hajar Dewantara &amp; Sintesis Pendidikan Nasional</h3>
+          <p>Tokoh paling berpengaruh dalam membentuk wajah pendidikan Indonesia</p>
+        </div>
+        <div class="card-toggle">▾</div>
+      </div>
+      <div class="card-body">
+        <div class="card-inner">
+          <div class="hl hl-amber">
+            <div class="hl-title">🌟 Trilogi Pendidikan Ki Hajar Dewantara</div>
+            <strong>Ing ngarsa sung tuladha</strong> (di depan memberi teladan) · <strong>Ing madya mangun karsa</strong> (di tengah membangun motivasi) · <strong>Tut wuri handayani</strong> (di belakang memberikan dorongan)
+          </div>
+          <div class="prose">
+            <p>Ki Hajar Dewantara tidak sekadar mengadopsi aliran pendidikan Barat secara mentah. Ia <strong>mensintesis</strong> pemikiran progresivisme, konvergensi, dan nilai-nilai kebudayaan Jawa/Nusantara menjadi sebuah sistem pendidikan yang otentik bagi bangsa Indonesia.</p>
+            <p>Konsep <em>among</em> (mendampingi) yang ia kembangkan sangat dekat dengan filosofi konseling: pendidik sebagai <strong>pamong</strong> yang menemani, bukan mendominasi, proses tumbuh kembang peserta didik. Ini adalah warisan terpenting bagi konselor sekolah Indonesia.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- KUIS -->
+    <div class="quiz-wrap">
+      <div class="quiz-head">
+        <div class="quiz-head-left">
+          <h3>Kuis Refleksi Bab VI</h3>
+          <p>6 soal · uji pemahaman Anda sebelum melanjutkan</p>
+        </div>
+        <div class="quiz-pct" id="qzPct">0%</div>
+      </div>
+
+      <!-- Q0 -->
+      <div class="qz-card active" id="qz0">
+        <div class="qz-num">SOAL 01 / 06</div>
+        <div class="qz-text">Aliran yang berpandangan bahwa manusia lahir sebagai <em>tabula rasa</em> dan perkembangannya ditentukan sepenuhnya oleh pengalaman dan lingkungan adalah...</div>
+        <div class="qz-opts">
+          <button class="qz-opt" onclick="ans(this,0,false)">A. Nativisme</button>
+          <button class="qz-opt" onclick="ans(this,0,true)">B. Empirisme</button>
+          <button class="qz-opt" onclick="ans(this,0,false)">C. Konvergensi</button>
+          <button class="qz-opt" onclick="ans(this,0,false)">D. Perenialisme</button>
+        </div>
+        <div class="qz-fb" id="fb0"></div>
+      </div>
+
+      <!-- Q1 -->
+      <div class="qz-card" id="qz1">
+        <div class="qz-num">SOAL 02 / 06</div>
+        <div class="qz-text">Tokoh progresivisme yang terkenal dengan ungkapan <em>"Education is life itself"</em> dan konsep <em>Learning by Doing</em> adalah...</div>
+        <div class="qz-opts">
+          <button class="qz-opt" onclick="ans(this,1,false)">A. William Bagley</button>
+          <button class="qz-opt" onclick="ans(this,1,false)">B. Paulo Freire</button>
+          <button class="qz-opt" onclick="ans(this,1,true)">C. John Dewey</button>
+          <button class="qz-opt" onclick="ans(this,1,false)">D. Ivan Illich</button>
+        </div>
+        <div class="qz-fb" id="fb1"></div>
+      </div>
+
+      <!-- Q2 -->
+      <div class="qz-card" id="qz2">
+        <div class="qz-num">SOAL 03 / 06</div>
+        <div class="qz-text">Maria Montessori mengembangkan metode pendidikan yang menekankan...</div>
+        <div class="qz-opts">
+          <button class="qz-opt" onclick="ans(this,2,false)">A. Hafalan teks-teks klasik peradaban besar</button>
+          <button class="qz-opt" onclick="ans(this,2,true)">B. Kebebasan terstruktur dan belajar mandiri sesuai perkembangan anak</button>
+          <button class="qz-opt" onclick="ans(this,2,false)">C. Reformasi sosial melalui aksi kolektif peserta didik</button>
+          <button class="qz-opt" onclick="ans(this,2,false)">D. Kerja produktif sebagai inti kurikulum nasional</button>
+        </div>
+        <div class="qz-fb" id="fb2"></div>
+      </div>
+
+      <!-- Q3 -->
+      <div class="qz-card" id="qz3">
+        <div class="qz-num">SOAL 04 / 06</div>
+        <div class="qz-text">Paulo Freire mengkritik <em>"banking education"</em> karena...</div>
+        <div class="qz-opts">
+          <button class="qz-opt" onclick="ans(this,3,false)">A. Terlalu banyak menggunakan teknologi dalam pembelajaran</button>
+          <button class="qz-opt" onclick="ans(this,3,false)">B. Kurang memperhatikan kebutuhan fisik siswa</button>
+          <button class="qz-opt" onclick="ans(this,3,true)">C. Memperlakukan siswa sebagai wadah pasif tanpa mendorong kesadaran kritis</button>
+          <button class="qz-opt" onclick="ans(this,3,false)">D. Mengabaikan nilai-nilai agama dalam kurikulum</button>
+        </div>
+        <div class="qz-fb" id="fb3"></div>
+      </div>
+
+      <!-- Q4 -->
+      <div class="qz-card" id="qz4">
+        <div class="qz-num">SOAL 05 / 06</div>
+        <div class="qz-text">Trilogi pendidikan Ki Hajar Dewantara yang menjadi semboyan Kementerian Pendidikan Indonesia adalah...</div>
+        <div class="qz-opts">
+          <button class="qz-opt" onclick="ans(this,4,false)">A. Satyam Sivam Sundaram</button>
+          <button class="qz-opt" onclick="ans(this,4,true)">B. Ing ngarsa sung tuladha, ing madya mangun karsa, tut wuri handayani</button>
+          <button class="qz-opt" onclick="ans(this,4,false)">C. Bhineka Tunggal Ika, Pancasila, UUD 1945</button>
+          <button class="qz-opt" onclick="ans(this,4,false)">D. Cipta, rasa, karsa, dan karya</button>
+        </div>
+        <div class="qz-fb" id="fb4"></div>
+      </div>
+
+      <!-- Q5 -->
+      <div class="qz-card" id="qz5">
+        <div class="qz-num">SOAL 06 / 06</div>
+        <div class="qz-text">Kurikulum Merdeka yang diterapkan di Indonesia paling kuat dipengaruhi oleh aliran...</div>
+        <div class="qz-opts">
+          <button class="qz-opt" onclick="ans(this,5,false)">A. Perenialisme — kurikulum berdasarkan karya klasik</button>
+          <button class="qz-opt" onclick="ans(this,5,false)">B. Nativisme — kurikulum disesuaikan bakat bawaan</button>
+          <button class="qz-opt" onclick="ans(this,5,true)">C. Progresivisme — berpusat pada murid, berbasis proyek nyata</button>
+          <button class="qz-opt" onclick="ans(this,5,false)">D. Esensialisme — penguasaan materi inti secara ketat</button>
+        </div>
+        <div class="qz-fb" id="fb5"></div>
+      </div>
+
+      <!-- RESULT -->
+      <div class="qz-result" id="qzResult">
+        <div class="qz-result-score" id="qzScore">0/6</div>
+        <div class="qz-result-label">Skor Kuis Refleksi Bab VI</div>
+        <div class="qz-result-msg" id="qzMsg"></div>
+        <button class="qz-retry" onclick="retryQuiz()">↺ Ulangi Kuis</button>
+      </div>
+
+      <div class="qz-foot" id="qzFoot">
+        <button class="qz-btn prev" id="qBtnPrev" onclick="qPrev()" disabled>← Sebelumnya</button>
+        <span class="qz-step" id="qStep">01 / 06</span>
+        <button class="qz-btn" id="qBtnNext" onclick="qNext()">Selanjutnya →</button>
+      </div>
+    </div>
+
+  </div><!-- end panel D -->
+
+</div><!-- end main -->
+
+<!-- FOOTER -->
+<div class="footer">
+  <strong>Martin Bernard, M.Pd.</strong><br>
+  Dosen Landasan Pendidikan · IKIP Siliwangi Cimahi<br>
+  Program Studi Bimbingan dan Konseling<br>
+  <span style="opacity:0.4">© 2025 IKIP Siliwangi · Bahan Ajar Digital Interaktif</span>
+</div>
+
+<script>
+// ═══ TABS ═══
+let currentTab = 0;
+const tabLabels = ['A · Aliran Klasik', 'B · Aliran Baru', 'C · Gerakan Baru', 'D · Indonesia'];
+
+function switchTab(idx) {
+  document.querySelectorAll('.tab-panel').forEach((p,i) => p.classList.toggle('active', i===idx));
+  document.querySelectorAll('.tab-btn').forEach((b,i) => b.classList.toggle('active', i===idx));
+  currentTab = idx;
+  updateNav();
+}
+
+// ═══ SIDE NAV ═══
+const nav = document.getElementById('sidenav');
+tabLabels.forEach((lbl, i) => {
+  const d = document.createElement('div');
+  d.className = 'sidenav-dot' + (i===0?' active':'');
+  d.dataset.label = lbl;
+  d.onclick = () => { switchTab(i); d.parentElement.querySelectorAll('.sidenav-dot').forEach((x,j) => x.classList.toggle('active', j===i)); };
+  nav.appendChild(d);
+});
+function updateNav() {
+  nav.querySelectorAll('.sidenav-dot').forEach((d,i) => d.classList.toggle('active', i===currentTab));
+}
+
+// ═══ ACCORDION CARDS ═══
+function toggleCard(id) {
+  const c = document.getElementById(id);
+  c.classList.toggle('open');
+}
+
+// ═══ QUIZ ═══
+const TOTAL_Q = 6;
+let qCurrent = 0;
+let qAnswered = new Array(TOTAL_Q).fill(false);
+let qScore = 0;
+
+const feedbacks = [
+  'Tepat! Empirisme (John Locke) memandang manusia sebagai tabula rasa yang dibentuk sepenuhnya oleh pengalaman dan lingkungan.',
+  'Benar! John Dewey adalah bapak progresivisme, terkenal dengan prinsip Learning by Doing dan Education is Life.',
+  'Tepat! Montessori menekankan kebebasan terstruktur—anak belajar mandiri dengan material yang dirancang sesuai tahap perkembangannya.',
+  'Benar! Freire mengkritik banking education karena memperlakukan siswa secara pasif, tanpa ruang untuk berpikir kritis tentang realitas.',
+  'Tepat! Trilogi ini menjadi semboyan Kemendikbud dan landasan filosofi pendidikan Indonesia sejak era Ki Hajar Dewantara.',
+  'Benar! Kurikulum Merdeka sangat kental dengan nafas progresivisme: Projek Penguatan Profil Pelajar Pancasila (P5), diferensiasi, dan berpusat pada murid.'
+];
+const wrongFb = [
+  'Belum tepat. Nativisme percaya pada bawaan genetis, konvergensi memadukan keduanya. Empirisme-lah yang menekankan tabula rasa.',
+  'Belum tepat. Freire dan Illich adalah tokoh pedagogi kritis. Dewey-lah pendiri progresivisme dengan Learning by Doing.',
+  'Belum tepat. Montessori bukan tentang hafalan atau reformasi sosial, melainkan kebebasan belajar sesuai perkembangan unik anak.',
+  'Belum tepat. Freire mengkritik pendekatan pasif, bukan soal teknologi atau agama. Inti kritiknya adalah absennya kesadaran kritis.',
+  'Belum tepat. Trilogi "Ing ngarsa sung tuladha, ing madya mangun karsa, tut wuri handayani" adalah semboyan khas Ki Hajar Dewantara.',
+  'Belum tepat. Kurikulum Merdeka menekankan proyek, berpusat pada murid, dan relevansi kontekstual—ini ciri khas progresivisme Dewey.'
+];
+
+function ans(btn, qIdx, isCorrect) {
+  if (qAnswered[qIdx]) return;
+  qAnswered[qIdx] = true;
+  const opts = btn.parentElement.querySelectorAll('.qz-opt');
+  opts.forEach(o => o.disabled = true);
+  const fb = document.getElementById('fb' + qIdx);
+  if (isCorrect) {
+    btn.classList.add('correct');
+    qScore++;
+    fb.className = 'qz-fb ok';
+    fb.textContent = '✓ ' + feedbacks[qIdx];
+  } else {
+    btn.classList.add('wrong');
+    fb.className = 'qz-fb no';
+    fb.textContent = '✗ ' + wrongFb[qIdx];
+    opts.forEach(o => { if (o.onclick && o.onclick.toString().includes('true')) o.classList.add('correct'); });
+  }
+  updateQzPct();
+}
+
+function updateQzPct() {
+  const done = qAnswered.filter(Boolean).length;
+  document.getElementById('qzPct').textContent = Math.round((done/TOTAL_Q)*100) + '%';
+  document.getElementById('heroFill').style.width = Math.round((done/TOTAL_Q)*100) + '%';
+}
+
+function showQz(idx) {
+  document.querySelectorAll('.qz-card').forEach((c,i) => c.classList.toggle('active', i===idx));
+  document.getElementById('qStep').textContent = String(idx+1).padStart(2,'0') + ' / ' + String(TOTAL_Q).padStart(2,'0');
+  document.getElementById('qBtnPrev').disabled = idx === 0;
+  const isLast = idx === TOTAL_Q - 1;
+  const btn = document.getElementById('qBtnNext');
+  btn.textContent = isLast ? 'Lihat Hasil ✦' : 'Selanjutnya →';
+}
+
+function qNext() {
+  if (qCurrent < TOTAL_Q - 1) { qCurrent++; showQz(qCurrent); }
+  else {
+    document.querySelectorAll('.qz-card').forEach(c => c.classList.remove('active'));
+    document.getElementById('qzResult').classList.add('show');
+    document.getElementById('qzFoot').style.display = 'none';
+    document.getElementById('qzScore').textContent = qScore + '/' + TOTAL_Q;
+    let msg;
+    if (qScore === 6) msg = 'Sempurna! Anda menguasai seluruh materi Aliran dan Gerakan Pendidikan. Terus pertahankan!';
+    else if (qScore >= 4) msg = 'Bagus sekali! Pemahaman Anda sudah solid. Pelajari kembali aliran yang masih keliru untuk memperdalam.';
+    else if (qScore >= 2) msg = 'Cukup baik. Beberapa konsep perlu diperdalam—terutama perbedaan antar aliran dan tokoh-tokohnya.';
+    else msg = 'Jangan menyerah. Baca ulang materi dari awal, fokus pada nama tokoh dan gagasan inti setiap aliran.';
+    document.getElementById('qzMsg').textContent = msg;
+  }
+}
+function qPrev() { if (qCurrent > 0) { qCurrent--; showQz(qCurrent); } }
+
+function retryQuiz() {
+  qCurrent = 0; qScore = 0;
+  qAnswered = new Array(TOTAL_Q).fill(false);
+  document.getElementById('qzResult').classList.remove('show');
+  document.getElementById('qzFoot').style.display = '';
+  document.querySelectorAll('.qz-opt').forEach(o => { o.disabled = false; o.classList.remove('correct','wrong'); });
+  document.querySelectorAll('.qz-fb').forEach(f => f.className = 'qz-fb');
+  updateQzPct();
+  document.getElementById('qzPct').textContent = '0%';
+  document.getElementById('heroFill').style.width = '0%';
+  showQz(0);
+}
+
+showQz(0);
+</script>
+</body>
+</html>
