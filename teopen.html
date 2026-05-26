@@ -1,0 +1,1000 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Teori-Teori Belajar | Landasan Pendidikan</title>
+<link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=DM+Sans:wght@300;400;500;600&family=Fira+Code:wght@400;500&display=swap" rel="stylesheet">
+<style>
+:root {
+  --bg:       #0d1117;
+  --surface:  #161b22;
+  --surface2: #1c2333;
+  --border:   #30363d;
+
+  --A:  #58a6ff;  /* Behavioristik — biru */
+  --Ag: #1f3a5f;
+  --B:  #3fb950;  /* Kognitif — hijau */
+  --Bg: #1a3a23;
+  --C:  #f78166;  /* Humanistik — oranye */
+  --Cg: #3d1f1a;
+  --D:  #d2a8ff;  /* Konstruktivistik — ungu */
+  --Dg: #2d1f4a;
+
+  --text:    #e6edf3;
+  --muted:   #8b949e;
+  --gold:    #e3b341;
+}
+
+*{margin:0;padding:0;box-sizing:border-box;}
+
+body {
+  background: var(--bg);
+  color: var(--text);
+  font-family: 'DM Sans', sans-serif;
+  line-height: 1.7;
+  min-height: 100vh;
+  background-image:
+    radial-gradient(ellipse 60% 40% at 10% 0%, rgba(88,166,255,.07) 0%, transparent 60%),
+    radial-gradient(ellipse 60% 40% at 90% 100%, rgba(210,168,255,.07) 0%, transparent 60%);
+}
+
+/* ── HEADER ── */
+.hero {
+  padding: 4rem 1.5rem 3rem;
+  text-align: center;
+  position: relative;
+  overflow: hidden;
+}
+.hero::before {
+  content:'';
+  position:absolute;inset:0;
+  background: repeating-linear-gradient(
+    90deg,
+    transparent 0px, transparent 79px,
+    rgba(255,255,255,.018) 79px, rgba(255,255,255,.018) 80px
+  ),
+  repeating-linear-gradient(
+    0deg,
+    transparent 0px, transparent 79px,
+    rgba(255,255,255,.018) 79px, rgba(255,255,255,.018) 80px
+  );
+  pointer-events:none;
+}
+.hero-tag {
+  display:inline-flex; align-items:center; gap:.5rem;
+  font-family:'Fira Code', monospace;
+  font-size:.72rem; letter-spacing:.18em;
+  color: var(--muted);
+  border:1px solid var(--border);
+  padding:.3rem 1rem; border-radius:20px;
+  margin-bottom:1.5rem;
+}
+.hero-tag span { display:inline-block; width:6px;height:6px;border-radius:50%;background:var(--B);}
+.hero h1 {
+  font-family:'DM Serif Display', serif;
+  font-size: clamp(2rem,5vw,3.4rem);
+  font-style: italic;
+  line-height:1.15;
+  margin-bottom:.6rem;
+}
+.hero h1 em { font-style:normal; color: var(--gold); }
+.hero .sub {
+  font-size:.9rem; color: var(--muted);
+  margin-bottom:.5rem;
+}
+.hero-line {
+  width:60px;height:1px;
+  background:linear-gradient(90deg,transparent,var(--gold),transparent);
+  margin:1.5rem auto 0;
+}
+
+/* ── NAV PILLS ── */
+.nav-bar {
+  display:flex; flex-wrap:wrap; justify-content:center; gap:.6rem;
+  padding:1.2rem 1.5rem 2rem;
+  position:sticky; top:0; z-index:50;
+  background:rgba(13,17,23,.85);
+  backdrop-filter:blur(12px);
+  border-bottom:1px solid var(--border);
+}
+.nav-pill {
+  display:flex;align-items:center;gap:.4rem;
+  padding:.38rem 1rem;
+  border-radius:20px;
+  border:1px solid var(--border);
+  background:var(--surface);
+  color:var(--muted);
+  font-size:.78rem; font-weight:500;
+  text-decoration:none;
+  transition:.2s;
+  cursor:pointer;
+}
+.nav-pill:hover,.nav-pill.active { color:var(--text); border-color:currentColor; }
+.nav-pill[data-c="A"]:hover,.nav-pill[data-c="A"].active{color:var(--A);border-color:var(--A);background:var(--Ag);}
+.nav-pill[data-c="B"]:hover,.nav-pill[data-c="B"].active{color:var(--B);border-color:var(--B);background:var(--Bg);}
+.nav-pill[data-c="C"]:hover,.nav-pill[data-c="C"].active{color:var(--C);border-color:var(--C);background:var(--Cg);}
+.nav-pill[data-c="D"]:hover,.nav-pill[data-c="D"].active{color:var(--D);border-color:var(--D);background:var(--Dg);}
+.dot { width:7px;height:7px;border-radius:50%; }
+.dot-A{background:var(--A);}.dot-B{background:var(--B);}.dot-C{background:var(--C);}.dot-D{background:var(--D);}
+
+/* ── MAIN ── */
+.wrap { max-width:900px; margin:0 auto; padding:2rem 1.2rem 5rem; }
+
+/* ── OVERVIEW CARDS ── */
+.overview-grid {
+  display:grid; grid-template-columns:repeat(auto-fill,minmax(195px,1fr));
+  gap:.8rem; margin-bottom:3.5rem;
+}
+.ov-card {
+  background:var(--surface);
+  border:1px solid var(--border);
+  border-radius:10px;
+  padding:1.2rem 1rem;
+  cursor:pointer;
+  transition:.25s;
+  text-align:center;
+}
+.ov-card:hover { transform:translateY(-4px); }
+.ov-card[data-c="A"]{border-top:3px solid var(--A);}
+.ov-card[data-c="B"]{border-top:3px solid var(--B);}
+.ov-card[data-c="C"]{border-top:3px solid var(--C);}
+.ov-card[data-c="D"]{border-top:3px solid var(--D);}
+.ov-icon { font-size:2rem; margin-bottom:.5rem; }
+.ov-label {
+  font-size:.78rem; font-family:'Fira Code',monospace;
+  letter-spacing:.1em; margin-bottom:.25rem;
+}
+.ov-card[data-c="A"] .ov-label{color:var(--A);}
+.ov-card[data-c="B"] .ov-label{color:var(--B);}
+.ov-card[data-c="C"] .ov-label{color:var(--C);}
+.ov-card[data-c="D"] .ov-label{color:var(--D);}
+.ov-name { font-family:'DM Serif Display',serif; font-size:1rem; }
+.ov-tokoh { font-size:.78rem; color:var(--muted); margin-top:.3rem; }
+
+/* ── SECTION ── */
+.theory-section {
+  margin-bottom:4rem;
+  opacity:0; transform:translateY(30px);
+  transition:.6s ease;
+}
+.theory-section.vis { opacity:1; transform:translateY(0); }
+
+.sec-head {
+  display:flex; align-items:center; gap:1rem;
+  margin-bottom:1.5rem;
+  padding-bottom:1rem;
+  border-bottom:1px solid var(--border);
+}
+.sec-letter {
+  font-family:'DM Serif Display',serif;
+  font-size:2.8rem; line-height:1;
+  font-style:italic; flex-shrink:0;
+}
+[data-c="A"] .sec-letter{color:var(--A);}
+[data-c="B"] .sec-letter{color:var(--B);}
+[data-c="C"] .sec-letter{color:var(--C);}
+[data-c="D"] .sec-letter{color:var(--D);}
+.sec-title-wrap {}
+.sec-subtitle {
+  font-family:'Fira Code',monospace;
+  font-size:.7rem; letter-spacing:.15em;
+  color:var(--muted); margin-bottom:.2rem;
+}
+.sec-title { font-family:'DM Serif Display',serif; font-size:1.5rem; }
+
+/* ── CONTENT BLOCKS ── */
+.lead-text {
+  font-size:1rem; font-weight:300; color:#c9d1d9;
+  border-left:3px solid var(--border);
+  padding-left:1rem; margin-bottom:1.5rem;
+  font-style:italic;
+}
+[data-c="A"] .lead-text{border-color:var(--A);}
+[data-c="B"] .lead-text{border-color:var(--B);}
+[data-c="C"] .lead-text{border-color:var(--C);}
+[data-c="D"] .lead-text{border-color:var(--D);}
+
+p { font-size:.92rem; margin-bottom:1rem; color:#c9d1d9; }
+p:last-child{margin-bottom:0;}
+
+h3 {
+  font-family:'DM Serif Display',serif;
+  font-size:1rem; margin:1.8rem 0 .7rem;
+  color:var(--text);
+  display:flex;align-items:center;gap:.6rem;
+}
+h3::before{
+  content:'';
+  display:inline-block;
+  width:20px;height:1px;
+  background:currentColor;
+  opacity:.4;
+}
+[data-c="A"] h3{color:var(--A);}
+[data-c="B"] h3{color:var(--B);}
+[data-c="C"] h3{color:var(--C);}
+[data-c="D"] h3{color:var(--D);}
+
+/* ── INFO GRID ── */
+.info-grid {
+  display:grid; grid-template-columns:repeat(auto-fill,minmax(185px,1fr));
+  gap:.7rem; margin:1rem 0;
+}
+.info-card {
+  background:var(--surface2);
+  border:1px solid var(--border);
+  border-radius:8px;
+  padding:.9rem 1rem;
+}
+.info-card .ic-head {
+  font-family:'Fira Code',monospace;
+  font-size:.68rem; letter-spacing:.1em;
+  margin-bottom:.35rem;
+}
+[data-c="A"] .info-card .ic-head{color:var(--A);}
+[data-c="B"] .info-card .ic-head{color:var(--B);}
+[data-c="C"] .info-card .ic-head{color:var(--C);}
+[data-c="D"] .info-card .ic-head{color:var(--D);}
+.info-card p { font-size:.82rem !important; color:var(--muted) !important; margin:0 !important; }
+
+/* ── LIST ── */
+.styled-list{list-style:none;margin:.6rem 0 1rem;}
+.styled-list li {
+  display:flex;align-items:flex-start;gap:.6rem;
+  font-size:.87rem; color:#c9d1d9;
+  padding:.3rem 0;
+  border-bottom:1px solid rgba(255,255,255,.05);
+}
+.styled-list li:last-child{border:none;}
+.bullet {
+  width:6px;height:6px;border-radius:50%;
+  flex-shrink:0;margin-top:.55rem;
+}
+.b-A{background:var(--A);} .b-B{background:var(--B);}
+.b-C{background:var(--C);} .b-D{background:var(--D);}
+
+/* ── TOKOH CARDS ── */
+.tokoh-row { display:flex;flex-wrap:wrap;gap:.6rem;margin:1rem 0; }
+.tokoh-chip {
+  display:flex;flex-direction:column;
+  background:var(--surface2);
+  border:1px solid var(--border);
+  border-radius:8px;
+  padding:.7rem 1rem;
+  min-width:140px;
+  flex:1;
+}
+.tokoh-name {
+  font-family:'DM Serif Display',serif;
+  font-size:.92rem;margin-bottom:.15rem;
+}
+.tokoh-kontrib { font-size:.75rem;color:var(--muted); }
+
+/* ── QUOTE ── */
+.blockquote {
+  background:var(--surface2);
+  border:1px solid var(--border);
+  border-radius:8px;
+  padding:1.1rem 1.3rem;
+  margin:1.2rem 0;
+  font-style:italic;
+  font-size:.9rem;color:#c9d1d9;
+  position:relative;
+}
+.blockquote::before{
+  content:'"';
+  position:absolute;top:-.3rem;left:.8rem;
+  font-size:3rem;line-height:1;
+  font-family:'DM Serif Display',serif;
+  opacity:.18;
+}
+.blockquote cite{
+  display:block;margin-top:.5rem;
+  font-style:normal;
+  font-family:'Fira Code',monospace;
+  font-size:.7rem;color:var(--muted);
+}
+
+/* ── TABLE ── */
+.tbl-wrap{overflow-x:auto;margin:1rem 0;}
+table{width:100%;border-collapse:collapse;font-size:.82rem;}
+thead tr{background:var(--surface2);}
+th{
+  padding:.6rem .9rem;text-align:left;
+  font-family:'Fira Code',monospace;font-size:.72rem;
+  letter-spacing:.06em;color:var(--muted);
+  border-bottom:1px solid var(--border);
+}
+td{
+  padding:.58rem .9rem;
+  border-bottom:1px solid rgba(255,255,255,.05);
+  color:#c9d1d9;
+}
+tr:hover td{background:rgba(255,255,255,.03);}
+
+/* ── HIGHLIGHT ── */
+.hl-box {
+  border:1px solid var(--border);
+  border-radius:8px;
+  padding:1rem 1.2rem;
+  margin:1.2rem 0;
+  font-size:.87rem;
+}
+[data-c="A"] .hl-box{background:var(--Ag);border-color:var(--A);}
+[data-c="B"] .hl-box{background:var(--Bg);border-color:var(--B);}
+[data-c="C"] .hl-box{background:var(--Cg);border-color:var(--C);}
+[data-c="D"] .hl-box{background:var(--Dg);border-color:var(--D);}
+.hl-box strong{color:var(--text);}
+.hl-box p{color:var(--muted) !important;font-size:.85rem !important;}
+
+/* ── COMPARE TABLE ── */
+.compare-section { margin:3rem 0 4rem; }
+.compare-section h2 {
+  font-family:'DM Serif Display',serif;
+  font-size:1.6rem; margin-bottom:1.2rem;
+  text-align:center;
+}
+
+/* ── STEP FLOW ── */
+.flow{display:flex;flex-direction:column;gap:0;margin:1rem 0;}
+.flow-step{display:flex;align-items:flex-start;gap:.9rem;padding:.8rem 0;position:relative;}
+.flow-step:not(:last-child)::after{
+  content:'';position:absolute;
+  left:1.15rem;top:3rem;bottom:0;width:1px;
+  background:linear-gradient(to bottom,var(--border),transparent);
+}
+.flow-num{
+  width:2.3rem;height:2.3rem;border-radius:50%;
+  display:flex;align-items:center;justify-content:center;
+  font-family:'Fira Code',monospace;font-size:.78rem;
+  flex-shrink:0;z-index:1;font-weight:500;
+}
+[data-c="A"] .flow-num{background:var(--Ag);color:var(--A);border:1px solid var(--A);}
+[data-c="B"] .flow-num{background:var(--Bg);color:var(--B);border:1px solid var(--B);}
+[data-c="C"] .flow-num{background:var(--Cg);color:var(--C);border:1px solid var(--C);}
+[data-c="D"] .flow-num{background:var(--Dg);color:var(--D);border:1px solid var(--D);}
+.flow-content h4{font-family:'DM Serif Display',serif;font-size:.95rem;margin-bottom:.2rem;}
+.flow-content p{font-size:.83rem !important;color:var(--muted) !important;margin:0 !important;}
+
+/* ── APLIKASI TAGS ── */
+.tags{display:flex;flex-wrap:wrap;gap:.4rem;margin:.8rem 0;}
+.tag{
+  padding:.25rem .7rem;border-radius:4px;
+  font-size:.75rem;font-family:'Fira Code',monospace;
+  border:1px solid transparent;
+}
+[data-c="A"] .tag{background:var(--Ag);color:var(--A);border-color:rgba(88,166,255,.3);}
+[data-c="B"] .tag{background:var(--Bg);color:var(--B);border-color:rgba(63,185,80,.3);}
+[data-c="C"] .tag{background:var(--Cg);color:var(--C);border-color:rgba(247,129,102,.3);}
+[data-c="D"] .tag{background:var(--Dg);color:var(--D);border-color:rgba(210,168,255,.3);}
+
+/* ── PROGRESS ── */
+.progress-bar{position:fixed;top:0;left:0;height:2px;background:linear-gradient(90deg,var(--A),var(--B),var(--C),var(--D));z-index:999;transition:width .1s;}
+
+/* ── BACK TOP ── */
+.back-top{
+  position:fixed;bottom:2rem;right:1.5rem;
+  width:2.4rem;height:2.4rem;
+  background:var(--surface2);color:var(--text);
+  border:1px solid var(--border);
+  border-radius:6px;font-size:1rem;
+  cursor:pointer;display:none;align-items:center;justify-content:center;
+  transition:.2s;
+}
+.back-top:hover{background:var(--surface);border-color:var(--gold);}
+.back-top.show{display:flex;}
+
+/* ── DIVIDER ── */
+.divider{height:1px;background:var(--border);margin:2.5rem 0;position:relative;}
+.divider::after{
+  content:'◆';position:absolute;top:50%;left:50%;
+  transform:translate(-50%,-50%);
+  background:var(--bg);padding:0 .8rem;
+  color:var(--border);font-size:.7rem;
+}
+
+/* ── FOOTER ── */
+footer{
+  text-align:center;padding:2rem;
+  font-family:'Fira Code',monospace;font-size:.7rem;
+  color:var(--muted);letter-spacing:.06em;
+  border-top:1px solid var(--border);
+}
+
+@media(max-width:600px){
+  .overview-grid{grid-template-columns:1fr 1fr;}
+  .info-grid{grid-template-columns:1fr;}
+}
+</style>
+</head>
+<body>
+
+<div class="progress-bar" id="pb"></div>
+
+<!-- HERO -->
+<header class="hero">
+  <div class="hero-tag"><span></span> Landasan Pendidikan &nbsp;·&nbsp; Materi Kuliah</div>
+  <h1>Teori-Teori <em>Belajar</em></h1>
+  <p class="sub">Martin Bernard, M.Pd. &nbsp;·&nbsp; IKIP Siliwangi, Cimahi &nbsp;·&nbsp; Pendidikan Matematika</p>
+  <div class="hero-line"></div>
+</header>
+
+<!-- NAV -->
+<nav class="nav-bar">
+  <a class="nav-pill" data-c="A" href="#sec-A"><span class="dot dot-A"></span>A. Behavioristik</a>
+  <a class="nav-pill" data-c="B" href="#sec-B"><span class="dot dot-B"></span>B. Kognitif</a>
+  <a class="nav-pill" data-c="C" href="#sec-C"><span class="dot dot-C"></span>C. Humanistik</a>
+  <a class="nav-pill" data-c="D" href="#sec-D"><span class="dot dot-D"></span>D. Konstruktivistik</a>
+</nav>
+
+<div class="wrap">
+
+  <!-- OVERVIEW -->
+  <div class="overview-grid">
+    <div class="ov-card" data-c="A" onclick="scrollTo('sec-A')">
+      <div class="ov-icon">🔁</div>
+      <div class="ov-label">A.</div>
+      <div class="ov-name">Behavioristik</div>
+      <div class="ov-tokoh">Pavlov · Thorndike · Skinner</div>
+    </div>
+    <div class="ov-card" data-c="B" onclick="scrollTo('sec-B')">
+      <div class="ov-icon">🧠</div>
+      <div class="ov-label">B.</div>
+      <div class="ov-name">Kognitif</div>
+      <div class="ov-tokoh">Piaget · Bruner · Ausubel</div>
+    </div>
+    <div class="ov-card" data-c="C" onclick="scrollTo('sec-C')">
+      <div class="ov-icon">❤️</div>
+      <div class="ov-label">C.</div>
+      <div class="ov-name">Humanistik</div>
+      <div class="ov-tokoh">Maslow · Rogers · Combs</div>
+    </div>
+    <div class="ov-card" data-c="D" onclick="scrollTo('sec-D')">
+      <div class="ov-icon">🏗️</div>
+      <div class="ov-label">D.</div>
+      <div class="ov-name">Konstruktivistik</div>
+      <div class="ov-tokoh">Vygotsky · Dewey · von Glasersfeld</div>
+    </div>
+  </div>
+
+  <!-- ══════════════════════════════════════ -->
+  <!-- A. BEHAVIORISTIK -->
+  <!-- ══════════════════════════════════════ -->
+  <section class="theory-section" id="sec-A" data-c="A">
+    <div class="sec-head">
+      <div class="sec-letter">A.</div>
+      <div class="sec-title-wrap">
+        <div class="sec-subtitle">TEORI BELAJAR</div>
+        <div class="sec-title">Behavioristik</div>
+      </div>
+    </div>
+
+    <p class="lead-text">Belajar adalah perubahan perilaku yang dapat diamati dan diukur, terjadi sebagai akibat dari pengalaman atau latihan yang dikondisikan melalui stimulus dan respons.</p>
+
+    <p>Teori Behavioristik memandang manusia sebagai organisme pasif yang perilakunya dibentuk oleh lingkungan. Belajar dianggap terjadi ketika ada perubahan perilaku yang terukur dan dapat diamati secara langsung — bukan pada proses mental yang terjadi di dalam pikiran.</p>
+
+    <h3>Tokoh-Tokoh Utama</h3>
+    <div class="tokoh-row">
+      <div class="tokoh-chip">
+        <div class="tokoh-name">Ivan Pavlov</div>
+        <div class="tokoh-kontrib">Classical Conditioning — belajar melalui asosiasi stimulus terkondisi dan respons refleks.</div>
+      </div>
+      <div class="tokoh-chip">
+        <div class="tokoh-name">E.L. Thorndike</div>
+        <div class="tokoh-kontrib">Law of Effect — respons yang diikuti kepuasan akan diperkuat; yang diikuti ketidakpuasan akan diperlemah.</div>
+      </div>
+      <div class="tokoh-chip">
+        <div class="tokoh-name">B.F. Skinner</div>
+        <div class="tokoh-kontrib">Operant Conditioning — perilaku dibentuk melalui reinforcement (penguatan) dan punishment (hukuman).</div>
+      </div>
+      <div class="tokoh-chip">
+        <div class="tokoh-name">J.B. Watson</div>
+        <div class="tokoh-kontrib">"Beri saya 12 bayi sehat, saya bentuk jadi apa pun" — lingkungan menentukan segalanya.</div>
+      </div>
+    </div>
+
+    <h3>Prinsip-Prinsip Dasar</h3>
+    <ul class="styled-list">
+      <li><span class="bullet b-A"></span>Belajar adalah perubahan tingkah laku yang dapat diamati dari luar.</li>
+      <li><span class="bullet b-A"></span>Perubahan perilaku terjadi akibat adanya stimulus yang merangsang respons.</li>
+      <li><span class="bullet b-A"></span>Penguatan (reinforcement) positif maupun negatif memperkuat respons yang diinginkan.</li>
+      <li><span class="bullet b-A"></span>Hukuman (punishment) melemahkan atau menghilangkan perilaku yang tidak diinginkan.</li>
+      <li><span class="bullet b-A"></span>Belajar berlangsung secara bertahap (trial and error) dan melalui pengulangan.</li>
+      <li><span class="bullet b-A"></span>Generalisasi: respons yang dipelajari pada stimulus tertentu dapat ditransfer ke stimulus serupa.</li>
+    </ul>
+
+    <h3>Jenis-Jenis Kondisioning</h3>
+    <div class="info-grid">
+      <div class="info-card">
+        <div class="ic-head">CLASSICAL CONDITIONING</div>
+        <p>Stimulus netral yang dipasangkan berulang dengan stimulus tak terkondisi akhirnya memunculkan respons terkondisi (Pavlov).</p>
+      </div>
+      <div class="info-card">
+        <div class="ic-head">OPERANT CONDITIONING</div>
+        <p>Perilaku dikontrol oleh konsekuensinya — reinforcement memperkuat, punishment melemahkan (Skinner).</p>
+      </div>
+      <div class="info-card">
+        <div class="ic-head">CONNECTIONISM</div>
+        <p>Belajar adalah pembentukan koneksi antara stimulus dan respons melalui pengulangan dan kepuasan (Thorndike).</p>
+      </div>
+      <div class="info-card">
+        <div class="ic-head">JADWAL PENGUATAN</div>
+        <p>Penguatan rasio tetap, rasio variabel, interval tetap, dan interval variabel menghasilkan pola respons berbeda.</p>
+      </div>
+    </div>
+
+    <h3>Aplikasi dalam Pendidikan</h3>
+    <div class="tags">
+      <span class="tag">Drill & Practice</span>
+      <span class="tag">Pujian & Reward</span>
+      <span class="tag">Punishment Konstruktif</span>
+      <span class="tag">Programmed Instruction</span>
+      <span class="tag">Token Economy</span>
+      <span class="tag">Behavior Modification</span>
+      <span class="tag">Latihan Berulang</span>
+    </div>
+
+    <div class="hl-box">
+      <strong>Implikasi bagi Guru:</strong>
+      <p>Guru merancang lingkungan belajar yang terstruktur, memberikan penguatan positif segera setelah perilaku yang diinginkan muncul, menggunakan repetisi dan latihan terstruktur, serta menetapkan tujuan perilaku yang terukur dan observable.</p>
+    </div>
+
+    <div class="blockquote">
+      "Berikan saya selusin bayi sehat yang terbentuk dengan baik dan dunia tertentu yang saya tentukan untuk membesarkan mereka, dan saya jamin untuk mengambil siapa pun secara acak dan melatihnya menjadi spesialis apa pun yang saya pilih."
+      <cite>— John B. Watson, Behaviorism (1930)</cite>
+    </div>
+
+    <h3>Kelebihan dan Keterbatasan</h3>
+    <div class="tbl-wrap">
+      <table>
+        <thead><tr><th>Kelebihan</th><th>Keterbatasan</th></tr></thead>
+        <tbody>
+          <tr><td>Terukur dan observable secara empiris</td><td>Mengabaikan proses mental internal</td></tr>
+          <tr><td>Efektif untuk keterampilan motorik dan hafalan</td><td>Manusia diperlakukan seperti mesin pasif</td></tr>
+          <tr><td>Teknik reinforcement terbukti efektif</td><td>Tidak menjelaskan belajar kompleks dan kreatif</td></tr>
+          <tr><td>Dasar bagi modifikasi perilaku (terapi)</td><td>Motivasi ekstrinsik dapat mematikan motivasi intrinsik</td></tr>
+        </tbody>
+      </table>
+    </div>
+  </section>
+
+  <div class="divider"></div>
+
+  <!-- ══════════════════════════════════════ -->
+  <!-- B. KOGNITIF -->
+  <!-- ══════════════════════════════════════ -->
+  <section class="theory-section" id="sec-B" data-c="B">
+    <div class="sec-head">
+      <div class="sec-letter">B.</div>
+      <div class="sec-title-wrap">
+        <div class="sec-subtitle">TEORI BELAJAR</div>
+        <div class="sec-title">Kognitif</div>
+      </div>
+    </div>
+
+    <p class="lead-text">Belajar adalah proses aktif di mana individu membangun, mengorganisasi, dan mengubah struktur pengetahuan dalam pikirannya — bukan sekadar respons terhadap stimulus.</p>
+
+    <p>Teori Kognitif berfokus pada proses mental internal seperti persepsi, memori, pemecahan masalah, dan penalaran. Belajar dipandang sebagai proses aktif di mana peserta didik memproses informasi, menghubungkannya dengan pengetahuan yang sudah ada, dan membangun skema pengetahuan baru.</p>
+
+    <h3>Tokoh-Tokoh Utama</h3>
+    <div class="tokoh-row">
+      <div class="tokoh-chip">
+        <div class="tokoh-name">Jean Piaget</div>
+        <div class="tokoh-kontrib">Teori Perkembangan Kognitif — 4 tahap: sensorimotor, praoperasional, operasional konkret, operasional formal.</div>
+      </div>
+      <div class="tokoh-chip">
+        <div class="tokoh-name">Jerome Bruner</div>
+        <div class="tokoh-kontrib">Discovery Learning — belajar melalui penemuan mandiri dan representasi enaktif, ikonik, simbolik.</div>
+      </div>
+      <div class="tokoh-chip">
+        <div class="tokoh-name">David Ausubel</div>
+        <div class="tokoh-kontrib">Meaningful Learning — belajar bermakna terjadi saat informasi baru dikaitkan dengan pengetahuan yang sudah ada (advance organizer).</div>
+      </div>
+      <div class="tokoh-chip">
+        <div class="tokoh-name">Wolfgang Köhler</div>
+        <div class="tokoh-kontrib">Insight Learning — belajar melalui pemahaman mendadak (aha moment) tentang hubungan antar unsur masalah.</div>
+      </div>
+    </div>
+
+    <h3>Tahap Perkembangan Kognitif Piaget</h3>
+    <div class="flow">
+      <div class="flow-step">
+        <div class="flow-num">01</div>
+        <div class="flow-content">
+          <h4>Sensorimotor (0–2 tahun)</h4>
+          <p>Bayi belajar melalui indera dan tindakan motorik. Perkembangan object permanence menjadi pencapaian utama.</p>
+        </div>
+      </div>
+      <div class="flow-step">
+        <div class="flow-num">02</div>
+        <div class="flow-content">
+          <h4>Praoperasional (2–7 tahun)</h4>
+          <p>Perkembangan bahasa dan simbol. Anak masih egosentris dan belum mampu berpikir logis secara penuh.</p>
+        </div>
+      </div>
+      <div class="flow-step">
+        <div class="flow-num">03</div>
+        <div class="flow-content">
+          <h4>Operasional Konkret (7–11 tahun)</h4>
+          <p>Mampu berpikir logis pada objek konkret. Memahami konservasi, klasifikasi, dan seriasi.</p>
+        </div>
+      </div>
+      <div class="flow-step">
+        <div class="flow-num">04</div>
+        <div class="flow-content">
+          <h4>Operasional Formal (12+ tahun)</h4>
+          <p>Mampu berpikir abstrak, hipotetikal, dan deduktif. Fondasi berpikir matematis dan ilmiah tingkat tinggi.</p>
+        </div>
+      </div>
+    </div>
+
+    <h3>Konsep Kunci</h3>
+    <div class="info-grid">
+      <div class="info-card">
+        <div class="ic-head">SKEMA (SCHEMA)</div>
+        <p>Struktur mental/kognitif yang mengorganisir pengalaman dan menjadi kerangka untuk memahami dunia.</p>
+      </div>
+      <div class="info-card">
+        <div class="ic-head">ASIMILASI</div>
+        <p>Proses mengintegrasikan informasi baru ke dalam skema yang sudah ada tanpa mengubah skema tersebut.</p>
+      </div>
+      <div class="info-card">
+        <div class="ic-head">AKOMODASI</div>
+        <p>Proses mengubah atau membuat skema baru untuk menampung informasi yang tidak sesuai dengan skema lama.</p>
+      </div>
+      <div class="info-card">
+        <div class="ic-head">EKUILIBRASI</div>
+        <p>Keseimbangan antara asimilasi dan akomodasi yang mendorong perkembangan kognitif ke tingkat lebih tinggi.</p>
+      </div>
+      <div class="info-card">
+        <div class="ic-head">ADVANCE ORGANIZER</div>
+        <p>Informasi pengantar yang diberikan sebelum materi baru untuk mengaitkan pengetahuan lama dengan baru (Ausubel).</p>
+      </div>
+      <div class="info-card">
+        <div class="ic-head">DISCOVERY LEARNING</div>
+        <p>Peserta didik menemukan sendiri konsep/prinsip melalui eksplorasi aktif, bukan diberitahu secara langsung.</p>
+      </div>
+    </div>
+
+    <h3>Aplikasi dalam Pendidikan</h3>
+    <div class="tags">
+      <span class="tag">Problem-Based Learning</span>
+      <span class="tag">Peta Konsep</span>
+      <span class="tag">Inquiry Learning</span>
+      <span class="tag">Advance Organizer</span>
+      <span class="tag">Discovery Learning</span>
+      <span class="tag">Scaffolding Kognitif</span>
+      <span class="tag">Diferensiasi Level</span>
+    </div>
+
+    <div class="hl-box">
+      <strong>Implikasi bagi Guru:</strong>
+      <p>Guru menyesuaikan materi dengan tahap perkembangan kognitif siswa, menggunakan alat bantu visual dan konkret sebelum abstrak, mendorong eksplorasi dan penemuan mandiri, serta mengaktifkan pengetahuan awal (prior knowledge) sebelum menyajikan materi baru.</p>
+    </div>
+
+    <div class="blockquote">
+      "Tujuan utama pendidikan adalah menciptakan manusia yang mampu melakukan hal-hal baru, tidak sekadar mengulang apa yang dilakukan generasi sebelumnya."
+      <cite>— Jean Piaget</cite>
+    </div>
+  </section>
+
+  <div class="divider"></div>
+
+  <!-- ══════════════════════════════════════ -->
+  <!-- C. HUMANISTIK -->
+  <!-- ══════════════════════════════════════ -->
+  <section class="theory-section" id="sec-C" data-c="C">
+    <div class="sec-head">
+      <div class="sec-letter">C.</div>
+      <div class="sec-title-wrap">
+        <div class="sec-subtitle">TEORI BELAJAR</div>
+        <div class="sec-title">Humanistik</div>
+      </div>
+    </div>
+
+    <p class="lead-text">Belajar adalah proses aktualisasi potensi manusia seutuhnya — melibatkan dimensi kognitif, afektif, dan spiritual — menuju perwujudan diri (self-actualization) yang otentik.</p>
+
+    <p>Teori Humanistik lahir sebagai reaksi terhadap behaviorisme yang mekanistik dan psikoanalisis yang deterministik. Aliran ini menempatkan manusia sebagai makhluk yang bebas, bermartabat, dan memiliki potensi untuk tumbuh. Belajar dipandang bermakna ketika menyentuh kebutuhan, nilai, dan pengalaman hidup peserta didik secara menyeluruh.</p>
+
+    <h3>Tokoh-Tokoh Utama</h3>
+    <div class="tokoh-row">
+      <div class="tokoh-chip">
+        <div class="tokoh-name">Abraham Maslow</div>
+        <div class="tokoh-kontrib">Hierarki Kebutuhan — belajar efektif hanya terjadi bila kebutuhan dasar (fisiologis, keamanan, cinta, harga diri) terpenuhi lebih dulu.</div>
+      </div>
+      <div class="tokoh-chip">
+        <div class="tokoh-name">Carl Rogers</div>
+        <div class="tokoh-kontrib">Student-Centered Learning — belajar bermakna terjadi dalam suasana yang aman, terbuka, dan penuh penerimaan tanpa syarat (unconditional positive regard).</div>
+      </div>
+      <div class="tokoh-chip">
+        <div class="tokoh-name">Arthur Combs</div>
+        <div class="tokoh-kontrib">Perilaku ditentukan oleh persepsi individu terhadap dirinya dan dunianya — bukan oleh stimulus eksternal semata.</div>
+      </div>
+    </div>
+
+    <h3>Hierarki Kebutuhan Maslow dalam Konteks Belajar</h3>
+    <div class="flow">
+      <div class="flow-step">
+        <div class="flow-num">5</div>
+        <div class="flow-content">
+          <h4>Aktualisasi Diri (Self-Actualization)</h4>
+          <p>Puncak perkembangan: kreativitas, otonomi belajar, kontribusi bermakna bagi masyarakat.</p>
+        </div>
+      </div>
+      <div class="flow-step">
+        <div class="flow-num">4</div>
+        <div class="flow-content">
+          <h4>Kebutuhan Penghargaan (Esteem)</h4>
+          <p>Pengakuan prestasi, rasa kompeten, reputasi positif di antara teman sebaya dan guru.</p>
+        </div>
+      </div>
+      <div class="flow-step">
+        <div class="flow-num">3</div>
+        <div class="flow-content">
+          <h4>Kebutuhan Sosial (Love & Belonging)</h4>
+          <p>Rasa diterima dalam komunitas kelas, persahabatan, hubungan positif guru-murid.</p>
+        </div>
+      </div>
+      <div class="flow-step">
+        <div class="flow-num">2</div>
+        <div class="flow-content">
+          <h4>Kebutuhan Keamanan (Safety)</h4>
+          <p>Lingkungan kelas yang aman, bebas dari perundungan, dan bebas dari ancaman hukuman yang berlebihan.</p>
+        </div>
+      </div>
+      <div class="flow-step">
+        <div class="flow-num">1</div>
+        <div class="flow-content">
+          <h4>Kebutuhan Fisiologis (Physiological)</h4>
+          <p>Kondisi fisik yang memadai: tidak lapar, tidak sakit, lingkungan belajar yang nyaman dan layak.</p>
+        </div>
+      </div>
+    </div>
+
+    <h3>Prinsip-Prinsip Teori Humanistik</h3>
+    <ul class="styled-list">
+      <li><span class="bullet b-C"></span>Manusia pada dasarnya baik dan memiliki dorongan bawaan untuk tumbuh dan berkembang.</li>
+      <li><span class="bullet b-C"></span>Belajar yang bermakna melibatkan seluruh pribadi — pikiran, perasaan, dan pengalaman.</li>
+      <li><span class="bullet b-C"></span>Peserta didik belajar paling baik ketika mereka merasakan kebebasan untuk memilih apa yang ingin dipelajari.</li>
+      <li><span class="bullet b-C"></span>Self-concept (konsep diri) sangat menentukan motivasi dan keberhasilan belajar.</li>
+      <li><span class="bullet b-C"></span>Peran guru adalah fasilitator, bukan otoritas yang mendominasi proses belajar.</li>
+      <li><span class="bullet b-C"></span>Belajar yang bertahan lama hanya terjadi jika materi relevan dengan kehidupan dan kebutuhan nyata siswa.</li>
+    </ul>
+
+    <h3>Aplikasi dalam Pendidikan</h3>
+    <div class="tags">
+      <span class="tag">Student-Centered Learning</span>
+      <span class="tag">Pendidikan Karakter</span>
+      <span class="tag">Open Classroom</span>
+      <span class="tag">Refleksi Diri</span>
+      <span class="tag">Portfolio Autentik</span>
+      <span class="tag">Bimbingan Konseling</span>
+      <span class="tag">Diferensiasi Minat</span>
+    </div>
+
+    <div class="hl-box">
+      <strong>Implikasi bagi Guru:</strong>
+      <p>Guru menciptakan iklim kelas yang aman dan penuh penerimaan, menghormati keunikan setiap siswa, memfasilitasi bukan mendominasi, menghubungkan materi dengan kehidupan nyata siswa, serta menumbuhkan rasa percaya diri dan motivasi intrinsik yang berkelanjutan.</p>
+    </div>
+
+    <div class="blockquote">
+      "Satu-satunya orang yang berpendidikan adalah orang yang telah belajar bagaimana belajar dan berubah — orang yang menyadari bahwa tidak ada pengetahuan yang aman, hanya proses pencarian pengetahuan yang memberikan dasar yang kuat."
+      <cite>— Carl Rogers, Freedom to Learn (1969)</cite>
+    </div>
+  </section>
+
+  <div class="divider"></div>
+
+  <!-- ══════════════════════════════════════ -->
+  <!-- D. KONSTRUKTIVISTIK -->
+  <!-- ══════════════════════════════════════ -->
+  <section class="theory-section" id="sec-D" data-c="D">
+    <div class="sec-head">
+      <div class="sec-letter">D.</div>
+      <div class="sec-title-wrap">
+        <div class="sec-subtitle">TEORI BELAJAR</div>
+        <div class="sec-title">Konstruktivistik</div>
+      </div>
+    </div>
+
+    <p class="lead-text">Belajar adalah proses aktif membangun pengetahuan sendiri melalui pengalaman langsung, refleksi, dan interaksi sosial — bukan menerima pengetahuan yang siap pakai dari guru.</p>
+
+    <p>Teori Konstruktivistik memandang pengetahuan bukan sebagai sesuatu yang ada di luar dan tinggal dipindahkan ke dalam kepala siswa, melainkan sebagai sesuatu yang dikonstruksi secara aktif oleh individu berdasarkan pengalamannya. Dua aliran utama: <strong>konstruktivisme kognitif</strong> (Piaget) yang menekankan konstruksi individual, dan <strong>konstruktivisme sosial</strong> (Vygotsky) yang menekankan peran interaksi sosial.</p>
+
+    <h3>Tokoh-Tokoh Utama</h3>
+    <div class="tokoh-row">
+      <div class="tokoh-chip">
+        <div class="tokoh-name">Lev Vygotsky</div>
+        <div class="tokoh-kontrib">Zone of Proximal Development (ZPD) & scaffolding — belajar optimal terjadi dalam rentang antara kemampuan aktual dan potensial dengan bantuan orang lebih ahli.</div>
+      </div>
+      <div class="tokoh-chip">
+        <div class="tokoh-name">John Dewey</div>
+        <div class="tokoh-kontrib">Learning by Doing — pendidikan harus berbasis pengalaman nyata dan pemecahan masalah autentik dalam konteks kehidupan.</div>
+      </div>
+      <div class="tokoh-chip">
+        <div class="tokoh-name">Ernst von Glasersfeld</div>
+        <div class="tokoh-kontrib">Radikal Konstruktivisme — pengetahuan adalah konstruksi subjektif yang tidak pernah bisa sepenuhnya mencerminkan realitas objektif.</div>
+      </div>
+      <div class="tokoh-chip">
+        <div class="tokoh-name">George Kelly</div>
+        <div class="tokoh-kontrib">Personal Construct Theory — manusia memahami dunia melalui konstruk-konstruk personal yang dikembangkan dari pengalaman uniknya.</div>
+      </div>
+    </div>
+
+    <h3>Konsep Kunci Vygotsky</h3>
+    <div class="info-grid">
+      <div class="info-card">
+        <div class="ic-head">ZPD (Zone of Proximal Development)</div>
+        <p>Jarak antara apa yang bisa dilakukan siswa sendiri (aktual) dan apa yang bisa dicapai dengan bantuan (potensial). Zona inilah target pembelajaran optimal.</p>
+      </div>
+      <div class="info-card">
+        <div class="ic-head">SCAFFOLDING</div>
+        <p>Bantuan terstruktur yang diberikan guru/teman sebaya secara bertahap dan dikurangi seiring meningkatnya kemampuan siswa sampai mandiri.</p>
+      </div>
+      <div class="info-card">
+        <div class="ic-head">BAHASA & BERPIKIR</div>
+        <p>Bahasa adalah alat mediasi kognitif utama. Bicara internal (inner speech) berperan penting dalam regulasi berpikir dan belajar.</p>
+      </div>
+      <div class="info-card">
+        <div class="ic-head">INTERAKSI SOSIAL</div>
+        <p>Pengetahuan pertama kali muncul pada tataran sosial (antar individu) sebelum diinternalisasi pada tataran psikologis individual.</p>
+      </div>
+    </div>
+
+    <h3>Prinsip-Prinsip Konstruktivistik</h3>
+    <ul class="styled-list">
+      <li><span class="bullet b-D"></span>Pengetahuan dikonstruksi aktif oleh pelajar, bukan ditransfer pasif dari guru ke siswa.</li>
+      <li><span class="bullet b-D"></span>Konstruksi pengetahuan terjadi melalui interaksi antara pengalaman baru dan pengetahuan yang sudah ada.</li>
+      <li><span class="bullet b-D"></span>Belajar bersifat kontekstual — paling bermakna ketika dikaitkan dengan situasi nyata dan autentik.</li>
+      <li><span class="bullet b-D"></span>Interaksi sosial dan diskusi adalah komponen esensial dalam proses membangun pengetahuan.</li>
+      <li><span class="bullet b-D"></span>Refleksi diri (metacognition) merupakan komponen penting dalam belajar konstruktivistik.</li>
+      <li><span class="bullet b-D"></span>Kesalahan adalah bagian natural dari proses belajar — bukan hal yang harus dihindari, melainkan dieksplorasi.</li>
+    </ul>
+
+    <h3>Aplikasi dalam Pendidikan</h3>
+    <div class="tags">
+      <span class="tag">Project-Based Learning</span>
+      <span class="tag">Collaborative Learning</span>
+      <span class="tag">Problem-Based Learning</span>
+      <span class="tag">Diskusi Kelompok</span>
+      <span class="tag">Peer Teaching</span>
+      <span class="tag">Pembelajaran Kontekstual</span>
+      <span class="tag">Flipped Classroom</span>
+    </div>
+
+    <div class="hl-box">
+      <strong>Implikasi bagi Guru:</strong>
+      <p>Guru berperan sebagai fasilitator dan mitra belajar, mengidentifikasi ZPD setiap siswa dan memberikan scaffolding yang tepat, merancang tugas autentik yang mendorong eksplorasi aktif, serta menciptakan komunitas belajar (learning community) yang kolaboratif dan reflektif.</p>
+    </div>
+
+    <div class="blockquote">
+      "Dalam perkembangan anak, hari ini yang dapat dilakukan anak dengan bantuan orang lain, besok ia akan mampu melakukannya sendiri."
+      <cite>— Lev Vygotsky, Mind in Society (1978)</cite>
+    </div>
+  </section>
+
+  <div class="divider"></div>
+
+  <!-- TABEL PERBANDINGAN -->
+  <div class="compare-section">
+    <h2>Perbandingan Keempat Teori Belajar</h2>
+    <div class="tbl-wrap">
+      <table>
+        <thead>
+          <tr>
+            <th>Aspek</th>
+            <th style="color:var(--A)">Behavioristik</th>
+            <th style="color:var(--B)">Kognitif</th>
+            <th style="color:var(--C)">Humanistik</th>
+            <th style="color:var(--D)">Konstruktivistik</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td><strong>Definisi Belajar</strong></td>
+            <td>Perubahan perilaku yang teramati</td>
+            <td>Perubahan struktur kognitif</td>
+            <td>Aktualisasi potensi diri</td>
+            <td>Konstruksi aktif pengetahuan</td>
+          </tr>
+          <tr>
+            <td><strong>Fokus Utama</strong></td>
+            <td>Perilaku eksternal</td>
+            <td>Proses mental internal</td>
+            <td>Kebutuhan dan pengalaman</td>
+            <td>Pengalaman & interaksi sosial</td>
+          </tr>
+          <tr>
+            <td><strong>Peran Guru</strong></td>
+            <td>Pengkondisi perilaku</td>
+            <td>Fasilitator kognitif</td>
+            <td>Fasilitator pertumbuhan</td>
+            <td>Mitra & scaffold provider</td>
+          </tr>
+          <tr>
+            <td><strong>Peran Siswa</strong></td>
+            <td>Pasif — merespons stimulus</td>
+            <td>Aktif — memproses info</td>
+            <td>Aktif — memilih & merefleksi</td>
+            <td>Aktif — mengonstruksi makna</td>
+          </tr>
+          <tr>
+            <td><strong>Tokoh Utama</strong></td>
+            <td>Pavlov, Skinner, Watson</td>
+            <td>Piaget, Bruner, Ausubel</td>
+            <td>Maslow, Rogers, Combs</td>
+            <td>Vygotsky, Dewey, Glasersfeld</td>
+          </tr>
+          <tr>
+            <td><strong>Metode Pembelajaran</strong></td>
+            <td>Drill, latihan, reinforcement</td>
+            <td>Discovery, inquiry, peta konsep</td>
+            <td>Refleksi, portofolio, dialog</td>
+            <td>PBL, proyek, kolaborasi</td>
+          </tr>
+          <tr>
+            <td><strong>Evaluasi</strong></td>
+            <td>Tes tertulis, observasi perilaku</td>
+            <td>Pemecahan masalah, analisis</td>
+            <td>Self-assessment, portofolio</td>
+            <td>Autentik, proyek, presentasi</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+
+</div><!-- /wrap -->
+
+<footer>
+  Martin Bernard, M.Pd. &nbsp;·&nbsp; IKIP Siliwangi, Cimahi &nbsp;·&nbsp; Program Studi Pendidikan Matematika &nbsp;·&nbsp; Landasan Pendidikan
+</footer>
+
+<button class="back-top" id="btt" onclick="window.scrollTo({top:0,behavior:'smooth'})">↑</button>
+
+<script>
+// Progress bar
+window.addEventListener('scroll', () => {
+  const t = document.documentElement.scrollHeight - window.innerHeight;
+  document.getElementById('pb').style.width = (window.scrollY / t * 100) + '%';
+  document.getElementById('btt').classList.toggle('show', window.scrollY > 400);
+});
+
+// Intersection Observer
+const io = new IntersectionObserver(entries => {
+  entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('vis'); });
+}, { threshold: 0.06 });
+document.querySelectorAll('.theory-section').forEach(s => io.observe(s));
+
+// Nav active state
+const sections = document.querySelectorAll('.theory-section');
+const pills = document.querySelectorAll('.nav-pill');
+const obs2 = new IntersectionObserver(entries => {
+  entries.forEach(e => {
+    if (e.isIntersecting) {
+      pills.forEach(p => p.classList.remove('active'));
+      const id = e.target.id.replace('sec-', '');
+      const active = document.querySelector(`.nav-pill[data-c="${id}"]`);
+      if (active) active.classList.add('active');
+    }
+  });
+}, { threshold: 0.35 });
+sections.forEach(s => obs2.observe(s));
+
+// Smooth scroll
+document.querySelectorAll('a[href^="#"]').forEach(a => {
+  a.addEventListener('click', e => {
+    e.preventDefault();
+    const t = document.querySelector(a.getAttribute('href'));
+    if (t) t.scrollIntoView({ behavior: 'smooth', block: 'start' });
+  });
+});
+
+function scrollTo(id) {
+  const t = document.getElementById(id);
+  if (t) t.scrollIntoView({ behavior: 'smooth', block: 'start' });
+}
+</script>
+</body>
+</html>
