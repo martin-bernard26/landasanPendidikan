@@ -1,0 +1,951 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Solusi Permasalahan Pendidikan Indonesia — Landasan Pendidikan</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600;700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+:root {
+  --ink:       #1C1B18;
+  --ink-soft:  #4A4845;
+  --ink-mute:  #7A7875;
+  --page:      #FAFAF7;
+  --white:     #FFFFFF;
+  --border:    rgba(0,0,0,0.08);
+  --border-md: rgba(0,0,0,0.13);
+
+  /* Masalah — merah-oranye */
+  --m50:  #FEF0EC; --m100: #FDD5C8; --m300: #F28B6A;
+  --m600: #C94F28; --m700: #A33A18; --m900: #5C1B08;
+
+  /* Solusi — teal-hijau */
+  --s50:  #E6F5F0; --s100: #B3E3D3; --s300: #4DBFA0;
+  --s600: #0D8A6A; --s700: #0A6E54; --s900: #053D2F;
+
+  /* Aksen biru untuk info/data */
+  --b50:  #EBF3FD; --b100: #BDD9F7; --b600: #1967C0; --b800: #0D4A8F;
+
+  /* Kuning aksen */
+  --y50:  #FDF7E3; --y600: #A07820; --y800: #6B5010;
+
+  --r-sm: 8px; --r-md: 12px; --r-lg: 18px; --r-xl: 24px;
+  --serif: 'Playfair Display', Georgia, serif;
+  --sans:  'Inter', system-ui, sans-serif;
+}
+
+body {
+  font-family: var(--sans);
+  background: var(--page);
+  color: var(--ink);
+  font-size: 15px;
+  line-height: 1.7;
+}
+
+/* ── HERO ─────────────────────────────────── */
+.hero {
+  background: var(--ink);
+  color: var(--white);
+  padding: 4.5rem 2rem 0;
+  text-align: center;
+  position: relative;
+  overflow: hidden;
+}
+.hero-deco {
+  position: absolute;
+  border-radius: 50%;
+  pointer-events: none;
+}
+.hero-deco.a { width: 340px; height: 340px; background: rgba(201,79,40,0.18); top: -100px; left: -80px; }
+.hero-deco.b { width: 260px; height: 260px; background: rgba(13,138,106,0.14); bottom: 60px; right: -60px; }
+
+.hero-inner { position: relative; z-index: 1; max-width: 760px; margin: 0 auto; }
+.course-tag {
+  display: inline-block;
+  border: 1px solid rgba(255,255,255,0.22);
+  background: rgba(255,255,255,0.08);
+  color: rgba(255,255,255,0.75);
+  font-size: 11px; font-weight: 600;
+  letter-spacing: 0.1em; text-transform: uppercase;
+  padding: 5px 16px; border-radius: 100px;
+  margin-bottom: 1.5rem;
+}
+.hero h1 {
+  font-family: var(--serif);
+  font-size: clamp(2rem, 5vw, 3.4rem);
+  font-weight: 700; line-height: 1.15;
+  margin-bottom: 1.1rem;
+}
+.hero h1 em { font-style: normal; color: var(--m300); }
+.hero p {
+  color: rgba(255,255,255,0.6);
+  font-size: 15px; max-width: 560px;
+  margin: 0 auto 2.5rem;
+}
+
+/* Indikator pills */
+.indicators {
+  display: flex; justify-content: center;
+  gap: 0.75rem; flex-wrap: wrap;
+  padding-bottom: 0;
+  margin-bottom: 3rem;
+}
+.ind-pill {
+  display: flex; align-items: center; gap: 8px;
+  padding: 9px 18px; border-radius: 100px;
+  font-size: 13px; font-weight: 600;
+  border: 1px solid;
+}
+.ind-pill.masalah { background: rgba(201,79,40,0.18); border-color: rgba(201,79,40,0.4); color: #F9B49A; }
+.ind-pill.solusi  { background: rgba(13,138,106,0.18); border-color: rgba(13,138,106,0.4); color: #7FD9BC; }
+.ind-pill .dot    { width: 8px; height: 8px; border-radius: 50%; }
+.ind-pill.masalah .dot { background: var(--m300); }
+.ind-pill.solusi  .dot { background: var(--s300); }
+
+/* Divider wave */
+.hero-shelf {
+  background: var(--page);
+  height: 2.5rem;
+  border-radius: 2rem 2rem 0 0;
+  margin-top: 0;
+}
+
+/* ── NAV ──────────────────────────────────── */
+.sticky-nav {
+  position: sticky; top: 0; z-index: 200;
+  background: var(--white);
+  border-bottom: 1px solid var(--border-md);
+  padding: 0 2rem;
+  display: flex; gap: 0; overflow-x: auto;
+  scrollbar-width: none;
+}
+.sticky-nav::-webkit-scrollbar { display: none; }
+.snav-link {
+  padding: 0.9rem 1.1rem;
+  font-size: 12px; font-weight: 600;
+  white-space: nowrap;
+  color: var(--ink-mute);
+  text-decoration: none;
+  border-bottom: 2px solid transparent;
+  transition: color .2s, border-color .2s;
+  letter-spacing: 0.02em;
+}
+.snav-link:hover, .snav-link.active { color: var(--m600); border-bottom-color: var(--m600); }
+
+/* ── WRAPPER ──────────────────────────────── */
+.wrap { max-width: 1020px; margin: 0 auto; padding: 0 1.5rem; }
+
+/* ── SECTION HEADER ───────────────────────── */
+.sec-head { padding: 4rem 0 2rem; }
+.sec-eyebrow {
+  font-size: 10px; font-weight: 700;
+  letter-spacing: 0.14em; text-transform: uppercase;
+  margin-bottom: 0.6rem;
+}
+.sec-eyebrow.red  { color: var(--m600); }
+.sec-eyebrow.teal { color: var(--s600); }
+.sec-eyebrow.blue { color: var(--b600); }
+.sec-title {
+  font-family: var(--serif);
+  font-size: clamp(1.5rem, 3vw, 2.2rem);
+  font-weight: 600; line-height: 1.2;
+  margin-bottom: 0.7rem;
+}
+.sec-lead {
+  font-size: 14.5px; color: var(--ink-soft);
+  max-width: 640px; line-height: 1.7;
+}
+
+/* ── STAT BAR (HERO DATA) ─────────────────── */
+.stat-bar {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+  gap: 0;
+  background: var(--white);
+  border: 1px solid var(--border-md);
+  border-radius: var(--r-lg);
+  overflow: hidden;
+  margin: 2rem 0 3rem;
+}
+.stat-item {
+  padding: 1.5rem 1.25rem;
+  border-right: 1px solid var(--border);
+  text-align: center;
+}
+.stat-item:last-child { border-right: none; }
+.stat-num {
+  font-family: var(--serif);
+  font-size: 2rem; font-weight: 700;
+  line-height: 1; margin-bottom: 4px;
+}
+.stat-item.r .stat-num { color: var(--m600); }
+.stat-item.g .stat-num { color: var(--s600); }
+.stat-item.b .stat-num { color: var(--b600); }
+.stat-item.y .stat-num { color: var(--y600); }
+.stat-lbl { font-size: 11.5px; color: var(--ink-mute); font-weight: 500; line-height: 1.4; }
+
+/* ── PROBLEM CARD ─────────────────────────── */
+.prob-grid { display: grid; gap: 1.25rem; }
+
+.prob-card {
+  background: var(--white);
+  border: 1px solid var(--border);
+  border-radius: var(--r-lg);
+  overflow: hidden;
+  display: grid;
+  grid-template-columns: 6px 1fr;
+}
+.prob-stripe { background: var(--m600); }
+.prob-body { padding: 1.5rem 1.5rem 1.5rem 1.25rem; }
+.prob-head {
+  display: flex; align-items: flex-start;
+  gap: 0.75rem; margin-bottom: 0.75rem;
+}
+.prob-icon {
+  flex-shrink: 0;
+  width: 40px; height: 40px;
+  background: var(--m50); color: var(--m700);
+  border-radius: var(--r-sm);
+  display: flex; align-items: center; justify-content: center;
+  font-size: 19px;
+}
+.prob-title-wrap { flex: 1; }
+.prob-cat {
+  font-size: 10px; font-weight: 700;
+  letter-spacing: 0.1em; text-transform: uppercase;
+  color: var(--m700); margin-bottom: 2px;
+}
+.prob-title {
+  font-family: var(--serif);
+  font-size: 16px; font-weight: 600;
+  line-height: 1.3; color: var(--ink);
+}
+.prob-desc { font-size: 13.5px; color: var(--ink-soft); line-height: 1.65; margin-bottom: 1rem; }
+.prob-data {
+  display: flex; flex-wrap: wrap; gap: 6px;
+}
+.data-chip {
+  font-size: 11.5px; font-weight: 600;
+  padding: 4px 11px; border-radius: 100px;
+  background: var(--m50); color: var(--m700);
+  border: 1px solid var(--m100);
+}
+
+/* ── SOLUTION CARD ────────────────────────── */
+.sol-card {
+  background: var(--white);
+  border: 1px solid var(--border);
+  border-radius: var(--r-lg);
+  overflow: hidden;
+  display: grid;
+  grid-template-columns: 6px 1fr;
+}
+.sol-stripe { background: var(--s600); }
+.sol-body { padding: 1.5rem 1.5rem 1.5rem 1.25rem; }
+.sol-head { display: flex; align-items: flex-start; gap: 0.75rem; margin-bottom: 0.75rem; }
+.sol-icon {
+  flex-shrink: 0;
+  width: 40px; height: 40px;
+  background: var(--s50); color: var(--s700);
+  border-radius: var(--r-sm);
+  display: flex; align-items: center; justify-content: center;
+  font-size: 19px;
+}
+.sol-cat {
+  font-size: 10px; font-weight: 700;
+  letter-spacing: 0.1em; text-transform: uppercase;
+  color: var(--s700); margin-bottom: 2px;
+}
+.sol-title {
+  font-family: var(--serif);
+  font-size: 16px; font-weight: 600;
+  line-height: 1.3; color: var(--ink);
+}
+.sol-desc { font-size: 13.5px; color: var(--ink-soft); line-height: 1.65; margin-bottom: 1rem; }
+.sol-steps { display: flex; flex-direction: column; gap: 6px; }
+.sol-step {
+  display: flex; gap: 9px; align-items: flex-start;
+  font-size: 13px; color: var(--ink-soft); line-height: 1.5;
+}
+.step-dot {
+  flex-shrink: 0; margin-top: 5px;
+  width: 7px; height: 7px; border-radius: 50%;
+  background: var(--s600);
+}
+
+/* ── PAIR LAYOUT (masalah ↔ solusi) ──────── */
+.pair-section { padding: 3rem 0; border-top: 1px solid var(--border); }
+.pair-section:first-of-type { border-top: none; }
+.pair-label-row {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1.25rem;
+  margin-bottom: 0.75rem;
+}
+.pair-col-label {
+  font-size: 10.5px; font-weight: 700;
+  letter-spacing: 0.12em; text-transform: uppercase;
+  padding: 6px 12px; border-radius: 100px;
+  display: inline-flex; align-items: center; gap: 6px;
+  width: fit-content;
+}
+.pair-col-label.m { background: var(--m50); color: var(--m700); }
+.pair-col-label.s { background: var(--s50); color: var(--s700); }
+.pair-body {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1.25rem;
+  align-items: start;
+}
+@media (max-width: 680px) {
+  .pair-label-row, .pair-body { grid-template-columns: 1fr; }
+}
+
+/* ── RINGKASAN TABLE ──────────────────────── */
+.summary-table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 13px;
+}
+.summary-table th {
+  font-size: 10.5px; font-weight: 700;
+  letter-spacing: 0.1em; text-transform: uppercase;
+  padding: 10px 14px; text-align: left;
+  border-bottom: 2px solid var(--border-md);
+  color: var(--ink-mute);
+}
+.summary-table td {
+  padding: 11px 14px;
+  border-bottom: 1px solid var(--border);
+  vertical-align: top;
+  line-height: 1.55;
+}
+.summary-table tr:last-child td { border-bottom: none; }
+.summary-table tr:nth-child(even) td { background: var(--page); }
+.badge {
+  display: inline-block;
+  font-size: 10px; font-weight: 700;
+  padding: 2px 9px; border-radius: 100px;
+  white-space: nowrap;
+}
+.badge-m { background: var(--m50); color: var(--m700); }
+.badge-s { background: var(--s50); color: var(--s700); }
+.badge-b { background: var(--b50); color: var(--b800); }
+.badge-y { background: var(--y50); color: var(--y800); }
+
+/* ── PENUTUP BANNER ───────────────────────── */
+.closing {
+  background: var(--ink);
+  border-radius: var(--r-xl);
+  padding: 3rem 2.5rem;
+  text-align: center;
+  margin: 3rem 0;
+  position: relative; overflow: hidden;
+}
+.closing::before {
+  content: '';
+  position: absolute; left: -60px; top: -60px;
+  width: 220px; height: 220px; border-radius: 50%;
+  background: rgba(201,79,40,0.15);
+}
+.closing::after {
+  content: '';
+  position: absolute; right: -50px; bottom: -50px;
+  width: 180px; height: 180px; border-radius: 50%;
+  background: rgba(13,138,106,0.15);
+}
+.closing-inner { position: relative; z-index: 1; }
+.closing h2 {
+  font-family: var(--serif);
+  font-size: 1.7rem; color: var(--white);
+  margin-bottom: 0.85rem;
+}
+.closing p {
+  color: rgba(255,255,255,0.6);
+  font-size: 14px; max-width: 560px;
+  margin: 0 auto 2rem; line-height: 1.7;
+}
+.closing-tags {
+  display: flex; flex-wrap: wrap;
+  justify-content: center; gap: 0.6rem;
+}
+.ctag {
+  padding: 7px 16px; border-radius: 100px;
+  font-size: 12.5px; font-weight: 500; border: 1px solid;
+}
+.ctag.m { background: rgba(201,79,40,0.15); border-color: rgba(201,79,40,0.3); color: #F9B49A; }
+.ctag.s { background: rgba(13,138,106,0.15); border-color: rgba(13,138,106,0.3); color: #7FD9BC; }
+
+/* ── FOOTER ───────────────────────────────── */
+footer {
+  border-top: 1px solid var(--border);
+  padding: 2rem; text-align: center;
+  font-size: 12px; color: var(--ink-mute);
+}
+footer strong { color: var(--ink); }
+
+/* ── REFERENSI ────────────────────────────── */
+.ref-list { display: flex; flex-direction: column; gap: 6px; }
+.ref-item {
+  font-size: 12.5px; color: var(--ink-soft);
+  padding: 8px 12px;
+  background: var(--white); border-radius: var(--r-sm);
+  border-left: 3px solid var(--b600);
+  line-height: 1.5;
+}
+</style>
+</head>
+<body>
+
+<!-- ══════════════ HERO ══════════════ -->
+<header class="hero">
+  <div class="hero-deco a"></div>
+  <div class="hero-deco b"></div>
+  <div class="hero-inner">
+    <div class="course-tag">Landasan Pendidikan · Mata Kuliah Wajib</div>
+    <h1>Solusi Permasalahan<br><em>Pendidikan di Indonesia</em></h1>
+    <p>Mengidentifikasi akar masalah pendidikan nasional dan merumuskan solusi strategis yang berpijak pada landasan teori, regulasi, dan praktik terbaik.</p>
+    <div class="indicators">
+      <div class="ind-pill masalah"><div class="dot"></div>Indikator 1: Permasalahan Pendidikan</div>
+      <div class="ind-pill solusi"><div class="dot"></div>Indikator 2: Solusi Strategis</div>
+    </div>
+  </div>
+  <div class="hero-shelf"></div>
+</header>
+
+<!-- ══════════════ STICKY NAV ══════════════ -->
+<nav class="sticky-nav">
+  <a class="snav-link active" href="#gambaran">Gambaran Umum</a>
+  <a class="snav-link" href="#akses">Akses & Pemerataan</a>
+  <a class="snav-link" href="#mutu">Mutu Pendidikan</a>
+  <a class="snav-link" href="#guru">Kualitas Guru</a>
+  <a class="snav-link" href="#infrastruktur">Infrastruktur</a>
+  <a class="snav-link" href="#pembiayaan">Pembiayaan</a>
+  <a class="snav-link" href="#digital">Kesenjangan Digital</a>
+  <a class="snav-link" href="#ringkasan">Ringkasan</a>
+</nav>
+
+<!-- ══════════════ GAMBARAN UMUM ══════════════ -->
+<section id="gambaran">
+  <div class="wrap">
+    <div class="sec-head">
+      <div class="sec-eyebrow red">Konteks Nasional</div>
+      <h2 class="sec-title">Gambaran Umum Pendidikan Indonesia</h2>
+      <p class="sec-lead">Indonesia adalah negara kepulauan terbesar di dunia dengan lebih dari 270 juta jiwa. Kompleksitas geografis, sosial, dan ekonomi menghasilkan tantangan pendidikan yang multidimensi dan mendesak untuk diselesaikan.</p>
+    </div>
+
+    <div class="stat-bar">
+      <div class="stat-item r">
+        <div class="stat-num">87</div>
+        <div class="stat-lbl">Peringkat PISA 2022<br>dari 81 negara</div>
+      </div>
+      <div class="stat-item b">
+        <div class="stat-num">216K+</div>
+        <div class="stat-lbl">Sekolah aktif<br>di seluruh Indonesia</div>
+      </div>
+      <div class="stat-item y">
+        <div class="stat-num">3,6 jt</div>
+        <div class="stat-lbl">Guru berstatus<br>honorer / tidak tetap</div>
+      </div>
+      <div class="stat-item g">
+        <div class="stat-num">20%</div>
+        <div class="stat-lbl">Anggaran pendidikan<br>dari APBN (konstitusional)</div>
+      </div>
+    </div>
+
+    <div style="background:var(--white);border:1px solid var(--border);border-radius:var(--r-lg);padding:1.75rem;margin-bottom:3rem;">
+      <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:1.25rem;">
+        <div>
+          <div style="font-size:10px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--m600);margin-bottom:.5rem;">Landasan Hukum</div>
+          <ul style="font-size:13px;color:var(--ink-soft);padding-left:1.1rem;display:flex;flex-direction:column;gap:5px;">
+            <li>UUD 1945 Pasal 31 (Hak atas Pendidikan)</li>
+            <li>UU No. 20 Tahun 2003 tentang Sisdiknas</li>
+            <li>PP No. 57 Tahun 2021 tentang Standar Nasional Pendidikan</li>
+            <li>Permendikbudristek No. 5 Tahun 2022</li>
+          </ul>
+        </div>
+        <div>
+          <div style="font-size:10px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--b600);margin-bottom:.5rem;">Faktor Penyebab Utama</div>
+          <ul style="font-size:13px;color:var(--ink-soft);padding-left:1.1rem;display:flex;flex-direction:column;gap:5px;">
+            <li>Kesenjangan geografis (desa–kota, 3T)</li>
+            <li>Disparitas ekonomi antarwilayah</li>
+            <li>Keterbatasan kompetensi pendidik</li>
+            <li>Tata kelola dan birokrasi pendidikan</li>
+          </ul>
+        </div>
+        <div>
+          <div style="font-size:10px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--s600);margin-bottom:.5rem;">Pendekatan Solusi</div>
+          <ul style="font-size:13px;color:var(--ink-soft);padding-left:1.1rem;display:flex;flex-direction:column;gap:5px;">
+            <li>Kebijakan afirmatif & pemerataan</li>
+            <li>Transformasi kurikulum (Merdeka Belajar)</li>
+            <li>Penguatan kapasitas guru</li>
+            <li>Digitalisasi layanan pendidikan</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ══════════════ PAIR SECTIONS ══════════════ -->
+
+<!-- ── 1. AKSES & PEMERATAAN ── -->
+<div id="akses" style="border-top:1px solid var(--border);padding:3rem 0;">
+  <div class="wrap">
+    <div style="margin-bottom:1.75rem;">
+      <div class="sec-eyebrow red" style="margin-bottom:.4rem;">Permasalahan & Solusi · 01</div>
+      <h2 class="sec-title">Akses & Pemerataan Pendidikan</h2>
+    </div>
+    <div class="pair-label-row">
+      <div><span class="pair-col-label m">⚠ Permasalahan</span></div>
+      <div><span class="pair-col-label s">✓ Solusi</span></div>
+    </div>
+    <div class="pair-body">
+      <!-- MASALAH -->
+      <div class="prob-card">
+        <div class="prob-stripe"></div>
+        <div class="prob-body">
+          <div class="prob-head">
+            <div class="prob-icon">🗺️</div>
+            <div class="prob-title-wrap">
+              <div class="prob-cat">Kesenjangan Geografis</div>
+              <div class="prob-title">Akses pendidikan tidak merata antara wilayah perkotaan dan pedesaan (3T)</div>
+            </div>
+          </div>
+          <p class="prob-desc">Wilayah Terdepan, Terluar, dan Tertinggal (3T) di Papua, Kalimantan, NTT, dan Maluku masih menghadapi keterbatasan sekolah, guru, dan fasilitas belajar. Sebagian anak usia sekolah harus menempuh puluhan kilometer untuk mencapai sekolah terdekat.</p>
+          <div class="prob-data">
+            <span class="data-chip">6.800+ desa terpencil</span>
+            <span class="data-chip">APK SD 93,7% (2023)</span>
+            <span class="data-chip">APK SMP 80,3%</span>
+            <span class="data-chip">APK SMA 63,1%</span>
+          </div>
+        </div>
+      </div>
+      <!-- SOLUSI -->
+      <div class="sol-card">
+        <div class="sol-stripe"></div>
+        <div class="sol-body">
+          <div class="sol-head">
+            <div class="sol-icon">🏫</div>
+            <div class="prob-title-wrap">
+              <div class="sol-cat">Kebijakan Afirmatif</div>
+              <div class="sol-title">Pemerataan akses melalui intervensi kebijakan dan program khusus daerah 3T</div>
+            </div>
+          </div>
+          <p class="sol-desc">Diperlukan kebijakan afirmatif yang memihak daerah 3T, disertai program nyata yang menjangkau anak-anak di pelosok tanpa mengabaikan kualitas pendidikan yang diterima.</p>
+          <div class="sol-steps">
+            <div class="sol-step"><div class="step-dot"></div><span>Perluasan program <strong>Sekolah Satu Atap</strong> dan Sekolah Garis Depan di daerah 3T</span></div>
+            <div class="sol-step"><div class="step-dot"></div><span>Beasiswa <strong>ADik (Affirmative Education)</strong> bagi putra-putri Papua dan daerah 3T</span></div>
+            <div class="sol-step"><div class="step-dot"></div><span>Pengiriman <strong>Guru SM3T</strong> dan sarjana mengajar ke wilayah terpencil</span></div>
+            <div class="sol-step"><div class="step-dot"></div><span>Pembangunan <strong>asrama siswa</strong> di kecamatan untuk mengurangi jarak tempuh</span></div>
+            <div class="sol-step"><div class="step-dot"></div><span>Pembelajaran jarak jauh berbasis radio dan TV lokal untuk daerah tanpa internet</span></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ── 2. MUTU PENDIDIKAN ── -->
+<div id="mutu" style="border-top:1px solid var(--border);padding:3rem 0;">
+  <div class="wrap">
+    <div style="margin-bottom:1.75rem;">
+      <div class="sec-eyebrow red" style="margin-bottom:.4rem;">Permasalahan & Solusi · 02</div>
+      <h2 class="sec-title">Mutu & Relevansi Pendidikan</h2>
+    </div>
+    <div class="pair-label-row">
+      <div><span class="pair-col-label m">⚠ Permasalahan</span></div>
+      <div><span class="pair-col-label s">✓ Solusi</span></div>
+    </div>
+    <div class="pair-body">
+      <div class="prob-card">
+        <div class="prob-stripe"></div>
+        <div class="prob-body">
+          <div class="prob-head">
+            <div class="prob-icon">📉</div>
+            <div class="prob-title-wrap">
+              <div class="prob-cat">Rendahnya Kompetensi Siswa</div>
+              <div class="prob-title">Skor literasi dan numerasi Indonesia jauh di bawah rata-rata global</div>
+            </div>
+          </div>
+          <p class="prob-desc">Hasil PISA 2022 menempatkan Indonesia pada peringkat 5 dari bawah untuk kategori membaca dan matematika. Pembelajaran cenderung berbasis hafalan (rote learning), kurang mengembangkan kemampuan berpikir kritis, kolaborasi, dan kreativitas yang dibutuhkan abad ke-21.</p>
+          <div class="prob-data">
+            <span class="data-chip">Skor baca: 359 (rata-rata OECD 476)</span>
+            <span class="data-chip">Skor mat: 366</span>
+            <span class="data-chip">Sains: 383</span>
+          </div>
+        </div>
+      </div>
+      <div class="sol-card">
+        <div class="sol-stripe"></div>
+        <div class="sol-body">
+          <div class="sol-head">
+            <div class="sol-icon">📚</div>
+            <div class="prob-title-wrap">
+              <div class="sol-cat">Transformasi Kurikulum</div>
+              <div class="sol-title">Kurikulum Merdeka dan pendekatan pembelajaran berbasis kompetensi</div>
+            </div>
+          </div>
+          <p class="sol-desc">Kurikulum Merdeka memberi fleksibilitas kepada satuan pendidikan untuk mengembangkan pembelajaran yang relevan, kontekstual, dan berpusat pada peserta didik.</p>
+          <div class="sol-steps">
+            <div class="sol-step"><div class="step-dot"></div><span>Implementasi <strong>Kurikulum Merdeka</strong> yang fleksibel, berbasis proyek (P5)</span></div>
+            <div class="sol-step"><div class="step-dot"></div><span>Penguatan <strong>literasi dan numerasi</strong> sejak jenjang SD melalui program GERNAS BAKU</span></div>
+            <div class="sol-step"><div class="step-dot"></div><span>Integrasi <strong>Higher Order Thinking Skills (HOTS)</strong> dalam penilaian dan soal</span></div>
+            <div class="sol-step"><div class="step-dot"></div><span>Pembelajaran berbasis <strong>masalah nyata</strong> dan proyek kolaboratif lintas mata pelajaran</span></div>
+            <div class="sol-step"><div class="step-dot"></div><span>Asesmen <strong>formatif berkelanjutan</strong> menggantikan dominasi ujian sumatif tunggal</span></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ── 3. KUALITAS GURU ── -->
+<div id="guru" style="border-top:1px solid var(--border);padding:3rem 0;">
+  <div class="wrap">
+    <div style="margin-bottom:1.75rem;">
+      <div class="sec-eyebrow red" style="margin-bottom:.4rem;">Permasalahan & Solusi · 03</div>
+      <h2 class="sec-title">Kualitas & Kesejahteraan Guru</h2>
+    </div>
+    <div class="pair-label-row">
+      <div><span class="pair-col-label m">⚠ Permasalahan</span></div>
+      <div><span class="pair-col-label s">✓ Solusi</span></div>
+    </div>
+    <div class="pair-body">
+      <div class="prob-card">
+        <div class="prob-stripe"></div>
+        <div class="prob-body">
+          <div class="prob-head">
+            <div class="prob-icon">👨‍🏫</div>
+            <div class="prob-title-wrap">
+              <div class="prob-cat">Distribusi & Kompetensi Guru</div>
+              <div class="prob-title">Distribusi guru tidak merata, kompetensi rendah, dan kesejahteraan honorer memprihatinkan</div>
+            </div>
+          </div>
+          <p class="prob-desc">Daerah perkotaan mengalami kelebihan guru sementara daerah terpencil kekurangan parah. Dari sekitar 3,6 juta guru honorer, sebagian besar menerima gaji di bawah UMR. Hasil Uji Kompetensi Guru (UKG) rata-rata nasional masih di kisaran 53 dari skala 100.</p>
+          <div class="prob-data">
+            <span class="data-chip">UKG rata-rata: 53/100</span>
+            <span class="data-chip">3,6 jt guru honorer</span>
+            <span class="data-chip">Kurang 988K guru ASN</span>
+          </div>
+        </div>
+      </div>
+      <div class="sol-card">
+        <div class="sol-stripe"></div>
+        <div class="sol-body">
+          <div class="sol-head">
+            <div class="sol-icon">🎓</div>
+            <div class="prob-title-wrap">
+              <div class="sol-cat">Pengembangan Profesi Guru</div>
+              <div class="sol-title">Rekrutmen PPPK, PPG, dan platform pengembangan profesional berkelanjutan</div>
+            </div>
+          </div>
+          <p class="sol-desc">Solusi jangka pendek dan menengah mencakup formalisasi status guru honorer berkualitas melalui PPPK, serta peningkatan kompetensi melalui program terstruktur dan berbasis komunitas.</p>
+          <div class="sol-steps">
+            <div class="sol-step"><div class="step-dot"></div><span>Percepatan rekrutmen <strong>PPPK Guru</strong> untuk mengangkat honorer berpengalaman</span></div>
+            <div class="sol-step"><div class="step-dot"></div><span>Wajib <strong>PPG (Pendidikan Profesi Guru)</strong> bagi semua guru dalam jabatan</span></div>
+            <div class="sol-step"><div class="step-dot"></div><span>Platform <strong>PMM (Platform Merdeka Mengajar)</strong> untuk pelatihan mandiri dan komunitas belajar</span></div>
+            <div class="sol-step"><div class="step-dot"></div><span>Program <strong>tunjangan khusus guru daerah 3T</strong> dan insentif relokasi yang kompetitif</span></div>
+            <div class="sol-step"><div class="step-dot"></div><span>Reformasi <strong>LPTK</strong> untuk menghasilkan calon guru yang lebih kompeten dan adaptif</span></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ── 4. INFRASTRUKTUR ── -->
+<div id="infrastruktur" style="border-top:1px solid var(--border);padding:3rem 0;">
+  <div class="wrap">
+    <div style="margin-bottom:1.75rem;">
+      <div class="sec-eyebrow red" style="margin-bottom:.4rem;">Permasalahan & Solusi · 04</div>
+      <h2 class="sec-title">Infrastruktur & Sarana Pendidikan</h2>
+    </div>
+    <div class="pair-label-row">
+      <div><span class="pair-col-label m">⚠ Permasalahan</span></div>
+      <div><span class="pair-col-label s">✓ Solusi</span></div>
+    </div>
+    <div class="pair-body">
+      <div class="prob-card">
+        <div class="prob-stripe"></div>
+        <div class="prob-body">
+          <div class="prob-head">
+            <div class="prob-icon">🏚️</div>
+            <div class="prob-title-wrap">
+              <div class="prob-cat">Kondisi Fisik Sekolah</div>
+              <div class="prob-title">Ribuan ruang kelas rusak berat, tanpa sanitasi layak, dan minim fasilitas belajar modern</div>
+            </div>
+          </div>
+          <p class="prob-desc">Data Kemendikbudristek menunjukkan lebih dari 40% ruang kelas di Indonesia mengalami kerusakan, mulai dari ringan hingga berat. Banyak sekolah tidak memiliki toilet layak, perpustakaan, laboratorium, atau akses air bersih. Kondisi ini langsung mempengaruhi kenyamanan dan efektivitas belajar siswa.</p>
+          <div class="prob-data">
+            <span class="data-chip">&gt;40% ruang kelas rusak</span>
+            <span class="data-chip">30% tanpa perpustakaan</span>
+            <span class="data-chip">55% tanpa lab sains</span>
+          </div>
+        </div>
+      </div>
+      <div class="sol-card">
+        <div class="sol-stripe"></div>
+        <div class="sol-body">
+          <div class="sol-head">
+            <div class="sol-icon">🔨</div>
+            <div class="prob-title-wrap">
+              <div class="sol-cat">Rehabilitasi & Pembangunan</div>
+              <div class="sol-title">Dana alokasi khusus, BOS reguler, dan kemitraan swasta untuk pembenahan sarana</div>
+            </div>
+          </div>
+          <p class="sol-desc">Pembenahan infrastruktur membutuhkan kolaborasi antara pemerintah pusat, daerah, dan sektor swasta dengan skema pendanaan yang terstruktur dan pemantauan berbasis data.</p>
+          <div class="sol-steps">
+            <div class="sol-step"><div class="step-dot"></div><span>Percepatan <strong>DAK Fisik Pendidikan</strong> untuk rehabilitasi ruang kelas rusak berat</span></div>
+            <div class="sol-step"><div class="step-dot"></div><span>Program <strong>SBSN (Sukuk Negara)</strong> untuk pembangunan sekolah di daerah defisit</span></div>
+            <div class="sol-step"><div class="step-dot"></div><span>Kemitraan <strong>CSR perusahaan</strong> dalam penyediaan laboratorium dan perpustakaan sekolah</span></div>
+            <div class="sol-step"><div class="step-dot"></div><span>Pendataan kondisi sarana secara real-time melalui <strong>Dapodik</strong> untuk prioritas anggaran</span></div>
+            <div class="sol-step"><div class="step-dot"></div><span>Standarisasi <strong>sanitasi dan toilet</strong> layak di setiap satuan pendidikan</span></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ── 5. PEMBIAYAAN ── -->
+<div id="pembiayaan" style="border-top:1px solid var(--border);padding:3rem 0;">
+  <div class="wrap">
+    <div style="margin-bottom:1.75rem;">
+      <div class="sec-eyebrow red" style="margin-bottom:.4rem;">Permasalahan & Solusi · 05</div>
+      <h2 class="sec-title">Pembiayaan & Tata Kelola Anggaran</h2>
+    </div>
+    <div class="pair-label-row">
+      <div><span class="pair-col-label m">⚠ Permasalahan</span></div>
+      <div><span class="pair-col-label s">✓ Solusi</span></div>
+    </div>
+    <div class="pair-body">
+      <div class="prob-card">
+        <div class="prob-stripe"></div>
+        <div class="prob-body">
+          <div class="prob-head">
+            <div class="prob-icon">💸</div>
+            <div class="prob-title-wrap">
+              <div class="prob-cat">Tata Kelola Anggaran</div>
+              <div class="prob-title">Anggaran 20% APBN belum optimal: salah sasaran, tumpang tindih program, dan korupsi dana pendidikan</div>
+            </div>
+          </div>
+          <p class="prob-desc">Meski konstitusi mewajibkan 20% APBN untuk pendidikan (sekitar Rp612 triliun pada 2023), efektivitasnya masih dipertanyakan. Dana BOS rawan penyalahgunaan, program tidak sinergis antarlevel pemerintahan, dan masih banyak siswa miskin yang putus sekolah karena biaya.</p>
+          <div class="prob-data">
+            <span class="data-chip">APBN Pendidikan ≈ Rp612 T</span>
+            <span class="data-chip">75.303 kasus korupsi pendidikan</span>
+            <span class="data-chip">4,4 jt anak putus sekolah</span>
+          </div>
+        </div>
+      </div>
+      <div class="sol-card">
+        <div class="sol-stripe"></div>
+        <div class="sol-body">
+          <div class="sol-head">
+            <div class="sol-icon">📊</div>
+            <div class="prob-title-wrap">
+              <div class="sol-cat">Reformasi Tata Kelola</div>
+              <div class="sol-title">Transparansi anggaran berbasis data, sistem pengawasan digital, dan PIP yang tepat sasaran</div>
+            </div>
+          </div>
+          <p class="sol-desc">Pembenahan tata kelola anggaran harus mengandalkan teknologi untuk transparansi, dengan memperkuat peran masyarakat sipil sebagai pengawas eksternal yang independen.</p>
+          <div class="sol-steps">
+            <div class="sol-step"><div class="step-dot"></div><span>Digitalisasi pelaporan BOS melalui <strong>ARKAS dan SIPLah</strong> untuk mencegah manipulasi</span></div>
+            <div class="sol-step"><div class="step-dot"></div><span>Perluasan dan pembenahan data <strong>PIP (Program Indonesia Pintar)</strong> agar tepat sasaran</span></div>
+            <div class="sol-step"><div class="step-dot"></div><span>Audit reguler oleh <strong>BPK dan Inspektorat</strong> dengan hasil dipublikasikan secara terbuka</span></div>
+            <div class="sol-step"><div class="step-dot"></div><span>Pemberdayaan <strong>Komite Sekolah</strong> sebagai pengawas independen penggunaan dana</span></div>
+            <div class="sol-step"><div class="step-dot"></div><span>Penguatan <strong>pendidikan gratis berkualitas</strong> melalui sinkronisasi BOS Reguler dan BOS Kinerja</span></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ── 6. KESENJANGAN DIGITAL ── -->
+<div id="digital" style="border-top:1px solid var(--border);padding:3rem 0;">
+  <div class="wrap">
+    <div style="margin-bottom:1.75rem;">
+      <div class="sec-eyebrow red" style="margin-bottom:.4rem;">Permasalahan & Solusi · 06</div>
+      <h2 class="sec-title">Kesenjangan Digital dalam Pendidikan</h2>
+    </div>
+    <div class="pair-label-row">
+      <div><span class="pair-col-label m">⚠ Permasalahan</span></div>
+      <div><span class="pair-col-label s">✓ Solusi</span></div>
+    </div>
+    <div class="pair-body">
+      <div class="prob-card">
+        <div class="prob-stripe"></div>
+        <div class="prob-body">
+          <div class="prob-head">
+            <div class="prob-icon">📵</div>
+            <div class="prob-title-wrap">
+              <div class="prob-cat">Digital Divide</div>
+              <div class="prob-title">Kesenjangan akses teknologi antara kota dan desa memperlebar jurang kualitas belajar</div>
+            </div>
+          </div>
+          <p class="prob-desc">Pandemi COVID-19 mengekspos secara dramatis betapa tidak siapnya Indonesia menghadapi pembelajaran digital. Jutaan siswa di pedesaan tidak memiliki gawai, jaringan internet, dan literasi digital. Hal ini menciptakan learning loss yang tidak merata — lebih parah di daerah miskin dan terpencil.</p>
+          <div class="prob-data">
+            <span class="data-chip">64% desa tanpa internet cepat</span>
+            <span class="data-chip">30% siswa tanpa gawai (2020)</span>
+            <span class="data-chip">Learning loss 2 tahun</span>
+          </div>
+        </div>
+      </div>
+      <div class="sol-card">
+        <div class="sol-stripe"></div>
+        <div class="sol-body">
+          <div class="sol-head">
+            <div class="sol-icon">🌐</div>
+            <div class="prob-title-wrap">
+              <div class="sol-cat">Digitalisasi Pendidikan</div>
+              <div class="sol-title">Infrastruktur internet, perangkat bagi siswa, dan literasi digital terintegrasi kurikulum</div>
+            </div>
+          </div>
+          <p class="sol-desc">Transformasi digital pendidikan harus berlangsung dari dua arah: memperluas akses infrastruktur sekaligus membangun kompetensi digital warga sekolah.</p>
+          <div class="sol-steps">
+            <div class="sol-step"><div class="step-dot"></div><span>Percepatan <strong>Palapa Ring</strong> dan akses Starlink ke sekolah-sekolah terpencil prioritas</span></div>
+            <div class="sol-step"><div class="step-dot"></div><span>Program <strong>laptop/tablet subsidi</strong> bagi siswa kurang mampu di jenjang SMP dan SMA</span></div>
+            <div class="sol-step"><div class="step-dot"></div><span>Integrasi <strong>literasi digital</strong> sebagai mata pelajaran wajib di semua jenjang pendidikan</span></div>
+            <div class="sol-step"><div class="step-dot"></div><span>Pengembangan <strong>konten edukasi lokal</strong> di platform Rumah Belajar dan PMM</span></div>
+            <div class="sol-step"><div class="step-dot"></div><span>Pelatihan <strong>guru dalam pemanfaatan TIK</strong> dan AI untuk pembelajaran yang adaptif</span></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ══════════════ RINGKASAN TABEL ══════════════ -->
+<section id="ringkasan" style="padding:4rem 0 2rem;border-top:2px solid var(--border-md);">
+  <div class="wrap">
+    <div class="sec-eyebrow blue" style="margin-bottom:.6rem;">Rekapitulasi</div>
+    <h2 class="sec-title">Ringkasan Masalah & Solusi</h2>
+    <p class="sec-lead" style="margin-bottom:2rem;">Tabel berikut merangkum seluruh permasalahan pendidikan Indonesia beserta solusi strategis, aktor yang bertanggung jawab, dan prioritas implementasi.</p>
+
+    <div style="overflow-x:auto;border:1px solid var(--border-md);border-radius:var(--r-lg);background:var(--white);margin-bottom:3rem;">
+      <table class="summary-table">
+        <thead>
+          <tr>
+            <th style="width:18%;">Aspek</th>
+            <th style="width:28%;">Permasalahan Utama</th>
+            <th style="width:32%;">Solusi Strategis</th>
+            <th style="width:12%;">Aktor</th>
+            <th style="width:10%;">Prioritas</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td><strong>Akses & Pemerataan</strong></td>
+            <td>Anak usia sekolah di daerah 3T tidak terjangkau sistem pendidikan formal</td>
+            <td>Sekolah Satu Atap, beasiswa ADik, SM3T, pembelajaran via radio/TV</td>
+            <td><span class="badge badge-b">Pemerintah Pusat</span></td>
+            <td><span class="badge badge-m">Tinggi</span></td>
+          </tr>
+          <tr>
+            <td><strong>Mutu Belajar</strong></td>
+            <td>Skor PISA rendah, pembelajaran berbasis hafalan, minim HOTS</td>
+            <td>Kurikulum Merdeka, P5, literasi-numerasi, asesmen formatif</td>
+            <td><span class="badge badge-b">Kemendikbud</span></td>
+            <td><span class="badge badge-m">Tinggi</span></td>
+          </tr>
+          <tr>
+            <td><strong>Kualitas Guru</strong></td>
+            <td>Distribusi tidak merata, UKG rendah, 3,6 juta honorer sejahtera rendah</td>
+            <td>PPPK Guru, PPG, Platform Merdeka Mengajar, tunjangan daerah 3T</td>
+            <td><span class="badge badge-b">Kemendikbud & BKN</span></td>
+            <td><span class="badge badge-m">Tinggi</span></td>
+          </tr>
+          <tr>
+            <td><strong>Infrastruktur</strong></td>
+            <td>40%+ ruang kelas rusak, minim sanitasi dan fasilitas laboratorium</td>
+            <td>DAK Fisik, SBSN, kemitraan CSR, pendataan Dapodik real-time</td>
+            <td><span class="badge badge-y">Pemda & Pusat</span></td>
+            <td><span class="badge badge-s">Sedang</span></td>
+          </tr>
+          <tr>
+            <td><strong>Pembiayaan</strong></td>
+            <td>Anggaran 20% belum efektif, rawan korupsi, PIP tidak tepat sasaran</td>
+            <td>ARKAS, SIPLah, audit terbuka, penguatan komite sekolah</td>
+            <td><span class="badge badge-y">BPK, Inspektorat</span></td>
+            <td><span class="badge badge-s">Sedang</span></td>
+          </tr>
+          <tr>
+            <td><strong>Kesenjangan Digital</strong></td>
+            <td>64% desa tanpa internet cepat, siswa miskin tanpa gawai</td>
+            <td>Palapa Ring, tablet subsidi, literasi digital kurikulum, PMM</td>
+            <td><span class="badge badge-b">Kominfo & Kemendikbud</span></td>
+            <td><span class="badge badge-s">Sedang</span></td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+    <!-- REFERENSI -->
+    <div style="margin-bottom:3rem;">
+      <div class="sec-eyebrow blue" style="margin-bottom:1rem;">Referensi & Sumber</div>
+      <div class="ref-list">
+        <div class="ref-item">Kemendikbudristek. (2023). <em>Laporan Kinerja Kementerian Pendidikan, Kebudayaan, Riset, dan Teknologi 2022–2023.</em> Jakarta: Kemendikbudristek.</div>
+        <div class="ref-item">OECD. (2023). <em>PISA 2022 Results: Factsheets — Indonesia.</em> Paris: OECD Publishing.</div>
+        <div class="ref-item">Undang-Undang No. 20 Tahun 2003 tentang Sistem Pendidikan Nasional.</div>
+        <div class="ref-item">Peraturan Pemerintah No. 57 Tahun 2021 tentang Standar Nasional Pendidikan.</div>
+        <div class="ref-item">Suryadi, A. (2014). <em>Pendidikan Indonesia Menuju 2025: Strategi dan Prioritas.</em> Bandung: PT Remaja Rosdakarya.</div>
+        <div class="ref-item">Tilaar, H.A.R. (2012). <em>Permasalahan Pendidikan di Indonesia.</em> Jakarta: Rineka Cipta.</div>
+        <div class="ref-item">BPS. (2023). <em>Statistik Pendidikan Indonesia 2023.</em> Jakarta: Badan Pusat Statistik.</div>
+      </div>
+    </div>
+
+    <!-- PENUTUP -->
+    <div class="closing">
+      <div class="closing-inner">
+        <h2>Simpulan</h2>
+        <p>Permasalahan pendidikan Indonesia bersifat sistemis dan saling terkait. Solusinya membutuhkan kolaborasi lintas sektor — pemerintah, sekolah, keluarga, dan masyarakat — dengan komitmen jangka panjang yang konsisten. Tidak ada solusi tunggal; yang dibutuhkan adalah transformasi menyeluruh yang berpihak pada setiap anak Indonesia.</p>
+        <div class="closing-tags">
+          <span class="ctag m">Pemerataan Akses</span>
+          <span class="ctag s">Peningkatan Mutu</span>
+          <span class="ctag m">Kesejahteraan Guru</span>
+          <span class="ctag s">Infrastruktur Layak</span>
+          <span class="ctag m">Transparansi Anggaran</span>
+          <span class="ctag s">Literasi Digital</span>
+          <span class="ctag m">Kurikulum Relevan</span>
+          <span class="ctag s">Keadilan Pendidikan</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <strong>Solusi Permasalahan Pendidikan di Indonesia</strong><br>
+  <span style="margin-top:4px;display:block;">Mata Kuliah Landasan Pendidikan · Materi disusun berdasarkan data Kemendikbudristek, OECD PISA 2022, BPS, dan regulasi pendidikan nasional</span>
+</footer>
+
+<script>
+const links = document.querySelectorAll('.snav-link');
+const sections = document.querySelectorAll('div[id], section[id]');
+
+links.forEach(l => {
+  l.addEventListener('click', e => {
+    e.preventDefault();
+    const id = l.getAttribute('href').slice(1);
+    const el = document.getElementById(id);
+    if (el) el.scrollIntoView({ behavior: 'smooth', block: 'start' });
+  });
+});
+
+const obs = new IntersectionObserver(entries => {
+  entries.forEach(entry => {
+    if (entry.isIntersecting) {
+      links.forEach(l => l.classList.remove('active'));
+      const active = document.querySelector(`.snav-link[href="#${entry.target.id}"]`);
+      if (active) active.classList.add('active');
+    }
+  });
+}, { threshold: 0.25 });
+
+sections.forEach(s => obs.observe(s));
+</script>
+</body>
+</html>
